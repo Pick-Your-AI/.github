@@ -1,0 +1,131 @@
+[
+  {
+    "theme": "light",
+    "images": [
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/banner-light.svg",
+        "width": 1600,
+        "height": 500
+      },
+      {
+        "src": "https://camo.githubusercontent.com/137e41d79b97ccb92ba6c0b0ca83363f2e3d4eec5ee6ce4991c9a0a88192320b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5472795f7468655f707265766965772d3066373636653f7374796c653d666f722d7468652d6261646765",
+        "width": 147,
+        "height": 28
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t0.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t1.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t2.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t3.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t4.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t5.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t6.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/divider.svg",
+        "width": 1200,
+        "height": 20
+      }
+    ],
+    "alert": 1
+  },
+  {
+    "theme": "dark",
+    "images": [
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/banner-dark.svg",
+        "width": 1600,
+        "height": 500
+      },
+      {
+        "src": "https://camo.githubusercontent.com/137e41d79b97ccb92ba6c0b0ca83363f2e3d4eec5ee6ce4991c9a0a88192320b/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5472795f7468655f707265766965772d3066373636653f7374796c653d666f722d7468652d6261646765",
+        "width": 147,
+        "height": 28
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t0.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t1.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t2.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t3.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t4.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t5.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/tiers/t6.png",
+        "width": 128,
+        "height": 128
+      },
+      {
+        "src": "https://github.com/Pick-Your-AI/.github/raw/design/profile-overhaul/assets/divider.svg",
+        "width": 1200,
+        "height": 20
+      }
+    ],
+    "alert": 1
+  },
+  {
+    "mobile": {
+      "width": 292,
+      "scrollWidth": 292,
+      "bodyWidth": 390,
+      "viewport": 390
+    }
+  },
+  {
+    "camo": [
+      {
+        "src": "https://camo.githubusercontent.com/738d6b5faaf6cd3384aafd8b9d5ccad49634f5921fad225ff2062214cfebf3df/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f5069636b2d596f75722d41492f2e67697468756240396336363935636133626563386263343232363836333863366462383936323036316438336431382f6173736574732f62616e6e65722d6461726b2e737667",
+        "width": 1600,
+        "height": 500
+      }
+    ]
+  }
+]

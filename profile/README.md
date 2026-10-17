@@ -19,7 +19,7 @@
 
 ## What is Pick Your AI?
 
-Pick Your AI is a web-based builder for assembling a complete AI solution part by part. Start with a workload and deployment mode, then choose models, infrastructure, and optional capabilities. The goal is to help people understand compatibility, costs, and tradeoffs, with evidence behind each recommendation.
+Pick Your AI is a web-based builder for assembling a complete AI solution, like a PC build. Start with a workload and deployment mode, then choose models, infrastructure, and optional capabilities. The goal is to help people understand compatibility, costs, and tradeoffs, with evidence behind each recommendation.
 
 [PCPartPicker](https://pcpartpicker.com/list/) is a functional reference; Pick Your AI develops its own brand, interface, and code.
 

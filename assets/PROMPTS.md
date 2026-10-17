@@ -4,6 +4,28 @@ Generated 2026-10-16 with Codex built-in `image_gen.imagegen`. The tool does not
 
 Hero B was selected over A: clearer silhouettes, calmer negative space, exactly one amber indicator. Light hero is an edit of B. Android variant 2 replaces a gold-contact draft. All other outputs use variant 1. Inspected all outputs for text, trademarks, palette, composition and artifacts; final dimensions and alpha checked after optimization.
 
+### Output mapping and reproduction
+
+| Output | Exact prompt below | Selection |
+| --- | --- | --- |
+| `hero-dark.png` | heroB | B (A rejected: extra gold accents) |
+| `hero-light.png` | heroLight | 1, edit target is heroB |
+| `tiers/t0.png`–`tiers/t6.png` | t0–t6 respectively | 1 each |
+| `repo-cards/pickyour.ai.png` | cardApplication | 1 |
+| `repo-cards/pick-your-ai-research.png` | cardResearch | 1 |
+| `repo-cards/pick-your-ai-leaderboard.png` | cardLeaderboard | 1 |
+| `repo-cards/github.png` | cardGithub | 1 |
+| `repo-cards/pick-your-ai-android.png` | cardAndroid | 2 (1 rejected: gold contacts) |
+| `repo-cards/pick-your-ai-apple.png` | cardApple | 1 |
+
+The seven icon calls used `transparent_background: true`; other calls used `false`. heroLight used heroB as its referenced image. Generation is nondeterministic and the built-in tool exposes neither a model identifier nor a seed. Do not claim bit-for-bit regeneration from the prompts.
+
+`build_assets.py` records each selected source filename. To reproduce postprocessing from the original generations, run `python assets/build_assets.py SOURCE_DIRECTORY PNGQUANT_PATH` (Python, Pillow 12.2.0 and Segoe UI fonts). For newly generated replacements, update the source IDs first. Originals remain in the generation store; they are not duplicated into this lightweight repository.
+
+Postprocessing: Lanczos resize to 1600×500 heroes, 128×128 transparent icons, 1280×640 cards. Cards receive real Segoe UI text through Pillow. PNGs use pngquant 2.17.0 with `--quality=65-85 --speed=1 --strip`; icons retain RGBA with Pillow optimization. The portable Windows binary was obtained from [pngquant's official site](https://pngquant.org/) because no pngquant, oxipng or cwebp was preinstalled. No optimizer binary is committed.
+
+`banner-dark.svg` and `banner-light.svg` are hand-composed wrappers, not additional image generations: each embeds a WebP encoding (Pillow quality 90, method 6) of the matching optimized hero, then adds canonical favicon geometry and real system-font SVG text. `favicon.svg` is copied unchanged from [pickyour.ai at dc66a9e2](https://github.com/Pick-Your-AI/pickyour.ai/blob/dc66a9e269917ab7241c7d08fd0e7f2a2f039872/public/favicon.svg). `divider.svg` is hand-built. `review/*.webp` are browser screenshots, not generated illustrations.
+
 ## heroA
 
 ```text

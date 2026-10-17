@@ -1,0 +1,100 @@
+{
+  "date": "2026-10-16",
+  "results": [
+    {
+      "url": "https://github.com/Pick-Your-AI",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/.github",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/.github/blob/main/CODE_OF_CONDUCT.md",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-android",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard/issues/1",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/SECURITY.md",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/docs/RESEARCH_WORKFLOW.md",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research/issues/40",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pickyour.ai",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/Pick-Your-AI/pickyour.ai/blob/main/CONTRIBUTING.md",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/1",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/6",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://img.shields.io/badge/Try_the_preview-0f766e?style=for-the-badge",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://pcpartpicker.com/list/",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "url": "https://pickyour.ai",
+      "status": "200",
+      "exit": 0
+    }
+  ]
+}
