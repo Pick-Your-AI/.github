@@ -1,0 +1,100 @@
+{
+  "commit": "9c6695ca3bec8bc42268638c6db8962061d83d18",
+  "results": [
+    {
+      "path": "assets/banner-dark.svg",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/banner-light.svg",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/divider.svg",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/favicon.svg",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/hero-dark.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/hero-light.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/github.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/pick-your-ai-android.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/pick-your-ai-apple.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/pick-your-ai-leaderboard.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/pick-your-ai-research.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/repo-cards/pickyour.ai.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t0.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t1.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t2.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t3.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t4.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t5.png",
+      "status": "200",
+      "exit": 0
+    },
+    {
+      "path": "assets/tiers/t6.png",
+      "status": "200",
+      "exit": 0
+    }
+  ]
+}
