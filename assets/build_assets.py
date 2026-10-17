@@ -1,16 +1,21 @@
 """Resize generated sources and typeset cards. Requires Pillow; SVG stays editable.
 
-Usage: python assets/build_assets.py SOURCE_DIRECTORY
+Usage: python assets/build_assets.py SOURCE_DIRECTORY [PNGQUANT_PATH]
 Source filenames correspond to the selected built-in generations in PROMPTS.md.
 """
 import base64
 from io import BytesIO
 from pathlib import Path
 import sys
+import shutil
+import subprocess
 from PIL import Image, ImageDraw, ImageFont
 
 ROOT = Path(__file__).resolve().parent
 SOURCE = Path(sys.argv[1])
+PNGQUANT = str(Path(sys.argv[2]).resolve()) if len(sys.argv) > 2 else shutil.which("pngquant")
+if not PNGQUANT:
+    raise SystemExit("Install pngquant or pass the path to its executable.")
 SOURCES = {
     'hero-dark': '82934a63-c888-42b8-9c36-d4a82e1a7edd',
     'hero-light': 'd3c178c7-2c92-416f-bf18-2828f831ef53',
@@ -33,7 +38,8 @@ def source(key, size):
     return Image.open(SOURCE / f'exec-{SOURCES[key]}.png').resize(size, Image.Resampling.LANCZOS)
 
 def save_rgb(im, path):
-    im.convert('RGB').quantize(colors=64, method=Image.Quantize.MEDIANCUT, dither=Image.Dither.NONE).save(path, optimize=True)
+    im.convert('RGB').save(path, optimize=True)
+    subprocess.run([PNGQUANT, '--quality=65-85', '--speed=1', '--strip', '--force', '--output', str(path), str(path)], check=True)
 
 mark = (ROOT / 'favicon.svg').read_text(encoding='utf-8').split('>', 1)[1].rsplit('</svg>', 1)[0]
 for theme in ('dark', 'light'):
