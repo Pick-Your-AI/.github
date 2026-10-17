@@ -11,7 +11,9 @@
   <a href="https://github.com/Pick-Your-AI/pickyour.ai">Application</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-research">Research</a> ·
   <a href="https://github.com/orgs/Pick-Your-AI/projects/1">Research board</a> ·
-  <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">Leaderboard plan</a>
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">Leaderboard plan</a> ·
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md">Contribute</a> ·
+  <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE">MIT licence</a>
 </p>
 
 > [!NOTE]
@@ -50,11 +52,24 @@ Tiers constrain each other in both directions: models affect GPU requirements, a
 | [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai) | Application, interface, tests, and data integration |
 | [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research) | Evidence, decision records, catalog and pricing proposals, and shared contracts |
 | [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) | Contributor recognition, metric definitions, and leaderboard delivery planning |
-| [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) | Android planning client |
-| [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple) | Apple / iOS planning client |
+| [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) | Android planning client: scope, contribution guidance, and delivery planning |
+| [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple) | Apple/iOS planning client: scope, contribution guidance, and delivery planning |
 | [.github](https://github.com/Pick-Your-AI/.github) | Organization profile and community defaults |
 
 Application, research and leaderboard work have separate workflows. The application demonstrates selection with synthetic fixtures. Research gathers sourced facts, dated prices and proposed compatibility rules under a versioned shared contract. **Merged research does not automatically become production catalog data.**
+
+The mobile repositories hold planning and guidance only; no mobile application has been built or released, and their framework decisions remain open.
+
+### Project boards
+
+| Board | Tracks |
+| --- | --- |
+| [AI Builder Research](https://github.com/orgs/Pick-Your-AI/projects/1) | T0–T6 research workstreams and decision records |
+| [Market Research & Competitive Intelligence](https://github.com/orgs/Pick-Your-AI/projects/2) | Market and competitor research |
+| [Website Implementation](https://github.com/orgs/Pick-Your-AI/projects/3) | The pickyour.ai builder |
+| [Android Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/4) | Android client delivery plan |
+| [Apple/iOS Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/5) | Apple/iOS client delivery plan |
+| [Contributor Leaderboard Delivery](https://github.com/orgs/Pick-Your-AI/projects/6) | Contributor recognition delivery plan |
 
 ## Contributor recognition · Planned
 
