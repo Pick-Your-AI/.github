@@ -4,9 +4,9 @@
 
 **Build a compatible AI stack, part by part.**
 
-[![Try the preview](https://img.shields.io/badge/try_the_preview-pickyour.ai-5319e7?style=for-the-badge)](https://pickyour.ai)
-[![Research board](https://img.shields.io/badge/research-board-1d76db?style=for-the-badge)](https://github.com/orgs/Pick-Your-AI/projects/1)
-[![License: MIT](https://img.shields.io/badge/license-MIT-0e8a16?style=for-the-badge)](https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE)
+[![Try the preview](https://img.shields.io/badge/try_the_preview-pickyour.ai-0f766e?style=for-the-badge)](https://pickyour.ai)
+[![Research board](https://img.shields.io/badge/research-board-334155?style=for-the-badge)](https://github.com/orgs/Pick-Your-AI/projects/1)
+[![License: MIT](https://img.shields.io/badge/license-MIT-d97706?style=for-the-badge)](https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE)
 
 [Application](https://github.com/Pick-Your-AI/pickyour.ai) · [Research](https://github.com/Pick-Your-AI/pick-your-ai-research) · [Android](https://github.com/Pick-Your-AI/pick-your-ai-android) · [Apple/iOS](https://github.com/Pick-Your-AI/pick-your-ai-apple) · [Contributor recognition](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard)
 
