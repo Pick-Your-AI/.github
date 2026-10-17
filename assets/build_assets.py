@@ -87,3 +87,9 @@ for key, (name, role, status) in labels.items():
     draw.text((56, 553), status, font=regular(20), fill='#f0fdfa')
     save_rgb(im, ROOT / 'repo-cards' / ('github.png' if key == '.github' else key + '.png'))
 
+
+# Half-size WebP thumbnails of the finished cards for the profile's repository grid.
+(ROOT / 'repo-cards' / 'thumbs').mkdir(exist_ok=True)
+for card in sorted((ROOT / 'repo-cards').glob('*.png')):
+    Image.open(card).convert('RGB').resize((640, 320), Image.Resampling.LANCZOS).save(
+        ROOT / 'repo-cards' / 'thumbs' / (card.stem + '.webp'), format='WEBP', quality=82, method=6)
