@@ -38,12 +38,20 @@ Application development and research have separate workflows. The application de
 | --- | --- |
 | [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai) | Application, interface, tests, and data integration |
 | [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research) | Evidence, decision records, catalog and pricing proposals, and shared contracts |
+| [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) | Contributor recognition, metric definitions, and leaderboard delivery planning |
 | [.github](https://github.com/Pick-Your-AI/.github) | Organization profile and community defaults |
+
+## Contributor recognition
+
+The [contributor leaderboard project](https://github.com/orgs/Pick-Your-AI/projects/6) and its [delivery program](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard/issues/1) plan public, source-linked recognition across pull requests, code changes, reviews, issues, triage, documentation, research, and maintenance. The initial scope defines **98 metrics, 20 epics, 112 work packages, and 474 implementation checklist tasks**. These are planned capabilities; a live leaderboard has not been deployed by publishing the plan. Metric availability, historical coverage, and limitations must be visible, and lines of code do not establish contribution quality.
+
+The [leaderboard repository](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) owns its metric definitions, delivery workflow, and correction process. Existing repository contribution and review rules continue to determine whether work is accepted.
 
 ## How to take part
 
 - **Research:** start with the [contribution guide](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md), choose an existing issue on the [research board](https://github.com/orgs/Pick-Your-AI/projects/1), and follow the [submission workflow](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/docs/RESEARCH_WORKFLOW.md). Preserve the issue's deliverable path and coordinate with its live assignees. Keep incomplete findings in notes; never invent facts to fill a schema.
 - **Application:** follow the [application contribution guide](https://github.com/Pick-Your-AI/pickyour.ai/blob/main/CONTRIBUTING.md) and link implementation work to its research counterpart. Contract changes go through [research issue #40](https://github.com/Pick-Your-AI/pick-your-ai-research/issues/40).
+- **Contributor recognition:** start with the [leaderboard delivery project](https://github.com/orgs/Pick-Your-AI/projects/6) and [repository guidance](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard). Contributions remain in their owning repositories; leaderboard work links to that evidence.
 - **Community:** follow our [Code of Conduct](https://github.com/Pick-Your-AI/.github/blob/main/CODE_OF_CONDUCT.md).
 
 For security concerns, follow the affected repository's security policy and use a private reporting channel. The research repository's [security policy](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/SECURITY.md) describes its reporting process. Do not post credentials, personal data, or vulnerability details in public issues.
