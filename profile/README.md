@@ -11,6 +11,8 @@
   <a href="https://github.com/Pick-Your-AI/pickyour.ai">Application</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-research">Research</a> ·
   <a href="https://github.com/orgs/Pick-Your-AI/projects/1">Research board</a> ·
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-android">Android</a> ·
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-apple">Apple/iOS</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">Leaderboard plan</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md">Contribute</a> ·
   <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE">MIT licence</a>
