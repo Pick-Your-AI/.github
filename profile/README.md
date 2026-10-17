@@ -8,18 +8,55 @@
 
 <p align="center">
   <a href="https://pickyour.ai"><img src="https://img.shields.io/badge/Try_the_preview-0f766e?style=for-the-badge" alt="Try the preview"></a>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/1"><img src="https://img.shields.io/badge/Research_board-334155?style=for-the-badge" alt="Research board"></a>
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md"><img src="https://img.shields.io/badge/Contribute-334155?style=for-the-badge" alt="Contribute"></a>
+</p>
+
+<p align="center">
   <a href="https://github.com/Pick-Your-AI/pickyour.ai">Application</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-research">Research</a> ·
-  <a href="https://github.com/orgs/Pick-Your-AI/projects/1">Research board</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-android">Android</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-apple">Apple/iOS</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">Leaderboard plan</a> ·
-  <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md">Contribute</a> ·
   <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE">MIT licence</a>
 </p>
 
 > [!NOTE]
 > **Preview status.** The application is available as a preview. Its components, prices, and compatibility results use synthetic demonstration data. The real component catalog is still being researched; preview results are not validated recommendations or current vendor quotes.
+
+## Get involved
+
+<table>
+<tr>
+<td width="33%" valign="top">
+<h3>Research</h3>
+<ol>
+<li>Read the <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md">contribution guide</a></li>
+<li>Choose an existing issue on the <a href="https://github.com/orgs/Pick-Your-AI/projects/1">research board</a></li>
+<li>Follow the <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/docs/RESEARCH_WORKFLOW.md">submission workflow</a></li>
+</ol>
+<sub>Preserve the issue's deliverable path and coordinate with its live assignees. Keep incomplete findings in notes; never invent facts to fill a schema.</sub>
+</td>
+<td width="33%" valign="top">
+<h3>Application</h3>
+<ol>
+<li>Read the <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/CONTRIBUTING.md">application contribution guide</a></li>
+<li>Link implementation work to its research counterpart</li>
+<li>Propose contract changes in <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/issues/40">research issue #40</a></li>
+</ol>
+</td>
+<td width="33%" valign="top">
+<h3>Recognition</h3>
+<ol>
+<li>Start with the <a href="https://github.com/orgs/Pick-Your-AI/projects/6">leaderboard delivery project</a></li>
+<li>Read the <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">repository guidance</a></li>
+</ol>
+<sub>Contributions remain in their owning repositories; leaderboard work links to that evidence.</sub>
+</td>
+</tr>
+</table>
+
+Everyone follows our [Code of Conduct](https://github.com/Pick-Your-AI/.github/blob/main/CODE_OF_CONDUCT.md). Report security concerns privately through the affected repository's security policy; the research repository's [security policy](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/SECURITY.md) describes its process. Do not post credentials, personal data, or vulnerability details in public issues.
 
 ## What is Pick Your AI?
 
@@ -49,14 +86,42 @@ Tiers constrain each other in both directions: models affect GPU requirements, a
 
 ## Where the work happens
 
-| Repository | Purpose |
-| --- | --- |
-| [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai) | Application, interface, tests, and data integration |
-| [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research) | Evidence, decision records, catalog and pricing proposals, and shared contracts |
-| [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) | Contributor recognition, metric definitions, and leaderboard delivery planning |
-| [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) | Android planning client: scope, contribution guidance, and delivery planning |
-| [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple) | Apple/iOS planning client: scope, contribution guidance, and delivery planning |
-| [.github](https://github.com/Pick-Your-AI/.github) | Organization profile and community defaults |
+<table>
+<tr>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/pickyour.ai"><img src="../assets/repo-cards/thumbs/pickyour.ai.webp" width="260" alt="pickyour.ai repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pickyour.ai">pickyour.ai</a></b><br>
+<sub>Application, interface, tests, and data integration</sub>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/pick-your-ai-research"><img src="../assets/repo-cards/thumbs/pick-your-ai-research.webp" width="260" alt="pick-your-ai-research repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pick-your-ai-research">pick-your-ai-research</a></b><br>
+<sub>Evidence, decision records, catalog and pricing proposals, and shared contracts</sub>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"><img src="../assets/repo-cards/thumbs/pick-your-ai-leaderboard.webp" width="260" alt="pick-your-ai-leaderboard repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">pick-your-ai-leaderboard</a></b><br>
+<sub>Contributor recognition, metric definitions, and leaderboard delivery planning</sub>
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/pick-your-ai-android"><img src="../assets/repo-cards/thumbs/pick-your-ai-android.webp" width="260" alt="pick-your-ai-android repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pick-your-ai-android">pick-your-ai-android</a></b><br>
+<sub>Android planning client: scope, contribution guidance, and delivery planning</sub>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/pick-your-ai-apple"><img src="../assets/repo-cards/thumbs/pick-your-ai-apple.webp" width="260" alt="pick-your-ai-apple repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pick-your-ai-apple">pick-your-ai-apple</a></b><br>
+<sub>Apple/iOS planning client: scope, contribution guidance, and delivery planning</sub>
+</td>
+<td width="33%" valign="top">
+<a href="https://github.com/Pick-Your-AI/.github"><img src="../assets/repo-cards/thumbs/github.webp" width="260" alt=".github repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/.github">.github</a></b><br>
+<sub>Organization profile and community defaults</sub>
+</td>
+</tr>
+</table>
 
 Application, research and leaderboard work have separate workflows. The application demonstrates selection with synthetic fixtures. Research gathers sourced facts, dated prices and proposed compatibility rules under a versioned shared contract. **Merged research does not automatically become production catalog data.**
 
@@ -64,28 +129,21 @@ The mobile repositories hold planning and guidance only; no mobile application h
 
 ### Project boards
 
-| Board | Tracks |
-| --- | --- |
-| [AI Builder Research](https://github.com/orgs/Pick-Your-AI/projects/1) | T0–T6 research workstreams and decision records |
-| [Market Research & Competitive Intelligence](https://github.com/orgs/Pick-Your-AI/projects/2) | Market and competitor research |
-| [Website Implementation](https://github.com/orgs/Pick-Your-AI/projects/3) | The pickyour.ai builder |
-| [Android Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/4) | Android client delivery plan |
-| [Apple/iOS Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/5) | Apple/iOS client delivery plan |
-| [Contributor Leaderboard Delivery](https://github.com/orgs/Pick-Your-AI/projects/6) | Contributor recognition delivery plan |
+<p>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/1"><img src="https://img.shields.io/badge/Research-T0%E2%80%93T6_workstreams-0f766e?style=for-the-badge&labelColor=334155" alt="AI Builder Research: T0–T6 research workstreams and decision records"></a>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/2"><img src="https://img.shields.io/badge/Research-Market_intelligence-0f766e?style=for-the-badge&labelColor=334155" alt="Market Research and Competitive Intelligence: market and competitor research"></a>
+</p>
+<p>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/3"><img src="https://img.shields.io/badge/Delivery-Website-115e59?style=for-the-badge&labelColor=334155" alt="Website Implementation: the pickyour.ai builder"></a>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/4"><img src="https://img.shields.io/badge/Plan-Android-115e59?style=for-the-badge&labelColor=334155" alt="Android Application Delivery: Android client delivery plan"></a>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/5"><img src="https://img.shields.io/badge/Plan-Apple%2FiOS-115e59?style=for-the-badge&labelColor=334155" alt="Apple/iOS Application Delivery: Apple/iOS client delivery plan"></a>
+  <a href="https://github.com/orgs/Pick-Your-AI/projects/6"><img src="https://img.shields.io/badge/Plan-Contributor_leaderboard-115e59?style=for-the-badge&labelColor=334155" alt="Contributor Leaderboard Delivery: contributor recognition delivery plan"></a>
+</p>
 
 ## Contributor recognition · Planned
 
 The [contributor leaderboard project](https://github.com/orgs/Pick-Your-AI/projects/6) and its [delivery program](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard/issues/1) plan public, source-linked recognition across pull requests, code changes, reviews, issues, triage, documentation, research, and maintenance. The plan defines **98 metrics, 20 epics, 112 work packages and 474 implementation checklist tasks**. These are planned capabilities, not a deployed leaderboard. Metric availability, historical coverage, and limitations must be visible, and lines of code do not establish contribution quality.
 
 The [leaderboard repository](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) owns its metric definitions, delivery workflow, and correction process. Existing repository contribution and review rules continue to determine whether work is accepted.
-
-## Get involved
-
-- **Research:** start with the [contribution guide](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/CONTRIBUTING.md), choose an existing issue on the [research board](https://github.com/orgs/Pick-Your-AI/projects/1), and follow the [submission workflow](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/docs/RESEARCH_WORKFLOW.md). Preserve the issue's deliverable path and coordinate with its live assignees. Keep incomplete findings in notes; never invent facts to fill a schema.
-- **Application:** follow the [application contribution guide](https://github.com/Pick-Your-AI/pickyour.ai/blob/main/CONTRIBUTING.md) and link implementation work to its research counterpart. Contract changes go through [research issue #40](https://github.com/Pick-Your-AI/pick-your-ai-research/issues/40).
-- **Recognition:** start with the [leaderboard delivery project](https://github.com/orgs/Pick-Your-AI/projects/6) and [repository guidance](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard). Contributions remain in their owning repositories; leaderboard work links to that evidence.
-- **Community:** follow our [Code of Conduct](https://github.com/Pick-Your-AI/.github/blob/main/CODE_OF_CONDUCT.md).
-
-For security concerns, follow the affected repository's security policy and use a private reporting channel. The research repository's [security policy](https://github.com/Pick-Your-AI/pick-your-ai-research/blob/main/SECURITY.md) describes its reporting process. Do not post credentials, personal data, or vulnerability details in public issues.
 
 <img src="../assets/divider.svg" width="1200" alt="Teal closing divider with an amber node">
