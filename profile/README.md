@@ -1,8 +1,16 @@
+<div align="center">
+
 # Pick Your AI
 
 **Build a compatible AI stack, part by part.**
 
-[Try the preview](https://pickyour.ai) · [Application](https://github.com/Pick-Your-AI/pickyour.ai) · [Research](https://github.com/Pick-Your-AI/pick-your-ai-research) · [Research board](https://github.com/orgs/Pick-Your-AI/projects/1)
+[![Try the preview](https://img.shields.io/badge/try_the_preview-pickyour.ai-5319e7?style=for-the-badge)](https://pickyour.ai)
+[![Research board](https://img.shields.io/badge/research-board-1d76db?style=for-the-badge)](https://github.com/orgs/Pick-Your-AI/projects/1)
+[![License: MIT](https://img.shields.io/badge/license-MIT-0e8a16?style=for-the-badge)](https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE)
+
+[Application](https://github.com/Pick-Your-AI/pickyour.ai) · [Research](https://github.com/Pick-Your-AI/pick-your-ai-research) · [Android](https://github.com/Pick-Your-AI/pick-your-ai-android) · [Apple/iOS](https://github.com/Pick-Your-AI/pick-your-ai-apple) · [Contributor recognition](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard)
+
+</div>
 
 > **Preview status.** The application is available as a preview. Its components, prices, and compatibility results use synthetic demonstration data. The real component catalog is still being researched; preview results are not validated recommendations or current vendor quotes.
 
@@ -38,8 +46,23 @@ Application development and research have separate workflows. The application de
 | --- | --- |
 | [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai) | Application, interface, tests, and data integration |
 | [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research) | Evidence, decision records, catalog and pricing proposals, and shared contracts |
+| [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) | Android planning client: scope, contribution guidance, and delivery planning |
+| [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple) | Apple/iOS planning client: scope, contribution guidance, and delivery planning |
 | [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) | Contributor recognition, metric definitions, and leaderboard delivery planning |
 | [.github](https://github.com/Pick-Your-AI/.github) | Organization profile and community defaults |
+
+The mobile repositories hold planning and guidance only; no mobile application has been built or released, and their framework decisions remain open.
+
+### Project boards
+
+| Board | Tracks |
+| --- | --- |
+| [AI Builder Research](https://github.com/orgs/Pick-Your-AI/projects/1) | T0–T6 research workstreams and decision records |
+| [Market Research & Competitive Intelligence](https://github.com/orgs/Pick-Your-AI/projects/2) | Market and competitor research |
+| [Website Implementation](https://github.com/orgs/Pick-Your-AI/projects/3) | The pickyour.ai builder |
+| [Android Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/4) | Android client delivery plan |
+| [Apple/iOS Application Delivery](https://github.com/orgs/Pick-Your-AI/projects/5) | Apple/iOS client delivery plan |
+| [Contributor Leaderboard Delivery](https://github.com/orgs/Pick-Your-AI/projects/6) | Contributor recognition delivery plan |
 
 ## Contributor recognition
 
