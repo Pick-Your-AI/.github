@@ -6,6 +6,7 @@ This repository maintains the public [Pick Your AI organization profile](https:/
 | --- | --- |
 | [profile/README.md](profile/README.md) | Public organization profile |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards, reporting, and enforcement |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Organization-wide access, branch, review and merge rules |
 
 Application work belongs in [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai). Research, evidence, and shared contracts belong in [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research). Follow each repository's contribution guide for its workflow and required checks.
 
