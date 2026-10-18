@@ -1,0 +1,133 @@
+name: Early Contributors
+
+# Finds people whose pull requests were merged in any Pick-Your-AI repo on or
+# before the cutoff date, and proposes adding them to the "Early Contributors"
+# team (a recognition badge, no repo access).
+#
+# Safety: scheduled runs are DRY RUN only. They open or update one issue listing
+# who would be added. Nobody is invited until you run this workflow manually
+# with apply = true.
+#
+# One-time setup (done by an org owner, not by this workflow):
+#   1. Create a GitHub App owned by the org with Organization permission
+#      "Members: Read and write". Install it on the org.
+#   2. In the repo that holds this file, add secret APP_PRIVATE_KEY and
+#      variable APP_ID.
+#   3. Optional: add repository variable PROJECT_START in YYYY-MM-DD format if
+#      the project's origination date differs from the date the organization
+#      was created. Without it, the organization's creation date is used.
+#
+# The window is the first 30 days from the start date. Once it has passed, every
+# run exits without inviting or reporting anyone.
+
+on:
+  schedule:
+    - cron: "17 13 * * *"   # daily, 13:17 UTC
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: "Actually add/invite the listed people (otherwise dry run)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+env:
+  ORG: Pick-Your-AI
+  TEAM_SLUG: early-contributors
+  WINDOW_DAYS: 30
+  PROJECT_START: ${{ vars.PROJECT_START }}
+
+jobs:
+  early-contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create app token
+        id: app
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: ${{ env.ORG }}
+
+      - name: Check the 30-day window
+        id: window
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          start="$PROJECT_START"
+          if [ -z "$start" ]; then
+            start=$(gh api "orgs/$ORG" --jq '.created_at' | cut -c1-10)
+          fi
+          cutoff=$(date -u -d "$start + $WINDOW_DAYS days" +%Y-%m-%d)
+          today=$(date -u +%Y-%m-%d)
+          echo "Start $start, cutoff $cutoff, today $today"
+          echo "cutoff=$cutoff" >> "$GITHUB_OUTPUT"
+          if [[ "$today" > "$cutoff" ]]; then
+            echo "open=false" >> "$GITHUB_OUTPUT"
+            echo "The Early Contributors window closed on $cutoff. Nothing to do."
+          else
+            echo "open=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Find candidates
+        id: find
+        if: steps.window.outputs.open == 'true'
+        env:
+          CUTOFF: ${{ steps.window.outputs.cutoff }}
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          # Merged on or before the cutoff date, so late merges never qualify.
+          gh search prs --owner "$ORG" --merged --merged-at "<=$CUTOFF" \
+            --limit 1000 --json author \
+            --jq '.[].author | select(.is_bot == false) | .login' \
+            | sort -u > authors.txt
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members" --jq '.[].login' \
+            | sort -u > members.txt
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/invitations" --jq '.[].login' \
+            | sort -u > invited.txt || true
+          touch invited.txt
+          cat members.txt invited.txt | sort -u > skip.txt
+          comm -23 authors.txt skip.txt > candidates.txt
+          echo "count=$(wc -l < candidates.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
+          echo "Candidates:"; cat candidates.txt
+
+      - name: Add to team (manual run with apply = true only)
+        if: steps.window.outputs.open == 'true' && github.event_name == 'workflow_dispatch' && inputs.apply && steps.find.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+        run: |
+          set -euo pipefail
+          while read -r user; do
+            [ -z "$user" ] && continue
+            echo "Adding $user"
+            gh api -X PUT "orgs/$ORG/teams/$TEAM_SLUG/memberships/$user" \
+              -f role=member >/dev/null
+          done < candidates.txt
+
+      - name: Report candidates in an issue (dry run)
+        if: steps.window.outputs.open == 'true' && github.event_name == 'schedule' && steps.find.outputs.count != '0'
+        env:
+          CUTOFF: ${{ steps.window.outputs.cutoff }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Early Contributors: pending additions"
+          {
+            echo "These people have a merged PR on or before $CUTOFF and are not yet on the Early Contributors team:"
+            echo
+            sed 's/^/- @/' candidates.txt | sed 's/@\(.*\)/`\1`/'
+            echo
+            echo "To add them, run the **Early Contributors** workflow manually with **apply** checked."
+          } > body.md
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$existing" ]; then
+            gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
+          fi
