@@ -13,12 +13,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Pick-Your-AI/pickyour.ai">Application</a> ·
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-website">Application</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-research">Research</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-android">Android</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-apple">Apple/iOS</a> ·
   <a href="https://github.com/Pick-Your-AI/pick-your-ai-leaderboard">Leaderboard plan</a> ·
-  <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/LICENSE">MIT licence</a>
+  <a href="https://github.com/Pick-Your-AI/pick-your-ai-website/blob/main/LICENSE">MIT licence</a>
 </p>
 
 > [!NOTE]
@@ -40,7 +40,7 @@
 <td width="33%" valign="top">
 <h3>Application</h3>
 <ol>
-<li>Read the <a href="https://github.com/Pick-Your-AI/pickyour.ai/blob/main/CONTRIBUTING.md">application contribution guide</a></li>
+<li>Read the <a href="https://github.com/Pick-Your-AI/pick-your-ai-website/blob/main/CONTRIBUTING.md">application contribution guide</a></li>
 <li>Link implementation work to its research counterpart</li>
 <li>Propose contract changes in <a href="https://github.com/Pick-Your-AI/pick-your-ai-research/issues/40">research issue #40</a></li>
 </ol>
@@ -89,8 +89,8 @@ Tiers constrain each other in both directions: models affect GPU requirements, a
 <table>
 <tr>
 <td width="33%" valign="top">
-<a href="https://github.com/Pick-Your-AI/pickyour.ai"><img src="../assets/repo-cards/thumbs/pickyour.ai.webp" width="260" alt="pickyour.ai repository card"></a><br>
-<b><a href="https://github.com/Pick-Your-AI/pickyour.ai">pickyour.ai</a></b><br>
+<a href="https://github.com/Pick-Your-AI/pick-your-ai-website"><img src="../assets/repo-cards/thumbs/pickyour.ai.webp" width="260" alt="pickyour.ai repository card"></a><br>
+<b><a href="https://github.com/Pick-Your-AI/pick-your-ai-website">pick-your-ai-website</a></b><br>
 <sub>Application, interface, tests, and data integration</sub>
 </td>
 <td width="33%" valign="top">
@@ -123,9 +123,9 @@ Tiers constrain each other in both directions: models affect GPU requirements, a
 </tr>
 </table>
 
-Application, research and leaderboard work have separate workflows. The application demonstrates selection with synthetic fixtures. Research gathers sourced facts, dated prices and proposed compatibility rules under a versioned shared contract. **Merged research does not automatically become production catalog data.**
+Application, research and leaderboard work have separate workflows. Funding, grants and sustainability work is coordinated in [pick-your-ai-sustainability](https://github.com/Pick-Your-AI/pick-your-ai-sustainability), tracked in [Project 7](https://github.com/orgs/Pick-Your-AI/projects/7). The application demonstrates selection with synthetic fixtures. Research gathers sourced facts, dated prices and proposed compatibility rules under a versioned shared contract. **Merged research does not automatically become production catalog data.**
 
-The mobile repositories hold planning and guidance only; no mobile application has been built or released, and their framework decisions remain open.
+The mobile repositories are early-stage and unreleased. Android has a Kotlin/JVM core and an unsigned debug diagnostic; Apple/iOS has an unsigned SwiftUI app with local drafts. Neither has a signed installable product, production backend or release yet.
 
 ### Project boards
 
@@ -138,6 +138,7 @@ The mobile repositories hold planning and guidance only; no mobile application h
   <a href="https://github.com/orgs/Pick-Your-AI/projects/4"><img src="https://img.shields.io/badge/Plan-Android-115e59?style=for-the-badge&labelColor=334155" alt="Android Application Delivery: Android client delivery plan"></a>
   <a href="https://github.com/orgs/Pick-Your-AI/projects/5"><img src="https://img.shields.io/badge/Plan-Apple%2FiOS-115e59?style=for-the-badge&labelColor=334155" alt="Apple/iOS Application Delivery: Apple/iOS client delivery plan"></a>
   <a href="https://github.com/orgs/Pick-Your-AI/projects/6"><img src="https://img.shields.io/badge/Plan-Contributor_leaderboard-115e59?style=for-the-badge&labelColor=334155" alt="Contributor Leaderboard Delivery: contributor recognition delivery plan"></a>
+<a href="https://github.com/orgs/Pick-Your-AI/projects/7"><img src="https://img.shields.io/badge/Plan-Sustainability-115e59?style=for-the-badge&labelColor=334155" alt="Funding, Grants and Sustainability: funding and support research and pipeline"></a>
 </p>
 
 ## Contributor recognition · Planned

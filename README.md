@@ -8,7 +8,7 @@ This repository maintains the public [Pick Your AI organization profile](https:/
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards, reporting, and enforcement |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Organization-wide access, branch, review and merge rules |
 
-Application work belongs in [pickyour.ai](https://github.com/Pick-Your-AI/pickyour.ai). Research, evidence, and shared contracts belong in [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research). Follow each repository's contribution guide for its workflow and required checks.
+Web application work belongs in [pick-your-ai-website](https://github.com/Pick-Your-AI/pick-your-ai-website). Research, evidence, and shared contracts belong in [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research). The Android and Apple/iOS planning clients live in [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) and [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple), and funding and sustainability work lives in [pick-your-ai-sustainability](https://github.com/Pick-Your-AI/pick-your-ai-sustainability). Follow each repository's contribution guide for its workflow and required checks.
 
 Contributor recognition and leaderboard delivery planning belong in [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard), with the [delivery project](https://github.com/orgs/Pick-Your-AI/projects/6) and [program](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard/issues/1) tracking the work. The repository and project describe planned capabilities; their creation does not establish a deployed leaderboard. Link to the leaderboard repository for current metric definitions and workflow.
 
@@ -24,7 +24,7 @@ The Code of Conduct can serve as a default for organization repositories without
 
 Brand tokens match the application's `src/styles/index.css`: teal 50 `#f0fdfa`, 300 `#5eead4`, 500 `#14b8a6`, 600 `#0d9488`, 700 `#0f766e` (primary), 800 `#115e59`, 950 `#042f2e`; amber 400 `#fbbf24` (signature dot), 500 `#f59e0b`, 600 `#d97706`. Use system sans for UI and monospace for technical labels. The mark is copied unchanged from the application's `public/favicon.svg`; never regenerate it with an image model.
 
-Maintainer-only follow-ups, outside this PR's file changes:
+Maintainer-only follow-ups, outside the files in this repository:
 
 - Upload `assets/avatar-500.png` as the organization avatar in organization settings (GitHub has no API for this).
 - Upload each matching `assets/repo-cards/*.png` under that repository's **Settings → Social preview** (`github.png` belongs to `.github`).
