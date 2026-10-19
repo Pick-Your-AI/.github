@@ -2,7 +2,9 @@ name: Early Contributors
 
 # Finds people whose pull requests were merged in any Pick-Your-AI repo on or
 # before the cutoff date, and proposes adding them to the "Early Contributors"
-# team (a recognition badge, no repo access).
+# team. The team has write access to the project repositories, limited to
+# contrib/ branches with no merge rights (see CONTRIBUTING.md), so review the
+# proposed list before applying it.
 #
 # Safety: scheduled runs are DRY RUN only. They open or update one issue listing
 # who would be added. Nobody is invited until you run this workflow manually
