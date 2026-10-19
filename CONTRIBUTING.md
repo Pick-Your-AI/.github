@@ -13,6 +13,12 @@ This page sets the access, branch, review and merge rules for every Pick-Your-AI
 
 Repository access is granted to teams, not individuals. Ask an organization admin for changes.
 
+## Teams and access
+
+Access follows a team hierarchy under the `Maintainers` team. `Maintainers` has Triage on every repository except this one, and its parent-level teams `Mobile Devices`, `Research` and `Websites` also have Triage, so their members can label and triage issues and pull requests but cannot push. Write comes from the child team for each repository: `Android`, `Apple/iOS`, `Builder`, `Funding, Grants & Sustainability`, `Market & Competitive Intelligence`, `pickyour.ai` and `leaderboard.pickyour.ai`. Admin comes from the Lead Maintainers teams: `Lead Maintainers` under `Websites` for `pick-your-ai-website` and `pick-your-ai-leaderboard`, `Research Lead Maintainers` for `pick-your-ai-research` and `pick-your-ai-sustainability`, and `Mobile Lead Maintainers` for `pick-your-ai-android` and `pick-your-ai-apple`. Only @CompleteDotTech and @BunsDev change team membership. The `early-contributors` team sits outside this hierarchy.
+
+No team has Write or Admin access to this repository. Only organization owners can change it, through a pull request.
+
 ## Workflow for early contributors
 
 You do not need a fork.
