@@ -5,6 +5,7 @@ name: Early Contributors
 # team. The team has write access to the project repositories, limited to
 # contrib/ branches with no merge rights (see CONTRIBUTING.md), so review the
 # proposed list before applying it.
+# Bot accounts are excluded from candidates.
 #
 # Safety: scheduled runs are DRY RUN only. They open or update one issue listing
 # who would be added. Nobody is invited until you run this workflow manually
@@ -86,7 +87,7 @@ jobs:
           # Merged on or before the cutoff date, so late merges never qualify.
           gh search prs --owner "$ORG" --merged --merged-at "<=$CUTOFF" \
             --limit 1000 --json author \
-            --jq '.[].author | select(.is_bot == false) | .login' \
+            --jq '.[].author | select(.is_bot == false) | .login | select(endswith("[bot]") or startswith("app/") | not)' \
             | sort -u > authors.txt
           gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members" --jq '.[].login' \
             | sort -u > members.txt
@@ -132,4 +133,19 @@ jobs:
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
+          fi
+
+      - name: Clear pending additions in an existing issue (dry run)
+        if: steps.window.outputs.open == 'true' && github.event_name == 'schedule' && steps.find.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          title="Early Contributors: pending additions"
+          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
+            --search "\"$title\" in:title" --json number,title \
+            --jq '.[] | select(.title == "Early Contributors: pending additions") | .number' | head -n 1)
+          if [ -n "$existing" ]; then
+            echo "No one is pending addition to the Early Contributors team. This issue can be closed." > body.md
+            gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           fi
