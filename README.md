@@ -1,4 +1,30 @@
+<!-- showcase:banner:start -->
+<p align="center">
+  <img src="docs/images/banner.png" alt=".github by Pick Your AI" width="100%">
+</p>
+<!-- showcase:banner:end -->
+
+<!-- showcase:nav:start -->
+**Pick Your AI** · [All repositories](https://github.com/Pick-Your-AI) · [Contributing](CONTRIBUTING.md) · [Security](https://github.com/Pick-Your-AI/.github/blob/main/SECURITY.md)
+<!-- showcase:nav:end -->
+
+<div align="center">
+
 # Pick Your AI organization files
+
+<!-- showcase:badges:start -->
+![Language Python](https://img.shields.io/badge/language-Python-115E59)
+<!-- showcase:badges:end -->
+
+<!-- showcase:tagline:start -->
+**Organization profile, contribution guidance, and shared community health files for Pick Your AI, a PCPartPicker-inspired AI stack builder.**
+<!-- showcase:tagline:end -->
+
+</div>
+
+---
+
+## About
 
 This repository maintains the public [Pick Your AI organization profile](https://github.com/Pick-Your-AI) and shared community guidance.
 
@@ -13,13 +39,21 @@ Web application work belongs in [pick-your-ai-website](https://github.com/Pick-Y
 
 Contributor recognition and leaderboard delivery planning belong in [pick-your-ai-leaderboard](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard), with the [delivery project](https://github.com/orgs/Pick-Your-AI/projects/6) and [program](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard/issues/1) tracking the work. The repository and project describe planned capabilities; their creation does not establish a deployed leaderboard. Link to the leaderboard repository for current metric definitions and workflow.
 
-## Updating these files
+## Files
+
+| File | Purpose |
+|---|---|
+| `profile/README.md` | Organization profile shown at github.com/Pick-Your-AI |
+
+## Notes
+
+### Updating these files
 
 Submit changes through a branch and pull request against main. Check Markdown rendering and link destinations, and verify product-status claims against the current application and research documentation. Keep the preview's synthetic-data disclosure visible. Link to repository guidance instead of duplicating changing ownership, Project fields, or validation commands here.
 
 The Code of Conduct can serve as a default for organization repositories without their own copy. Changes to it affect shared community guidance and should be reviewed with that scope in mind.
 
-## Assets
+### Assets
 
 [`assets/`](assets/) contains the light and dark hero illustrations, editable SVG banners, seven transparent tier icons, six repository social-preview cards with half-size WebP thumbnails for the profile grid (`repo-cards/thumbs/`), a 500×500 organization avatar rendered from the favicon (`avatar-500.png`, full-bleed teal so it crops cleanly), the canonical favicon and a hand-built divider. These are illustrations, not screenshots or evidence of product capabilities. [`assets/PROMPTS.md`](assets/PROMPTS.md) records the exact generation prompts, tool/model disclosure, date and selected variants. [`assets/build_assets.py`](assets/build_assets.py) resizes the generated sources and composes real text with Pillow; it uses Windows Segoe UI fonts for the social cards and pngquant for PNG optimization. The banners embed compact WebP versions of the matching heroes. [`assets/review/`](assets/review/) holds verification evidence and clearly labelled before/after profile screenshots.
 
