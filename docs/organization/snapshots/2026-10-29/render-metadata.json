@@ -1,0 +1,128 @@
+[
+  {
+    "name": "organization-complete",
+    "svg_width": 14197.0830078125,
+    "svg_height": 2638,
+    "teams": 91,
+    "png_width": 16000,
+    "png_height": 2974,
+    "png_file": "organization-complete.png"
+  },
+  {
+    "name": "github-team-hierarchy",
+    "svg_width": 17801,
+    "svg_height": 1967,
+    "teams": 91,
+    "png_width": 16000,
+    "png_height": 1768,
+    "png_file": "github-team-hierarchy.png"
+  },
+  {
+    "name": "area-ai-builder",
+    "svg_width": 1538,
+    "svg_height": 795,
+    "teams": 7,
+    "png_width": 5000,
+    "png_height": 2585,
+    "png_file": "area-ai-builder.png"
+  },
+  {
+    "name": "area-ai-papers-index",
+    "svg_width": 1248,
+    "svg_height": 765,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3065,
+    "png_file": "area-ai-papers-index.png"
+  },
+  {
+    "name": "area-ai-tools-platforms",
+    "svg_width": 1248,
+    "svg_height": 852,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3414,
+    "png_file": "area-ai-tools-platforms.png"
+  },
+  {
+    "name": "area-catalog-pipeline",
+    "svg_width": 1248,
+    "svg_height": 765,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3065,
+    "png_file": "area-catalog-pipeline.png"
+  },
+  {
+    "name": "area-cloud-agents",
+    "svg_width": 1538,
+    "svg_height": 741,
+    "teams": 7,
+    "png_width": 5000,
+    "png_height": 2409,
+    "png_file": "area-cloud-agents.png"
+  },
+  {
+    "name": "area-datasets-benchmarks",
+    "svg_width": 1248,
+    "svg_height": 765,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3065,
+    "png_file": "area-datasets-benchmarks.png"
+  },
+  {
+    "name": "area-funding-grants-sustainability",
+    "svg_width": 1248,
+    "svg_height": 813,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3258,
+    "png_file": "area-funding-grants-sustainability.png"
+  },
+  {
+    "name": "area-market-competitive-intelligence",
+    "svg_width": 1248,
+    "svg_height": 849,
+    "teams": 6,
+    "png_width": 5000,
+    "png_height": 3402,
+    "png_file": "area-market-competitive-intelligence.png"
+  },
+  {
+    "name": "area-hardware-infrastructure",
+    "svg_width": 1180,
+    "svg_height": 937,
+    "teams": 5,
+    "png_width": 5000,
+    "png_height": 3971,
+    "png_file": "area-hardware-infrastructure.png"
+  },
+  {
+    "name": "area-websites",
+    "svg_width": 1828,
+    "svg_height": 1207,
+    "teams": 12,
+    "png_width": 5000,
+    "png_height": 3302,
+    "png_file": "area-websites.png"
+  },
+  {
+    "name": "area-mobile-apps",
+    "svg_width": 1828,
+    "svg_height": 1099,
+    "teams": 12,
+    "png_width": 5000,
+    "png_height": 3007,
+    "png_file": "area-mobile-apps.png"
+  },
+  {
+    "name": "area-education",
+    "svg_width": 1538,
+    "svg_height": 849,
+    "teams": 7,
+    "png_width": 5000,
+    "png_height": 2761,
+    "png_file": "area-education.png"
+  }
+]

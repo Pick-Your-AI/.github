@@ -1,0 +1,3 @@
+*.raw.svg
+*.preview.png
+__pycache__/
