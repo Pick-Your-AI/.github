@@ -165,6 +165,7 @@ class WorkflowTests(unittest.TestCase):
                                   {'number': 2, 'title': 'Early Contributors: pending additions'}]
         self.run_step(name='Report candidates in an issue (dry run)')
         self.assertIn(['issue', 'edit', '2'], [c[:3] for c in self.calls()])
+        self.assertIn('\n- `human`\n', (self.path / 'reported.md').read_text())
         (self.path / 'calls.jsonl').unlink()
         self.fixture['issues'] = []
         self.run_step(name='Report candidates in an issue (dry run)')

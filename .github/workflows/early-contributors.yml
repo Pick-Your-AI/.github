@@ -136,7 +136,9 @@ jobs:
           {
             echo "These people have a merged PR on or before $CUTOFF and are not yet on the Early Contributors team:"
             echo
-            sed 's/^/- @/' candidates.txt | sed 's/@\(.*\)/`\1`/'
+            while IFS= read -r candidate; do
+              printf -- "- \`%s\`\n" "$candidate"
+            done < candidates.txt
             echo
             echo "To add them, run the **Early Contributors** workflow manually with **apply** checked."
           } > body.md
@@ -155,7 +157,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
-          title="Early Contributors: pending additions"
           existing=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
             --jq '.[] | select(.pull_request == null and .title == "Early Contributors: pending additions") | .number' \
             | awk 'NR == 1 { first = $0 } END { print first }')
