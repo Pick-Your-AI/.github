@@ -1,3 +1,5 @@
+> Historical manual routing export from PR #23. Use the [canonical current organization directory and operation guide](../ORGANIZATION.md) for the maintained model and refresh status.
+
 # Organization routing directory
 
 Status at generation: **current**. Content unchanged since: 2026-10-30T03:21:19Z.

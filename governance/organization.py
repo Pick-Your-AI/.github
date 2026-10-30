@@ -235,6 +235,13 @@ def public_model(model, policy, mapping):
                     if tid in allowed['teams']:
                         edges.append({'kind': 'responsibility', 'from': f'team:{tid}', 'to': f"repository:{r['id']}", 'label': role['level']})
     routing = router.directory(policy, model['routing'], live=True)
+    configured_ids = {r['full_name']: r['id'] for r in policy['repositories']}
+    observed_repositories = {r['id']: r for r in repositories}
+    for r in routing['repositories']:
+        observed = observed_repositories.get(configured_ids[r['repository']])
+        if observed:
+            r['repository'] = observed['name']
+            r['url'] = observed['url']
     # Keep only the already approved destinations, not every closed team.
     allowed_urls = {t['url'] for t in teams}
     routing['repositories'] = [r for r in routing['repositories'] if r['url'] in {x['url'] for x in repositories}]
@@ -314,7 +321,7 @@ def render(public, output):
     for kind in ('teams', 'repositories', 'projects'):
         for row in public[kind]:
             areas = [a['name'] for a in public['areas'] if row['id'] in a[kind]]
-            state = 'Unmapped — responsibility unresolved' if not areas else ', '.join(areas)
+            state = 'Unmapped display area' if not areas else ', '.join(areas)
             if kind == 'repositories':
                 route = next((r for r in public['routing']['repositories'] if r['url'] == row['url']), None)
                 if route:
@@ -390,10 +397,17 @@ def refresh(policy, mapping, state, output, source_revision, api=None, exporter=
             model['integrity_sha256'] = router.digest(model)
             router.atomic_write(snapshot, router.dump(model), private=True)
             router.atomic_write(state / 'routing-snapshot.json', router.dump(model['routing']), private=True)
+            router.atomic_write(state / 'routing-status.json', router.dump({
+                'schema_version': 1, 'status': 'complete', 'attempted_at': model['observation']['completed_at'],
+                'last_success_at': model['observation']['completed_at']}), private=True)
             router.atomic_write(status, router.dump({'status': 'complete', 'observed_at': model['observation']['completed_at'], 'changed': changed, 'content_sha256': semantic(public), 'published_at': None}), private=True)
             return changed
         except Exception:
             router.atomic_write(status, router.dump({'status': 'failed', 'attempted_at': router.now(), 'last_success_at': previous['observation']['completed_at'] if previous else None, 'detail': 'Refresh failed; last published content retained. Inspect private collector logs.'}), private=True)
+            router.atomic_write(state / 'routing-status.json', router.dump({
+                'schema_version': 1, 'status': 'failed', 'attempted_at': router.now(),
+                'last_success_at': previous['observation']['completed_at'] if previous else None,
+                'errors': [{'category': 'organization_refresh_failed', 'http_status': None}]}), private=True)
             raise
 
 

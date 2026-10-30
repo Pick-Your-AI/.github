@@ -27,6 +27,7 @@ For routing from the exact same observation:
 ```sh
 python governance/router.py resolve --policy governance/escalation-policy.json \
   --snapshot /PRIVATE/organization-state/routing-snapshot.json \
+  --status /PRIVATE/organization-state/routing-status.json \
   --repo Pick-Your-AI/pick-your-ai-research --max-age-seconds 10800
 ```
 

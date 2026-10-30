@@ -64,6 +64,14 @@ class OrganizationTests(unittest.TestCase):
         self.assertEqual(before['relationships'], after['relationships'])
         self.assertNotEqual(org.semantic(before), org.semantic(after))
 
+    def test_repository_rename_retains_routing_by_id(self):
+        p, m, model = fixture()
+        model['repositories'][0]['full_name'] = 'ExampleOrg/renamed'
+        model['routing']['repositories'][0]['full_name'] = 'ExampleOrg/renamed'
+        routing_fixtures.seal(model['routing'], p)
+        public = org.public_model(model, p, m)
+        self.assertEqual(public['routing']['repositories'][0]['url'], 'https://github.com/ExampleOrg/renamed')
+
     def test_cycles_and_missing_parent_rejected(self):
         for parent in (10, 999):
             p, m, model = fixture()
@@ -107,6 +115,10 @@ class OrganizationTests(unittest.TestCase):
                     org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
             self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
             self.assertEqual(json.loads((state / 'status.json').read_text())['status'], 'failed')
+            snapshot_with_status = org.router.attach_refresh_status(org.router.read_json(state / 'routing-snapshot.json'), state / 'routing-status.json')
+            route = org.router.resolve(p, snapshot_with_status, 'ExampleOrg/example', max_age_seconds=999999999)
+            self.assertEqual(route['freshness']['status'], 'refresh_failed')
+            self.assertTrue(all(not level['recipients'] for level in route['levels']))
             with patch.object(org, 'collect', return_value=model):
                 org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
             self.assertEqual(json.loads((state / 'status.json').read_text())['status'], 'complete')
