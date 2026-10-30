@@ -177,3 +177,52 @@ Rollback uses the existing website runbook and retained releases; generator
 rollback is a reviewed revert followed by manual reconciliation. Disable the
 organization workflow to pause attempts, preserving the pending artifact PR
 and last-good public release. Do not close #17 or #13 from this continuation.
+
+## 2026-10-30 continuation: reviewed website and operations proposal
+
+This section supersedes earlier pending-review descriptions; it does not convert
+historical host-authenticated collection into dedicated-App or hosted evidence.
+The source hardening in this PR passed 93 Python and two Node tests in the fresh
+Ubuntu VM, both workflows passed actionlint, and independent technical review
+found no remaining actionable findings at `cbf8ef3832227d15965e72a32148f0c1e4847aac`.
+Hosted [Governance 41007219346](https://github.com/Pick-Your-AI/.github/actions/runs/41007219346)
+passed that revision. No human review has been received.
+
+Website [PR #336](https://github.com/Pick-Your-AI/pick-your-ai-website/pull/336)
+contains commit `e772dedf7f0e2e8594c7fbb3ab1ea3523a8e5229`: strict immutable
+upstream ingestion, reviewed-script hash admission, complete bundle checks,
+About navigation and an explicit pending page. No bundle is admitted. Fresh-VM
+verification passed 115 Node tests, 501 Vitest tests, 134 browser tests (24
+conditional skips), six visual tests, lint/typecheck/contracts/format checks and
+the exact-commit build/dist admission. The production audit threshold passed;
+one existing moderate dependency advisory remains tracked separately. Independent
+technical review found no remaining actionable findings and passed 27 targeted
+checks. Technical review is not human approval. Hosted checks are linked on the
+PR and must pass its aggregate `ci-required` gate before any merge.
+
+The exact operations proposal is [included in that commit](https://github.com/Pick-Your-AI/pick-your-ai-website/blob/e772dedf7f0e2e8594c7fbb3ab1ea3523a8e5229/docs/organization-operations.patch),
+SHA-256 `e61d516787dc46bba45694e25efedb5bc0f928e72c053c0e2239eacc46e94209`.
+It is not applied to operations-owned files. The zero-context patch passed
+`git apply --check --index --unidiff-zero` against website base
+`3a3a2f863574316f8e2ec44efa6e0c344923a4b0`. It adds scoped CSP/MIME,
+exact-byte/all-file live verification, rollback pinning and manual propagation.
+Twelve proposal tests and disposable Apache/browser checks passed. Operations
+review is [requested from BunsDev and PUSHINGSQUARES](https://github.com/Pick-Your-AI/pick-your-ai-website/pull/336#issuecomment-6515922037).
+No owner acceptance is inferred from the request.
+
+The current host injects provider monitoring into HTML responses. The exact-byte
+check must reject that response until operations disables the injection through
+the hosting account. Do not strip it in verification. Private account/block
+identifiers and raw host response evidence remain outside public Git.
+
+The owner requested review by **zwright8** of the collector scope; that request
+is not an App installation grant. The prepared collector request above remains
+unchanged and uninstalled. Automatic publication additionally needs a separate
+owner-selected writer: the prepared minimal proposal is a private PYA Directory
+Publisher App installed only on `.github` and `pick-your-ai-website`, with
+Contents/Pull requests write and Metadata read, no organization permissions or
+bypass grants. Tokens must be reduced separately to one repository. Reuse one
+allowed `contrib/` branch/PR per repository. This proposal grants nothing; manual
+publication remains the permitted existing fallback. No automatic publication,
+manual hosted refresh, real scheduled refresh or public directory deployment
+has occurred in this continuation.
