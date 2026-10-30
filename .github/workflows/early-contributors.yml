@@ -1,6 +1,7 @@
 name: Early Contributors
 
-# Finds people whose pull requests were merged in any Pick-Your-AI repo on or
+# Finds people whose pull requests were merged in a Pick-Your-AI repo visible to
+# the approved App installation on or
 # before the cutoff date, and proposes adding them to the "Early Contributors"
 # team. The team has write access to the project repositories, limited to
 # contrib/ branches with no merge rights (see CONTRIBUTING.md), so review the
@@ -14,6 +15,12 @@ name: Early Contributors
 # One-time setup (done by an org owner, not by this workflow):
 #   1. Create a GitHub App owned by the org with Organization permission
 #      "Members: Read and write". Install it on the org.
+#      Repository discovery is limited to that installation's selected scope.
+#      Public PR reads need no additional repository permission. Including a
+#      private repository also needs owner-approved "Pull requests: Read" and
+#      selection of that repository; Members access alone is not sufficient.
+#      Do not expand the installation or its permissions automatically. A listed
+#      but unreadable repository fails discovery instead of silently undercounting.
 #   2. In the repo that holds this file, add secret APP_PRIVATE_KEY and
 #      variable APP_ID.
 #   3. Optional: add repository variable PROJECT_START in YYYY-MM-DD format if
