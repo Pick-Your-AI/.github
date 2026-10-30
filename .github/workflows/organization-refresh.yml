@@ -53,12 +53,17 @@ jobs:
           private-key: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
           owner: Pick-Your-AI
       - name: Install renderer
-        run: npm install --global @mermaid-js/mermaid-cli@12.0.0
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+        run: |
+          test -x /usr/bin/google-chrome
+          npm install --global @mermaid-js/mermaid-cli@12.0.0
       - name: Collect, validate, render and propose approved artifacts
         env:
           GH_TOKEN: ${{ github.token }}
           PYA_READ_TOKEN: ${{ steps.read-token.outputs.token }}
           PYA_STATE: ${{ runner.temp }}/organization-private
+          PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: python automation/publish_organization.py
       - name: Record failure separately from last good publication
         if: failure()
