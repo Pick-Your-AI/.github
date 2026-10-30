@@ -71,3 +71,7 @@ Each repository has these rulesets. If you change them, update this page in the 
 | Review required: default branch | One approval, and approval of the most recent push, before merging into `main`. Only organization admins can bypass it. |
 
 `pick-your-ai-website` and `pick-your-ai-research` also keep their earlier `main` rulesets, which require a pull request and block deletion and force pushes. `pick-your-ai-website` also requires the `ci-required` check.
+
+## Volunteer participation
+
+Use the [volunteer hub](https://github.com/Pick-Your-AI/pick-your-ai-volunteers) for public-safe expressions of interest, the Team / Repository / Project directory, staffing needs and onboarding guidance. Review capacity must be confirmed before placement. Volunteer acceptance does not grant GitHub access or change the review rules above. Research submissions continue through their existing repository workflow.
