@@ -9,6 +9,7 @@ on:
       - 'governance/**'
       - 'automation/publish_organization.py'
       - 'automation/collector_token.mjs'
+      - 'automation/organization_status.py'
       - '.github/workflows/organization-refresh.yml'
 
 permissions:
@@ -23,6 +24,9 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: organization-collector
+    env:
+      PYA_STATE: ${{ runner.temp }}/organization-private
+      PYA_RUN_STATUS: ${{ runner.temp }}/organization-run-status.json
     permissions:
       contents: write
       pull-requests: write
@@ -38,6 +42,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Start public-safe run receipt from last merged artifacts
+        run: python automation/organization_status.py start
       - name: Require dedicated read-only collection credential
         env:
           APP_ID: ${{ vars.ORG_DIRECTORY_APP_ID }}
@@ -60,10 +66,10 @@ jobs:
           test -x /usr/bin/google-chrome
           npm install --global @mermaid-js/mermaid-cli@12.0.0
       - name: Collect, validate, render and propose approved artifacts
+        id: publish
         env:
           GH_TOKEN: ${{ github.token }}
           PYA_READ_TOKEN: ${{ steps.read-token.outputs.token }}
-          PYA_STATE: ${{ runner.temp }}/organization-private
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: python automation/publish_organization.py
       - name: Record failure separately from last good publication
@@ -77,3 +83,16 @@ jobs:
         env:
           GH_TOKEN: ${{ steps.read-token.outputs.token }}
         run: gh api --method DELETE installation/token
+      - name: Finish public-safe run receipt
+        if: always()
+        env:
+          PUBLICATION_OUTCOME: ${{ steps.publish.outcome }}
+        run: python automation/organization_status.py finish --outcome "$PUBLICATION_OUTCOME"
+      - name: Retain public-safe attempt status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: organization-refresh-status
+          path: ${{ runner.temp }}/organization-run-status.json
+          if-no-files-found: error
+          retention-days: 30

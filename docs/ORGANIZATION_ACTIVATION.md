@@ -37,6 +37,12 @@ Independent review identified three defects in #24's activation path:
 The normal generated-branch/PR path, independent human approval, main-only
 source, serialization and website ownership remain unchanged.
 
+Additional recovery hardening removes both collection and publication tokens
+from renderer subprocesses. Failed exact-head validation reuses the same
+Actions run with a maximum of three attempts, preserving failed-attempt history
+and avoiding artificial data edits. Exhausted retries require maintainer
+investigation rather than an unbounded retry loop.
+
 ## Dedicated collector setup: owner action still required
 
 The organization owner (CompleteDotTech) must explicitly approve and install a
@@ -125,10 +131,15 @@ separate.
 
 Hosted private model/cache files under `runner.temp` are ephemeral. Durable
 last-good public data is the reviewed default branch; pending publication is the
-single artifact branch/PR. Durable attempt status and observation receipts are
-Actions run conclusions and summaries. These are separate records; do not call
-the runner's private cache durable or infer current collection from a published
-timestamp. Inspect run history when recovering an ephemeral runner.
+single artifact branch/PR. Each attempt now retains a public-safe
+`organization-refresh-status` artifact for 30 days plus a run summary, separating
+the last merged observation, current collection result/time and publication
+step outcome. Failed collection never invents a new observation timestamp.
+Only explicitly selected public-safe scalar fields are serialized; raw models,
+rosters, credentials and API responses are never uploaded. These are separate
+records; do not call the runner's private cache durable or infer current
+collection from a published timestamp. Inspect run history when recovering an
+ephemeral runner. Git history remains the long-lived approved output record.
 
 Still required: genuine human approvals and ordered merges; dedicated owner-
 approved App installation and full authenticated coverage; website operations

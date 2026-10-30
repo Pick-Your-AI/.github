@@ -485,10 +485,15 @@ def mermaid_exporter(staged, sources):
     command = shutil.which('mmdc')
     if not command:
         raise router.RoutingError('Install pinned Mermaid CLI before exporting')
+    # Neither the read token nor the publication token is a renderer input.
+    renderer_env = {key: value for key, value in os.environ.items() if key in {
+        'PATH', 'HOME', 'USERPROFILE', 'SYSTEMROOT', 'TEMP', 'TMP', 'TMPDIR',
+        'LOCALAPPDATA', 'APPDATA', 'PUPPETEER_EXECUTABLE_PATH', 'PUPPETEER_CACHE_DIR',
+    }}
     for name in sources:
         for suffix in ('svg', 'png'):
             subprocess.run([command, '-i', str(staged / (name + '.mmd')), '-o', str(staged / (name + '.' + suffix)),
-                            '-c', str(Path(__file__).with_name('mermaid-config.json')), '-b', 'white'], check=True, capture_output=True, timeout=180)
+                            '-c', str(Path(__file__).with_name('mermaid-config.json')), '-b', 'white'], check=True, capture_output=True, timeout=180, env=renderer_env)
 
 
 def main():

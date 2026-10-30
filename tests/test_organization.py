@@ -37,6 +37,14 @@ def fake_exporter(path, sources):
 
 
 class OrganizationTests(unittest.TestCase):
+    def test_renderer_never_receives_collection_or_publication_tokens(self):
+        with patch.dict(__import__('os').environ, {'GH_TOKEN': 'synthetic-publish', 'PYA_READ_TOKEN': 'synthetic-read'}):
+            with patch.object(org.shutil, 'which', return_value='mmdc'), patch.object(org.subprocess, 'run') as run:
+                org.mermaid_exporter(Path('/synthetic'), {'chart': 'flowchart TB'})
+                self.assertEqual(run.call_count, 2)
+                for call in run.call_args_list:
+                    self.assertNotIn('GH_TOKEN', call.kwargs['env'])
+                    self.assertNotIn('PYA_READ_TOKEN', call.kwargs['env'])
     def test_transport_decodes_real_utf8_pipe_on_windows(self):
         raw = json.dumps({'name': 'Project — café'}, ensure_ascii=False).encode('utf-8')
         def runner(args, **kwargs):

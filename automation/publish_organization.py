@@ -45,7 +45,10 @@ def main():
     else:
         run('git', 'switch', '--create', BRANCH, 'origin/main')
     # Code objects and inputs above remain from trusted main, not this branch.
-    collector_env = dict(os.environ, GH_TOKEN=os.environ['PYA_READ_TOKEN'])
+    collector_env = dict(os.environ)
+    read_token = collector_env.pop('PYA_READ_TOKEN')
+    os.environ.pop('PYA_READ_TOKEN', None)
+    collector_env['GH_TOKEN'] = read_token
     api = org.router.GitHub(runner=lambda args, **kw: subprocess.run(args, env=collector_env, **kw))
     changed = org.refresh(policy, mapping, os.environ['PYA_STATE'], root / OUTPUT, revision, api, org.mermaid_exporter)
     summary = Path(os.environ['GITHUB_STEP_SUMMARY'])
@@ -77,7 +80,15 @@ def main():
     if not checks:
         run('gh', 'workflow', 'run', 'governance-checks.yml', '--repo', 'Pick-Your-AI/.github', '--ref', BRANCH)
     elif checks[0]['status'] == 'completed' and checks[0]['conclusion'] != 'success':
-        raise RuntimeError('Exact-head validation failed; maintainer investigation required')
+        # Retry the existing validation run, preserving its history and exact
+        # source. Do not require a fake data change or retry without a bound.
+        run_id = checks[0]['databaseId']
+        details = org.router.json.loads(run('gh', 'api', f'repos/Pick-Your-AI/.github/actions/runs/{run_id}'))
+        if not isinstance(details.get('run_attempt'), int) or details['run_attempt'] >= 3:
+            raise RuntimeError('Exact-head validation retry limit reached; maintainer investigation required')
+        run('gh', 'run', 'rerun', str(run_id), '--repo', 'Pick-Your-AI/.github')
+        with summary.open('a') as report:
+            report.write('Exact-head validation was requeued using the existing run; review its completion before merging.\n')
 
 
 if __name__ == '__main__':
