@@ -17,6 +17,7 @@ def fixture():
     p = policy()
     s = snapshot(p)
     mapping = {'schema_version': 1, 'owner': 'example', 'decision_refs': [REF],
+               'project_responsibilities': [],
                'approved_public': {'teams': [10, 20, 30, 40, 50], 'repositories': [101], 'projects': ['P1', 'P2']},
                'areas': [{'id': 'example', 'name': 'Example area', 'teams': [10, 20], 'repositories': [101], 'projects': ['P1', 'P2'], 'decision_refs': [REF]}]}
     model = {'schema_version': 1, 'organization': p['organization'], 'routing': s,
@@ -49,6 +50,10 @@ class OrganizationTests(unittest.TestCase):
         self.assertEqual(len([e for e in public['relationships'] if e['kind'] == 'project_link']), 2)
         self.assertEqual({e['kind'] for e in public['relationships']}, {'github_parent', 'access', 'responsibility', 'project_link'})
         self.assertEqual(public['unmapped']['teams'], [30, 40, 50])
+        self.assertTrue(all(r['state'] == 'unresolved' for r in public['project_roles']))
+        m['project_responsibilities'] = [{'project_id': pid, 'state': 'accepted', 'team_ids': [10, 20], 'decision_refs': [REF]} for pid in ['P1', 'P2']]
+        public = org.public_model(model, p, m)
+        self.assertEqual(len([r for r in public['relationships'] if r['kind'] == 'project_responsibility']), 4)
 
     def test_unknown_is_not_inferred(self):
         p, m, model = fixture()

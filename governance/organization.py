@@ -66,7 +66,7 @@ def connection(api, query, variables, extract, identity):
 
 
 def validate_mapping(mapping, policy):
-    router.object_keys(mapping, ('schema_version', 'owner', 'decision_refs', 'approved_public', 'areas'), 'mapping')
+    router.object_keys(mapping, ('schema_version', 'owner', 'decision_refs', 'approved_public', 'areas', 'project_responsibilities'), 'mapping')
     if mapping['schema_version'] != 1:
         raise router.RoutingError('Unsupported mapping version')
     router.string(mapping['owner'], 'mapping.owner')
@@ -79,6 +79,17 @@ def validate_mapping(mapping, policy):
         raise router.RoutingError('Duplicate Project approvals')
     for value in projects:
         router.string(value, 'project ID')
+    seen_projects = set()
+    for role in mapping['project_responsibilities']:
+        router.object_keys(role, ('project_id', 'state', 'team_ids', 'decision_refs'), 'Project responsibility')
+        if role['project_id'] not in projects or role['project_id'] in seen_projects:
+            raise router.RoutingError('Invalid or duplicate Project responsibility')
+        seen_projects.add(role['project_id'])
+        router.enum(role['state'], {'accepted', 'unresolved'}, 'Project responsibility state')
+        router.ids(role['team_ids'], 'Project responsibility teams')
+        router.refs(role['decision_refs'], 'Project responsibility provenance', role['state'] == 'accepted')
+        if bool(role['team_ids']) != (role['state'] == 'accepted') or not set(role['team_ids']) <= set(mapping['approved_public']['teams']):
+            raise router.RoutingError('Project responsibility requires approved teams or explicit unresolved state')
     seen = set()
     for area in mapping['areas']:
         router.object_keys(area, ('id', 'name', 'teams', 'repositories', 'projects', 'decision_refs'), 'area')
@@ -223,6 +234,17 @@ def public_model(model, policy, mapping):
                 if rid in allowed['repositories']:
                     edges.append({'kind': 'project_link', 'from': f"project:{p['id']}", 'to': f'repository:{rid}'})
     roles = []
+    project_roles = []
+    configured_projects = {r['project_id']: r for r in mapping['project_responsibilities']}
+    for project in projects:
+        role = configured_projects.get(project['id'], {'project_id': project['id'], 'state': 'unresolved', 'team_ids': [], 'decision_refs': []})
+        role = {**role, 'team_ids': [t for t in role['team_ids'] if t in allowed['teams']]}
+        if role['state'] == 'accepted' and not role['team_ids']:
+            role['state'] = 'unavailable'
+        project_roles.append(role)
+        if role['state'] == 'accepted':
+            for tid in role['team_ids']:
+                edges.append({'kind': 'project_responsibility', 'from': f'team:{tid}', 'to': f"project:{project['id']}"})
     for r in policy['repositories']:
         if r['id'] not in allowed['repositories']:
             continue
@@ -253,7 +275,7 @@ def public_model(model, policy, mapping):
     routing['coordination_roles'] = [r for r in routing['coordination_roles'] if r['team_url'] in allowed_urls]
     mapped = {kind: {x for a in areas for x in a[kind]} for kind in allowed}
     return {'schema_version': 1, 'organization': model['organization'], 'teams': teams, 'repositories': repositories,
-            'projects': projects, 'areas': areas, 'roles': roles, 'routing': routing, 'relationships': sorted(edges, key=router.canonical),
+            'projects': projects, 'areas': areas, 'roles': roles, 'project_roles': project_roles, 'routing': routing, 'relationships': sorted(edges, key=router.canonical),
             'unavailable_approved': {kind: sorted(set(approval[kind]) - allowed[kind], key=str) for kind in allowed},
             'unmapped': {kind: sorted(allowed[kind] - mapped[kind], key=str) for kind in allowed},
             'observation': {**{k: model['observation'][k] for k in ('completed_at', 'source_revision', 'policy_revision', 'scope')},
@@ -304,7 +326,7 @@ def charts(public):
                 key = f'{kind}:{rid}'
                 lines += [f'  {node_id(key)}["{label(nodes[key]["name"])}"]', f'  {aid} -.->|display grouping| {node_id(key)}']
         keys = {f'{kind}:{rid}' for kind, plural in [('team', 'teams'), ('repository', 'repositories'), ('project', 'projects')] for rid in a[plural]}
-        result['area-' + a['id']] = chart(keys, {'github_parent', 'responsibility', 'project_link'})
+        result['area-' + a['id']] = chart(keys, {'github_parent', 'responsibility', 'project_link', 'project_responsibility'})
     result['overview'] = '\n'.join(lines) + '\n'
     return result
 
@@ -338,6 +360,9 @@ def render(public, output):
                     state += ' · ' + '; '.join(l['level'].replace('_', ' ') + ': ' + l['disposition'].replace('_', ' ') for l in route['levels'])
             if row.get('archived') or row.get('closed'):
                 state += ' · Archived / closed'
+            if kind == 'projects':
+                role = next(r for r in public['project_roles'] if r['project_id'] == row['id'])
+                state += ' · operational assignment: ' + role['state']
             singular = {'teams': 'team', 'repositories': 'repository', 'projects': 'project'}[kind]
             rows.append(f'<tr data-kind="{kind}"><td>{singular}</td><th scope="row"><a href="{html.escape(row["url"], quote=True)}">{html.escape(row["name"])}</a></th><td>{html.escape(state)}</td></tr>')
     links = ''.join(f'<li><a href="{name}.mmd">{html.escape(name)} Mermaid</a> · <a href="{name}.svg">SVG</a> · <a href="{name}.png">PNG</a></li>' for name in sorted(sources))
