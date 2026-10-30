@@ -84,16 +84,29 @@ jobs:
           GH_TOKEN: ${{ steps.app.outputs.token }}
         run: |
           set -euo pipefail
-          # Merged on or before the cutoff date, so late merges never qualify.
-          gh search prs --owner "$ORG" --merged --merged-at "<=$CUTOFF" \
-            --limit 1000 --json author \
-            --jq '.[].author | select(.is_bot == false) | .login | select(endswith("[bot]") or startswith("app/") | not)' \
-            | sort -u > authors.txt
-          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members" --jq '.[].login' \
+          # REST pagination avoids Search's 1,000-result ceiling. Enumerate all
+          # visible repositories and all closed PRs; closed does not imply merged.
+          gh api --paginate "orgs/$ORG/repos?per_page=100&type=all" \
+            --jq '.[].full_name' > repositories.txt
+          : > authors.txt
+          while IFS= read -r repository; do
+            gh api --paginate "repos/$repository/pulls?state=closed&per_page=100" \
+              --jq '.[] | select(.merged_at != null) | [.merged_at, .user.type, .user.login] | @tsv' > pulls.tsv
+            while IFS=$'\t' read -r merged_at actor_type login; do
+              # Compare UTC calendar dates, including the whole cutoff day.
+              [[ "${merged_at:0:10}" > "$CUTOFF" ]] && continue
+              [[ "$actor_type" == "User" && -n "$login" ]] || continue
+              [[ "$login" == *"[bot]" || "$login" == app/* ]] && continue
+              printf '%s\n' "$login" >> authors.txt
+            done < pulls.tsv
+          done < repositories.txt
+          sort -u -o authors.txt authors.txt
+          # Lookup errors must fail the step, never authorize additions using
+          # an incomplete membership or invitation exclusion list.
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members?per_page=100" --jq '.[].login' \
             | sort -u > members.txt
-          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/invitations" --jq '.[].login' \
-            | sort -u > invited.txt || true
-          touch invited.txt
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/invitations?per_page=100" --jq '.[].login // empty' \
+            | sort -u > invited.txt
           cat members.txt invited.txt | sort -u > skip.txt
           comm -23 authors.txt skip.txt > candidates.txt
           echo "count=$(wc -l < candidates.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
@@ -127,8 +140,8 @@ jobs:
             echo
             echo "To add them, run the **Early Contributors** workflow manually with **apply** checked."
           } > body.md
-          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
-            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          existing=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '[.[][] | select(.pull_request == null and .title == "Early Contributors: pending additions")][0].number // empty')
           if [ -n "$existing" ]; then
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           else
@@ -142,9 +155,8 @@ jobs:
         run: |
           set -euo pipefail
           title="Early Contributors: pending additions"
-          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
-            --search "\"$title\" in:title" --json number,title \
-            --jq '.[] | select(.title == "Early Contributors: pending additions") | .number' | head -n 1)
+          existing=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '[.[][] | select(.pull_request == null and .title == "Early Contributors: pending additions")][0].number // empty')
           if [ -n "$existing" ]; then
             echo "No one is pending addition to the Early Contributors team. This issue can be closed." > body.md
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
