@@ -8,6 +8,8 @@ on:
     paths:
       - 'governance/**'
       - 'automation/publish_organization.py'
+      - 'automation/collector_token.mjs'
+      - 'automation/organization_status.py'
       - '.github/workflows/organization-refresh.yml'
 
 permissions:
@@ -21,6 +23,7 @@ jobs:
   reconcile:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment: organization-collector
     permissions:
       contents: write
       pull-requests: write
@@ -36,6 +39,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Set isolated run paths
+        run: |
+          printf '%s\n' "PYA_STATE=$RUNNER_TEMP/organization-private" "PYA_RUN_STATUS=$RUNNER_TEMP/organization-run-status.json" >> "$GITHUB_ENV"
+      - name: Start public-safe run receipt from last merged artifacts
+        run: python automation/organization_status.py start
       - name: Require dedicated read-only collection credential
         env:
           APP_ID: ${{ vars.ORG_DIRECTORY_APP_ID }}
@@ -47,11 +55,10 @@ jobs:
           }
       - name: Short-lived organization read token
         id: read-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.ORG_DIRECTORY_APP_ID }}
-          private-key: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
-          owner: Pick-Your-AI
+        env:
+          APP_ID: ${{ vars.ORG_DIRECTORY_APP_ID }}
+          APP_KEY: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
+        run: node automation/collector_token.mjs
       - name: Install renderer
         env:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
@@ -59,10 +66,10 @@ jobs:
           test -x /usr/bin/google-chrome
           npm install --global @mermaid-js/mermaid-cli@12.0.0
       - name: Collect, validate, render and propose approved artifacts
+        id: publish
         env:
           GH_TOKEN: ${{ github.token }}
           PYA_READ_TOKEN: ${{ steps.read-token.outputs.token }}
-          PYA_STATE: ${{ runner.temp }}/organization-private
           PUPPETEER_EXECUTABLE_PATH: /usr/bin/google-chrome
         run: python automation/publish_organization.py
       - name: Record failure separately from last good publication
@@ -71,3 +78,21 @@ jobs:
           echo '## Organization refresh failed' >> "$GITHUB_STEP_SUMMARY"
           echo 'The last merged publication remains available. Check its observation timestamp and this run before relying on it.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No private API responses or snapshots are uploaded.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Revoke short-lived collector token
+        if: always() && steps.read-token.outputs.token != ''
+        env:
+          GH_TOKEN: ${{ steps.read-token.outputs.token }}
+        run: gh api --method DELETE installation/token
+      - name: Finish public-safe run receipt
+        if: always()
+        env:
+          PUBLICATION_OUTCOME: ${{ steps.publish.outcome }}
+        run: python automation/organization_status.py finish --outcome "$PUBLICATION_OUTCOME"
+      - name: Retain public-safe attempt status
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: organization-refresh-status
+          path: ${{ runner.temp }}/organization-run-status.json
+          if-no-files-found: error
+          retention-days: 30

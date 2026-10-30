@@ -1,5 +1,19 @@
 # Organization chart acceptance ledger
 
+## Activation continuation, 2026-10-30
+
+See [the current activation receipt](ORGANIZATION_ACTIVATION.md) for refreshed
+stack heads, the protected empty collector environment, independently found
+readiness defects and their fixes, fresh-VM evidence, live website fallback
+readback, exact owner gates and recovery. Historical results below remain
+historical; they do not certify the follow-up revision or human approval.
+
+The original #22/#23/#24 heads still lack human approval. Collector installation,
+authenticated App coverage, website operations acceptance, exact deployment,
+manual/scheduled/no-op workflow runs and end-to-end propagation remain pending.
+An empty protected environment is configuration preparation, not activation.
+
+
 This ledger tracks the chart extension to #17. Pending means pending, not accepted. The implementation builds on PR #23 at `6c7b99091eee056c10189cd7cf626b176658fb7d`; it does not replace its owner, branch, policy or repository-entrypoint PRs.
 
 ## Prior work and ownership
@@ -45,3 +59,15 @@ Source revision `e2b4235bffa541b9cb85a431633c2679236a06c2` passed 86 tests on Wi
 4. After those dependencies: actual manual run, actual hourly scheduled run, unchanged-run evidence, controlled failure/recovery and visible publication readback. A new organization webhook receiver is a separate optional dependency; no real event support is claimed before deployment and testing.
 
 The final real authenticated reconciliation completed at `2026-10-30T04:36:46Z` with `changed: false`, retaining every published-candidate artifact byte. Its semantic public content SHA-256 was `b4e17d497ceee977ab60a7b831b83b0f69641ee6040f37058996acb33a0bf334`. This is local manual execution, not hosted Actions or a scheduled run. Source/label changes were then verified through the fresh-VM renderer; no deployed-source claim is made.
+
+## Current activation evidence
+
+The authoritative continuation is [ORGANIZATION_ACTIVATION.md](ORGANIZATION_ACTIVATION.md),
+with [canonical issue #17](https://github.com/Pick-Your-AI/.github/issues/17)
+recording later hosted receipts. Its current section distinguishes dedicated-App,
+fixture, fresh-VM, independent technical review, human approval and production
+acceptance. Earlier authenticated host runs above are historical evidence only;
+they do not satisfy the missing dedicated-App or scheduled-workflow criteria.
+Website PR #336 and its operations proposal are reviewed candidates, not deployed
+artifacts. All live approval/installation/deployment/scheduled-run gates remain
+open until authoritative receipts are recorded.
