@@ -111,6 +111,16 @@ class OrganizationTests(unittest.TestCase):
         self.assertEqual(org.semantic(public), org.semantic(changed))
         self.assertEqual(org.charts(public), org.charts(copy.deepcopy(public)))
 
+    def test_render_is_stable_after_json_round_trip(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        with tempfile.TemporaryDirectory() as tmp:
+            left, right = Path(tmp, 'first'), Path(tmp, 'replayed')
+            org.render(public, left)
+            org.render(json.loads(org.router.dump(public)), right)
+            self.assertEqual({x.name: x.read_bytes() for x in left.iterdir()},
+                             {x.name: x.read_bytes() for x in right.iterdir()})
+
     def test_refresh_noop_and_failure_recovery(self):
         p, m, model = fixture()
         with tempfile.TemporaryDirectory() as tmp:

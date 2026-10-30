@@ -342,7 +342,7 @@ def render(public, output):
             rows.append(f'<tr data-kind="{kind}"><td>{singular}</td><th scope="row"><a href="{html.escape(row["url"], quote=True)}">{html.escape(row["name"])}</a></th><td>{html.escape(state)}</td></tr>')
     links = ''.join(f'<li><a href="{name}.mmd">{html.escape(name)} Mermaid</a> · <a href="{name}.svg">SVG</a> · <a href="{name}.png">PNG</a></li>' for name in sorted(sources))
     page = template.replace('<!--ROWS-->', '\n'.join(rows)).replace('<!--CHARTS-->', links)
-    notices = ['Approved identities missing or withheld: ' + ', '.join(f'{k}: {len(v)}' for k, v in public['unavailable_approved'].items())]
+    notices = ['Approved identities missing or withheld: ' + ', '.join(f'{k}: {len(public["unavailable_approved"][k])}' for k in ('teams', 'repositories', 'projects'))]
     notices += [r['name'] + ': ' + r['state'] for r in public['routing']['coordination_roles']]
     page = page.replace('<!--NOTICES-->', html.escape(' · '.join(notices)))
     page = page.replace('<!--OBSERVED-->', html.escape(public['observation']['completed_at']))
