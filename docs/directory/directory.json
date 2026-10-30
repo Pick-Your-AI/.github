@@ -53,6 +53,7 @@
         }
       ],
       "repository": "Pick-Your-AI/.github",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/.github"
     },
     {
@@ -97,7 +98,7 @@
         {
           "disposition": "resolved",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -119,6 +120,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-android",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-android"
     },
     {
@@ -161,9 +163,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -185,6 +187,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-apple",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple"
     },
     {
@@ -229,7 +232,7 @@
         {
           "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -251,6 +254,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-applications",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-applications"
     },
     {
@@ -293,9 +297,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -317,6 +321,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-catalog-pipeline",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline"
     },
     {
@@ -361,7 +366,7 @@
         {
           "disposition": "resolved",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -383,6 +388,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-cloud-agents",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents"
     },
     {
@@ -425,9 +431,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -449,6 +455,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-datasets",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-datasets"
     },
     {
@@ -493,9 +500,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "placeholder_only",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -513,6 +520,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-education",
+      "repository_state": "unbootstrapped",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-education"
     },
     {
@@ -555,9 +563,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -579,6 +587,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-leaderboard",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"
     },
     {
@@ -623,7 +632,7 @@
         {
           "disposition": "resolved",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -645,6 +654,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-market",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-market"
     },
     {
@@ -687,9 +697,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -711,6 +721,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-papers",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-papers"
     },
     {
@@ -755,7 +766,7 @@
         {
           "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -777,6 +788,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-research",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-research"
     },
     {
@@ -819,9 +831,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -843,6 +855,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-sustainability",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-sustainability"
     },
     {
@@ -885,9 +898,9 @@
           ]
         },
         {
-          "disposition": "resolved",
+          "disposition": "already_included",
           "level": "parent_teams",
-          "member_selector": "members",
+          "member_selector": "direct_members",
           "policy_state": "accepted",
           "teams": [
             {
@@ -909,6 +922,7 @@
         }
       ],
       "repository": "Pick-Your-AI/pick-your-ai-website",
+      "repository_state": "populated",
       "url": "https://github.com/Pick-Your-AI/pick-your-ai-website"
     }
   ],

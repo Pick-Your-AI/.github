@@ -175,6 +175,35 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(result["levels"][2]["disposition"], "placeholder_only")
         self.assertNotIn(7, [p["id"] for stage in result["levels"] for p in stage["recipients"]])
 
+    def test_parent_stage_excludes_inherited_siblings_and_deduplicates_direct(self):
+        data = snapshot()
+        parent = next(t for t in data["teams"] if t["id"] == 50)
+        parent["inherited_members"].append(person(555, "CHILD_TEAM"))
+        parent["direct_members"].append(person(1))
+        seal(data, policy())
+        stage = self.resolve(data=data)["levels"][3]
+        self.assertEqual(stage["member_selector"], "direct_members")
+        self.assertEqual([p["id"] for p in stage["recipients"]], [4])
+        self.assertNotIn(555, [p["id"] for p in stage["recipients"]])
+        self.assertIn({"id": 1, "reason": "already_included"}, stage["excluded"])
+
+    def test_repository_state_is_observed_and_bootstrap_drift_is_explicit(self):
+        config = policy()
+        data = snapshot(config)
+        data["repositories"][0]["empty"] = True
+        seal(data, config)
+        result = self.resolve(config, data)
+        self.assertEqual(result["repository_state"], "unbootstrapped")
+        self.assertIn("unexpected_empty_repository", [f["code"] for f in result["configuration_drift"]])
+        public = router.directory(config, data, 3600, at=AT)
+        self.assertEqual(public["repositories"][0]["repository_state"], "unbootstrapped")
+        config["repositories"][0]["exceptions"] = [{"code": "unbootstrapped", "reason": "Owner bootstrap pending", "decision_refs": [REF]}]
+        data["repositories"][0]["empty"] = False
+        seal(data, config)
+        result = self.resolve(config, data)
+        self.assertEqual(result["repository_state"], "populated")
+        self.assertIn("declared_unbootstrapped_now_populated", [f["code"] for f in result["configuration_drift"]])
+
     def test_manager_selector_only_direct_managers_no_fallback(self):
         config = policy()
         config["repositories"][0]["roles"][1]["member_selector"] = "team_managers"
@@ -496,6 +525,47 @@ class CollectionTests(unittest.TestCase):
 
 
 class PersistenceAndCLITests(unittest.TestCase):
+    def test_atomic_rename_syncs_each_output_directory_after_replace(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            snapshot_path, status_path = root / "data" / "snapshot.json", root / "status" / "status.json"
+            events = []
+            original_replace = router.os.replace
+            def replace(source, target):
+                original_replace(source, target)
+                events.append(("replace", Path(target).parent))
+            def sync(path):
+                events.append(("sync", Path(path)))
+            with mock.patch.object(router.os, "replace", side_effect=replace), mock.patch.object(router, "sync_directory", side_effect=sync):
+                with mock.patch.object(router, "collect", return_value=snapshot()):
+                    router.refresh(policy(), snapshot_path, status_path)
+            for path in (snapshot_path, status_path):
+                index = events.index(("replace", path.parent))
+                self.assertEqual(events[index + 1], ("sync", path.parent))
+            self.assertEqual(router.read_json(status_path)["status"], "complete")
+            before = snapshot_path.read_bytes()
+            events.clear()
+            with mock.patch.object(router.os, "replace", side_effect=replace), mock.patch.object(router, "sync_directory", side_effect=sync):
+                with mock.patch.object(router, "collect", side_effect=router.APIError("private-endpoint", "access_denied", 403)):
+                    with self.assertRaises(router.APIError):
+                        router.refresh(policy(), snapshot_path, status_path)
+            index = events.index(("replace", status_path.parent))
+            self.assertEqual(events[index + 1], ("sync", status_path.parent))
+            self.assertEqual(snapshot_path.read_bytes(), before)
+            self.assertEqual(router.read_json(status_path)["status"], "failed")
+
+    def test_cli_api_error_omits_endpoint_and_member_identity(self):
+        with tempfile.TemporaryDirectory() as temp:
+            config = Path(temp) / "policy.json"
+            config.write_text(router.dump(policy()), encoding="utf-8")
+            output = io.StringIO()
+            error = router.APIError("repos/ExampleOrg/private/collaborators/sensitive-login/permission", "access_denied", 403)
+            with mock.patch.object(router, "collect", side_effect=error), contextlib.redirect_stderr(output):
+                self.assertEqual(router.main(["resolve", "--policy", str(config), "--repo", "ExampleOrg/example"]), 1)
+            self.assertEqual(json.loads(output.getvalue()), {"error": "access_denied", "http_status": 403})
+            self.assertNotIn("sensitive-login", output.getvalue())
+            self.assertNotIn("collaborators", output.getvalue())
+
     def test_concurrent_manual_refresh_refuses_before_any_state_write(self):
         with tempfile.TemporaryDirectory() as temp:
             path, status = Path(temp) / "snapshot.json", Path(temp) / "status.json"
@@ -607,6 +677,9 @@ class PersistenceAndCLITests(unittest.TestCase):
             self.assertEqual(result["collection"]["completed_at"], "2026-01-01T12:00:30Z")
             self.assertEqual(result["collection"]["content_verified_at"], original["collection"]["content_verified_at"])
             self.assertEqual(router.directory(policy(), result, 3600, at=AT), router.directory(policy(), original, 3600, at=AT))
+            markdown = router.markdown_directory(router.directory(policy(), result, 3600, at=AT))
+            self.assertIn("Content unchanged since:", markdown)
+            self.assertNotIn("Content snapshot verified:", markdown)
             output = Path(temp) / "directory.md"
             self.assertTrue(router.atomic_write(output, "same"))
             first = output.stat().st_mtime_ns

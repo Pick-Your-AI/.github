@@ -2,6 +2,8 @@
 
 Start with the repository team, then the repository maintainer, repository lead maintainer, applicable parent teams, and finally CompleteDotTech. Keep the disposition of every level, including an unfilled or undefined role. Do not skip directly to the owner because an earlier team includes the owner as a placeholder.
 
+The parent stage uses each ancestor team's direct members. Members inherited from unrelated sibling teams are not automatically additional escalation recipients. The repository-team stage still includes relevant descendants of that repository team.
+
 The [policy](../../governance/escalation-policy.json) records stable repository and team identities, accepted mappings, unresolved roles and decision sources. The [naming register](../NAMING.md) controls names. Current GitHub data supplies people, team managers, hierarchy and access. Those observations do not establish accepted individual responsibility. Issue assignees remain the authority for accepted issue ownership.
 
 ## Resolve before escalating

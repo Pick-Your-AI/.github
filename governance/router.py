@@ -547,6 +547,7 @@ def atomic_write(path, text, private=False):
         if private:
             os.chmod(temp, 0o600)
         os.replace(temp, target)
+        sync_directory(target.parent)
     finally:
         if os.path.exists(temp):
             os.unlink(temp)
@@ -810,6 +811,11 @@ def drift(policy, snapshot):
             add("repository_renamed")
         if actual["private"] == repo["public"]:
             add("repository_visibility_drift")
+        declared_empty = any(e["code"] == "unbootstrapped" for e in repo["exceptions"])
+        if declared_empty and not actual["empty"]:
+            add("declared_unbootstrapped_now_populated")
+        elif actual["empty"] and not declared_empty:
+            add("unexpected_empty_repository")
         if repo["parent_chain"]["mode"] == "live_ancestors":
             chain, issue = ancestors(repo, teams)
             if issue:
@@ -881,7 +887,13 @@ def resolve(policy, snapshot, repository, path=None, max_age_seconds=None, live=
             if role_state != "accepted" or forced or state["status"] != "current":
                 continue
             people = {}
-            candidates = team["managers"] if member_selector == "team_managers" else team["direct_members"] + team["inherited_members"]
+            if member_selector == "team_managers":
+                candidates = team["managers"]
+            elif member_selector == "direct_members":
+                # Parent escalation must not include inherited sibling teams.
+                candidates = team["direct_members"]
+            else:
+                candidates = team["direct_members"] + team["inherited_members"]
             for person in candidates:
                 people.setdefault(person["id"], person)
             for person in sorted(people.values(), key=lambda p: p["id"]):
@@ -906,12 +918,13 @@ def resolve(policy, snapshot, repository, path=None, max_age_seconds=None, live=
         levels.append(level_output("parent_teams", "exception", [], "not_applicable_no_anchor"))
     else:
         chain, issue = ancestors(repo, teams)
-        levels.append(level_output("parent_teams", "accepted", chain, issue))
+        levels.append(level_output("parent_teams", "accepted", chain, issue, member_selector="direct_members"))
     owner = snapshot["owner"]
     owner_ok = owner.get("role") == "admin" and owner.get("state") == "active" and owner["login"] == policy["owner_fallback"]["login"]
     levels.append({"level": "owner", "disposition": state["status"] if state["status"] != "current" else "resolved" if owner_ok else "owner_drift", "teams": [],
                    "recipients": [{"id": owner["id"], "login": owner["login"], "operational_assignment": "final_escalation_only"}] if owner_ok and state["status"] == "current" else []})
     return {"schema_version": 1, "repository": repo["full_name"], "repository_id": repo["id"], "path": path,
+            "repository_state": "unbootstrapped" if actual_repo["empty"] else "populated",
             "freshness": state, "levels": levels, "exceptions": [e["code"] for e in repo["exceptions"]],
             "path_override": matched["prefix"] if matched else None,
             "configuration_drift": [f for f in drift(policy, snapshot) if f.get("repository_id") in (None, repo["id"])],
@@ -930,7 +943,7 @@ def directory(policy, snapshot, max_age_seconds=None, live=False, at=None):
         if not repo["public"] or observed[repo["id"]]["private"]:
             continue
         route = resolve(policy, snapshot, repo["full_name"], max_age_seconds=max_age_seconds, live=live, at=at)
-        records.append({"repository": repo["full_name"], "url": f"https://github.com/{repo['full_name']}", "exceptions": route["exceptions"],
+        records.append({"repository": repo["full_name"], "repository_state": route["repository_state"], "url": f"https://github.com/{repo['full_name']}", "exceptions": route["exceptions"],
                         "levels": [{"level": item["level"], "policy_state": item.get("policy_state", "accepted"), "member_selector": item.get("member_selector"),
                                     "disposition": "private_team_withheld" if any(teams.get(t.get("id"), {}).get("privacy") == "secret" for t in item["teams"]) else item["disposition"],
                                     "teams": [{"name": t["name"], "url": t["url"]} for t in item["teams"] if "url" in t and teams.get(t.get("id"), {}).get("privacy") != "secret"]} for item in route["levels"]]})
@@ -951,7 +964,7 @@ def directory(policy, snapshot, max_age_seconds=None, live=False, at=None):
 def markdown_directory(value):
     def escape(text):
         return str(text).replace("\\", "\\\\").replace("|", "\\|").replace("[", "\\[").replace("]", "\\]").replace("\n", " ").replace("\r", " ")
-    lines = ["# Organization routing directory", "", f"Status at generation: **{value['status']}**. Content snapshot verified: {value['snapshot_content_verified_at']}.",
+    lines = ["# Organization routing directory", "", f"Status at generation: **{value['status']}**. Content unchanged since: {value['snapshot_content_verified_at']}.",
              f"", f"Selected freshness threshold: {value['freshness_threshold_seconds']} seconds.", "", value["notice"], ""]
     if value["coordination_roles"]:
         lines.extend(["## Coordination roles", "", "These roles do not replace any escalation stage.", "", "| Role | Acceptance | Team destination |", "| --- | --- | --- |"])
@@ -960,7 +973,7 @@ def markdown_directory(value):
             lines.append(f"| {escape(role['name'])} | {role['state']} | {destination} |")
         lines.append("")
     for repo in value["repositories"]:
-        lines.extend([f"## [{escape(repo['repository'])}]({repo['url']})", "", "| Stage | Policy state | Disposition | Team destinations |", "| --- | --- | --- | --- |"])
+        lines.extend([f"## [{escape(repo['repository'])}]({repo['url']})", "", f"Repository state: **{repo['repository_state']}**.", "", "| Stage | Policy state | Disposition | Team destinations |", "| --- | --- | --- | --- |"])
         for level in repo["levels"]:
             links = ", ".join(f"[{escape(t['name'])}]({t['url']})" for t in level["teams"])
             lines.append(f"| {level['level']} | {level['policy_state']} | {level['disposition']} | {links or '—'} |")
@@ -1051,7 +1064,11 @@ def main(argv=None):
         return 0 if result["freshness"]["status"] == "current" else 2
     except (RoutingError, OSError) as error:
         # Do not echo arbitrary source strings, filenames, or authentication output.
-        print(dump({"error": str(error) if isinstance(error, RoutingError) else "local_io_failure"}), file=sys.stderr, end="")
+        if isinstance(error, APIError):
+            report = {"error": error.category, "http_status": error.status}
+        else:
+            report = {"error": str(error) if isinstance(error, RoutingError) else "local_io_failure"}
+        print(dump(report), file=sys.stderr, end="")
         return 1
 
 
