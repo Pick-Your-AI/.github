@@ -297,9 +297,11 @@ def node_id(value):
 
 
 def label(value):
-    # Mermaid has a separate entity syntax; numeric entities prevent directives,
-    # HTML, quotes, brackets and newlines in untrusted labels from becoming code.
-    return ''.join(c if c.isalnum() or c in ' ._-/' else f'#{ord(c)};' for c in value)[:1200]
+    # HTML-free Mermaid text labels preserve Unicode directly. Entity escapes
+    # would render literally with htmlLabels=false. Replace grammar delimiters
+    # with visible code points, never markup or executable Mermaid directives.
+    forbidden = '"\\<>[]{}|%#;`'
+    return ''.join(c if ord(c) >= 32 and c not in forbidden else f' U+{ord(c):04X} ' for c in value)[:1200]
 
 
 def charts(public):

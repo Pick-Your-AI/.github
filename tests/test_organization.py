@@ -107,6 +107,7 @@ class OrganizationTests(unittest.TestCase):
             sources = org.render(public, tmp)
             self.assertNotIn('<script>alert', Path(tmp, 'index.html').read_text())
             self.assertNotIn('%%{init', sources['hierarchy'])
+        self.assertEqual(org.label('Funding & Sustainability — Café'), 'Funding & Sustainability — Café')
 
     def test_deterministic_and_observation_noop(self):
         p, m, model = fixture()
