@@ -249,17 +249,97 @@
   "freshness_basis": "proposed operational setting: three hourly intervals",
   "freshness_threshold_seconds": 10800,
   "observation": {
-    "completed_at": "2026-10-30T04:26:34Z",
-    "mapping_revision": "d202b1fe6d5f4670396a1976a729db617afed5402bd0b5eeedffd302cbf7d712",
+    "completed_at": "2026-10-30T04:33:35Z",
+    "mapping_revision": "235e6601f1e21cd4df5bdb84fdcb1bf957960111571768d34f32eb6cd3fde5b5",
     "policy_revision": "8a15e2d33423d680761d0a1ec120e28e2ce606db7765525258d21ab5455b4816",
     "scope": "entities visible to authenticated collector; hidden entities are unknown",
-    "source_revision": "48aaa33638d6e50a4e75d0f9ca86397f2dedd03a"
+    "source_revision": "aa4682b0404237d2c6365c85c7c755ec85c9333b"
   },
   "organization": {
     "id": 343423069,
     "login": "Pick-Your-AI",
     "node_id": "O_kgDOFHg4XQ"
   },
+  "project_roles": [
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnUon",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnViW",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnX2e",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbMJ",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbQs",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbgH",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4Bnqgs",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUH6",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUHM",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUHz",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoZsU",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BpXxK",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BpYpe",
+      "state": "unresolved",
+      "team_ids": []
+    }
+  ],
   "projects": [
     {
       "closed": false,
@@ -2719,7 +2799,7 @@
       }
     ],
     "schema_version": 1,
-    "snapshot_content_verified_at": "2026-10-30T04:26:34Z",
+    "snapshot_content_verified_at": "2026-10-30T04:33:35Z",
     "status": "current",
     "status_scope": "at_generation_only"
   },
