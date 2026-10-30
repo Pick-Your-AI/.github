@@ -390,7 +390,8 @@ def refresh(policy, mapping, state, output, source_revision, api=None, exporter=
                     exporter(staged, sources)
                     # Validate each export before touching current artifacts.
                     for name in sources:
-                        if not (staged / (name + '.svg')).read_text(encoding='utf-8').lstrip().startswith('<svg'):
+                        svg = (staged / (name + '.svg')).read_text(encoding='utf-8')
+                        if not svg.lstrip().startswith('<svg') or 'foreignObject' in svg or '<script' in svg:
                             raise router.RoutingError('Invalid SVG export')
                         if not (staged / (name + '.png')).read_bytes().startswith(b'\x89PNG\r\n\x1a\n'):
                             raise router.RoutingError('Invalid PNG export')

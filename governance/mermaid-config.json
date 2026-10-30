@@ -1,6 +1,7 @@
 {
   "theme": "base",
   "securityLevel": "strict",
+  "htmlLabels": false,
   "fontFamily": "Segoe UI, Arial, sans-serif",
   "themeVariables": {
     "fontSize": "16px",
