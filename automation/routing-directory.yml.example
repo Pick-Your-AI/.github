@@ -1,0 +1,43 @@
+# INACTIVE: not under .github/workflows; activation requires a separately approved PR.
+# No schedule or webhook relay is configured by this example.
+name: Read-only routing directory preview
+on:
+  workflow_dispatch:
+    inputs:
+      max_age_seconds:
+        description: Explicitly selected freshness tolerance; no organization default is accepted yet
+        type: string
+        required: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: routing-directory-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read GitHub and generate a public preview
+        env:
+          GH_TOKEN: ${{ secrets.ROUTING_READ_TOKEN }}
+          ROUTING_MAX_AGE: ${{ inputs.max_age_seconds }}
+        run: |
+          set -euo pipefail
+          test -n "$GH_TOKEN"
+          python governance/router.py refresh --policy governance/escalation-policy.json --snapshot "$RUNNER_TEMP/routing-private.json" --status "$RUNNER_TEMP/routing-status.json"
+          python governance/router.py directory --policy governance/escalation-policy.json --snapshot "$RUNNER_TEMP/routing-private.json" --status "$RUNNER_TEMP/routing-status.json" --max-age-seconds "$ROUTING_MAX_AGE" > "$RUNNER_TEMP/routing-directory.md"
+          cat "$RUNNER_TEMP/routing-directory.md" >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: public-routing-preview
+          path: ${{ runner.temp }}/routing-directory.md
+          if-no-files-found: error
+# Never upload routing-private.json. A narrow read-only credential, publication policy,
+# last-good retention strategy, event transport and periodic fallback require review.

@@ -1,0 +1,28 @@
+name: Governance decision or routing question
+description: Record a bounded decision and its current disposition.
+body:
+  - type: markdown
+    attributes:
+      value: "Search existing issues first. Follow the [escalation guide](https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/ESCALATION.md); preserve existing assignees. Do not include private roster data, credentials or sensitive disclosures."
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision needed or question
+      description: Include prior work and evidence relevant to this decision.
+    validations:
+      required: true
+  - type: input
+    id: responsible-role
+    attributes:
+      label: Current responsible role (optional)
+      description: A live-resolved role, or explicitly unresolved; do not infer personal acceptance from membership.
+  - type: textarea
+    id: prior-disposition
+    attributes:
+      label: Prior disposition (optional)
+      description: Link an existing decision, unresolved stage or accepted deferral.
+  - type: input
+    id: next-recipient
+    attributes:
+      label: Next recipient (optional)
+      description: Use the next verified team destination in the escalation order.

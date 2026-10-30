@@ -1,0 +1,919 @@
+{
+  "coordination_roles": [
+    {
+      "chain_level": false,
+      "name": "Review Leads",
+      "state": "pending_acceptance",
+      "team_url": "https://github.com/orgs/Pick-Your-AI/teams/review-leads"
+    }
+  ],
+  "export_kind": "static_snapshot",
+  "freshness_threshold_seconds": 86400,
+  "notice": "Static export: status was evaluated at generation under the displayed threshold and is not a continuing freshness claim. Automatic refresh is not activated by this tool. Rerun the resolver before relying on this directory. Team destinations only; membership does not establish accepted issue ownership. See the private collection status for the latest successful refresh time.",
+  "repositories": [
+    {
+      "exceptions": [
+        "owner_controlled"
+      ],
+      "levels": [
+        {
+          "disposition": "exception",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "exception",
+          "teams": []
+        },
+        {
+          "disposition": "exception",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "exception",
+          "teams": []
+        },
+        {
+          "disposition": "exception",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "exception",
+          "teams": []
+        },
+        {
+          "disposition": "not_applicable_no_anchor",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "exception",
+          "teams": []
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/.github",
+      "url": "https://github.com/Pick-Your-AI/.github"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Android",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/android"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Android",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/android"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Android",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Mobile Apps",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-android",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-android"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Apple/iOS",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Apple/iOS",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Apple/iOS",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Mobile Apps",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-apple",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "AI Applications",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - AI Applications",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-applications"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-applications",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-applications"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "placeholder_only",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Catalog Pipeline",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "vacant",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Catalog Pipeline",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-catalog-pipeline",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Cloud Agents",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Cloud Agents",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Cloud Agents",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-cloud-agents",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "placeholder_only",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Datasets & Benchmarks",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "vacant",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Datasets & Benchmarks",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-datasets",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-datasets"
+    },
+    {
+      "exceptions": [
+        "unbootstrapped"
+      ],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Education",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/education"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Education",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/education"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Education",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-education",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-education"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Contributor Leaderboard",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Contributor Leaderboard",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Contributor Leaderboard",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Websites",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/websites"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-leaderboard",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Market & Competitive Intelligence",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Market & Competitive Intelligence",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Market & Competitive Intelligence",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-market",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-market"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "placeholder_only",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "AI Papers & Index",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "vacant",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - AI Papers & Index",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-papers",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-papers"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "AI Builder",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "vacant",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - AI Builder",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-research",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Funding, Grants & Sustainability",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "repository_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Funding, Grants & Sustainability",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Research",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-sustainability",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-sustainability"
+    },
+    {
+      "exceptions": [],
+      "levels": [
+        {
+          "disposition": "resolved",
+          "level": "repository_team",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Main Website",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_maintainer",
+          "member_selector": "team_managers",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Main Website",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+            }
+          ]
+        },
+        {
+          "disposition": "already_included",
+          "level": "repository_lead_maintainer",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Lead Maintainers - Main Website",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "parent_teams",
+          "member_selector": "members",
+          "policy_state": "accepted",
+          "teams": [
+            {
+              "name": "Websites",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/websites"
+            },
+            {
+              "name": "Organization Maintainers",
+              "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+            }
+          ]
+        },
+        {
+          "disposition": "resolved",
+          "level": "owner",
+          "member_selector": null,
+          "policy_state": "accepted",
+          "teams": []
+        }
+      ],
+      "repository": "Pick-Your-AI/pick-your-ai-website",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-website"
+    }
+  ],
+  "schema_version": 1,
+  "snapshot_content_verified_at": "2026-10-30T03:21:19Z",
+  "status": "current",
+  "status_scope": "at_generation_only"
+}
