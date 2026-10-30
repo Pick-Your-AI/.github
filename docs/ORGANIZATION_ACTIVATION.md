@@ -117,6 +117,26 @@ access is separate from publication access. Until a separate propagation
 identity and workflow are approved, source-pin updates remain manual and
 automatic end-to-end publication remains unaccepted.
 
+## Existing publication authority also needs reconciliation
+
+Live `.github` configuration reports
+`can_approve_pull_request_reviews=false`. GitHub's combined setting controls
+Actions PR creation as well as approval; the existing job token must not be
+assumed capable of creating an artifact PR. The generated branch is also
+covered by contributor-boundary ruleset `25359649`; no Integration bypass actor
+is configured. No push under an actual job token has been tested, so this is a
+configuration gate, not a claimed observed push failure.
+
+Do not enable the combined setting, add bypass actors or increase the collector
+permissions to work around this. An authorized maintainer can perform manual
+publication using the existing human account and review process, clearly
+labelled manual. Automatic publication requires the owner to select a separate
+permitted writer and a branch path allowed by existing rules (for example a
+single reviewed `contrib/` artifact branch). Prepare and review that exact
+writer/branch change before activation; preserve any existing pending branch
+and PR during reconciliation. The present automatic-publication gate remains
+open until the chosen route has an actual successful receipt.
+
 ## Evidence and remaining live gates
 
 The original candidate passed 86 Python tests and policy validation again in a
