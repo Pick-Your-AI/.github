@@ -8,7 +8,7 @@ Canonical implementation: `governance/organization.py`. Inputs are deliberately 
 
 Private `hierarchy.mmd` contains every observed team and its exact parent edge. Public hierarchy exports contain only approved teams; keep that distinction when sharing diagrams.
 
-The current proposed publication path is [docs/organization/current](organization/current/README.md) on the default branch. Its HTML directory is an artifact until an approved host serves it. There is no existing GitHub Pages site; this implementation does not silently create one. GitHub's Markdown view supports the JSON/Mermaid sources and downloadable exports; GitHub does not render the HTML directory as a website. A public URL for the interactive directory remains a hosting decision.
+The current proposed publication path is [docs/organization/current](organization/current/README.md) on the default branch. Its HTML directory is an artifact until an approved host serves it. The existing approved website host is the static Apache/GoDaddy deployment at `https://pickyour.ai`, behind Cloudflare. Its operations-owned deployment is in `pick-your-ai-website/.github/workflows/deploy-production.yml`; this task does not bypass that pipeline or copy credentials into `.github`. There is no existing GitHub Pages site; this implementation does not silently create one. GitHub's Markdown view supports the JSON/Mermaid sources and downloadable exports; GitHub does not render the HTML directory as a website. A public URL for the interactive directory remains a hosting decision.
 
 ## Manual refresh
 
@@ -75,3 +75,15 @@ Disable the workflow through GitHub Actions to stop publication. Revert a faulty
 ## Verification boundary
 
 Tests and the [acceptance ledger](ORGANIZATION_ACCEPTANCE.md) distinguish fixtures, live authenticated reads, fresh-VM tests, independent code review, hosted checks, merge, actual scheduled execution and visible publication. Do not close #17 based on this chart extension: cross-repository flows, real event delivery, activation and its other acceptance criteria remain separately tracked.
+
+## Prepared handoff to the existing website host
+
+The website's current `AGENTS.md` reserves deployment workflows, `.htaccess` and `scripts/deploy/**` to its operations workstream and requires requesting those changes. The repository is a static Vite SPA, not a Node server. The minimal hosting integration is:
+
+1. Website/operations owner accepts `/organization/` as the public path on the existing host.
+2. In the website build, copy only the reviewed `.github` revision's `docs/organization/current/*` into `public/organization/`. Pin the full approved commit SHA, not a moving branch. Keep the generated directory, script, JSON and all paired exports together. The Vite build already copies `public/` into `dist/`.
+3. Run the website's existing quality, unit, contract, build, accessibility, browser and `ci-required` gates. Deployment must consume that run's exact `site-dist`, validate the release, activate and read back through Cloudflare, retaining the existing restore behavior.
+4. Agree how subsequent reviewed artifact commits update that source pin through the website's own PR gate. `.github`'s token cannot write another repository; use an already authorized narrowly scoped publication identity or let the responsible website team perform the pin update. Do not broaden the collector credential.
+5. Verify `/organization/index.html`, `/organization/directory.js`, JSON, SVG and PNG MIME types, cache revalidation and CSP under Apache, then record the deployed website SHA and publication time. Until then the interactive directory URL is pending, not live.
+
+This precise integration request belongs on canonical #17 and the existing website owner/review lane, not a duplicate organization automation issue. Existing hosting is identified; operations acceptance and cross-repository publication authority remain the dependency.

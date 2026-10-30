@@ -148,3 +148,5 @@ The [contributor leaderboard project](https://github.com/orgs/Pick-Your-AI/proje
 The [leaderboard repository](https://github.com/Pick-Your-AI/pick-your-ai-leaderboard) owns its metric definitions, delivery workflow, and correction process. Existing repository contribution and review rules continue to determine whether work is accepted.
 
 <img src="../assets/divider.svg" width="1200" alt="Teal closing divider with an amber node">
+
+[Current organization directory, routing and refresh status](https://github.com/Pick-Your-AI/.github/blob/main/docs/ORGANIZATION.md) · [Current chart sources and downloads](https://github.com/Pick-Your-AI/.github/tree/main/docs/organization/current).
