@@ -428,6 +428,16 @@ def relevant_team_ids(policy):
 
 def collect(policy, api=None):
     validate_policy(policy)
+    try:
+        return _collect(policy, api)
+    except (AttributeError, KeyError, TypeError, IndexError):
+        # A successful HTTP status is not proof of the expected protocol shape.
+        # Normalize before the refresh transaction records failure, and before
+        # live CLI reads can expose a traceback or response-derived identity.
+        raise APIError("collection", "invalid_response") from None
+
+
+def _collect(policy, api=None):
     api = api or GitHub()
     started = now()
     org = api.get(f"orgs/{policy['organization']['login']}")

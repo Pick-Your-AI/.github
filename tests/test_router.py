@@ -501,6 +501,52 @@ class CollectionTests(unittest.TestCase):
         with self.assertRaisesRegex(router.RoutingError, "Organization identity"):
             router.collect(policy(), self.Source(wrong_org=True))
 
+    def test_malformed_success_payloads_preserve_lastgood_and_record_failure(self):
+        cases = (
+            ("orgs/ExampleOrg/memberships/example-owner", {"user": None}),
+            ("orgs/ExampleOrg", {"id": 100}),
+            ("user/900", ["private-response-identity"]),
+            ("organizations/100/team/10", {"id": 10, "organization": None}),
+        )
+        for endpoint, malformed in cases:
+            with self.subTest(endpoint=endpoint), tempfile.TemporaryDirectory() as temp:
+                path, status = Path(temp) / "snapshot.json", Path(temp) / "status.json"
+                original = router.dump(snapshot())
+                path.write_text(original, encoding="utf-8")
+                source = self.Source()
+                original_get = source.get
+                source.get = lambda requested: malformed if requested == endpoint else original_get(requested)
+                with self.assertRaises(router.APIError) as raised:
+                    router.refresh(policy(), path, status, source)
+                self.assertEqual(raised.exception.category, "invalid_response")
+                self.assertEqual(path.read_text(encoding="utf-8"), original)
+                failure = router.read_json(status)
+                self.assertEqual(failure["status"], "failed")
+                self.assertEqual(failure["errors"][0]["category"], "invalid_response")
+                self.assertNotIn("private-response-identity", status.read_text(encoding="utf-8"))
+                self.assertFalse(router.refresh_lock_path(path).exists())
+
+    def test_live_cli_malformed_payload_is_sanitized_without_traceback(self):
+        source = self.Source()
+        original_get = source.get
+        source.get = lambda endpoint: {"user": None, "private_login": "private-response-identity"} if "/memberships/" in endpoint else original_get(endpoint)
+        with tempfile.TemporaryDirectory() as temp:
+            config = Path(temp) / "policy.json"
+            config.write_text(router.dump(policy()), encoding="utf-8")
+            output = io.StringIO()
+            with mock.patch.object(router, "GitHub", return_value=source), contextlib.redirect_stderr(output):
+                code = router.main(["resolve", "--policy", str(config), "--repo", "ExampleOrg/example"])
+            self.assertEqual(code, 1)
+            self.assertEqual(json.loads(output.getvalue()), {"error": "invalid_response", "http_status": None})
+            self.assertNotIn("Traceback", output.getvalue())
+            self.assertNotIn("private-response-identity", output.getvalue())
+
+    def test_collection_does_not_swallow_interrupts(self):
+        source = self.Source()
+        source.get = lambda _: (_ for _ in ()).throw(KeyboardInterrupt())
+        with self.assertRaises(KeyboardInterrupt):
+            router.collect(policy(), source)
+
     def test_rename_refresh_keeps_id_reports_change_uses_new_link(self):
         with tempfile.TemporaryDirectory() as temp:
             path, status = Path(temp) / "snapshot.json", Path(temp) / "status.json"
