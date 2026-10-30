@@ -11,7 +11,13 @@ This page sets the access, branch, review and merge rules for every Pick-Your-AI
 | Maintainer | The repository's maintainer team | Push any branch, and merge approved pull requests. |
 | Organization admin | Organization owners | Everything above. Admins can also bypass the review requirement. Reserve this for emergencies and explain the bypass in the pull request. |
 
-Repository access is granted to teams, not individuals. Ask an organization admin for changes.
+Repository access is normally granted through teams. The separately authorized `.github` Write grant recorded in [#16](https://github.com/Pick-Your-AI/.github/issues/16) is an exception, not delegated governance authority. Access changes require the applicable owner decision.
+
+## Resolve responsibility before escalation
+
+Use the [escalation guide](docs/governance/ESCALATION.md) and [governed mapping](governance/escalation-policy.json), with a fresh read of GitHub identities, rather than a copied contact list. The order is repository team → repository maintainer → repository lead maintainer → applicable parent teams → CompleteDotTech. Keep a disposition for unfilled, undefined or inaccessible roles; skip duplicate people and owner placeholders until the final level.
+
+Team management, repository access and accepted operational responsibility are separate. The [research refresh proposal](docs/governance/RESEARCH_REFRESH.md) does not activate recurring work, and the [scope selected for #14](docs/governance/DECISIONS.md) does not change current review enforcement. Preserve each repository's evidence, legal, security, validation and runtime acceptance rules.
 
 ## Teams and access
 
@@ -65,7 +71,7 @@ If you are not an early contributor, fork the repository, push your branch to th
 
 ## Where the rules are enforced
 
-Each repository has these rulesets. If you change them, update this page in the same change.
+The following rulesets describe the established control pattern; they are not a claim that every current repository has every rule. The [configuration disposition](docs/governance/DECISIONS.md) records the outstanding alignment work, including Market, Cloud Agents and unbootstrapped Education. If an authorized change updates enforcement, update this page in the same change.
 
 | Ruleset | Effect |
 | --- | --- |
