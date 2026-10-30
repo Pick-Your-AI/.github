@@ -33,6 +33,7 @@ This repository maintains the public [Pick Your AI organization profile](https:/
 | [profile/README.md](profile/README.md) | Public organization profile |
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards, reporting, and enforcement |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Organization-wide access, branch, review and merge rules |
+| [docs/NAMING.md](docs/NAMING.md) | Canonical team, repository and Project names |
 
 Web application work belongs in [pick-your-ai-website](https://github.com/Pick-Your-AI/pick-your-ai-website). Research, evidence, and shared contracts belong in [pick-your-ai-research](https://github.com/Pick-Your-AI/pick-your-ai-research). The Android and Apple/iOS planning clients live in [pick-your-ai-android](https://github.com/Pick-Your-AI/pick-your-ai-android) and [pick-your-ai-apple](https://github.com/Pick-Your-AI/pick-your-ai-apple), and funding and sustainability work lives in [pick-your-ai-sustainability](https://github.com/Pick-Your-AI/pick-your-ai-sustainability). Follow each repository's contribution guide for its workflow and required checks.
 
