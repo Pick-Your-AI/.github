@@ -8,6 +8,8 @@ on:
       - 'automation/**'
       - 'proposals/**'
       - 'docs/directory/**'
+      - 'docs/organization/**'
+      - '.github/workflows/organization-refresh.yml'
       - '.github/workflows/governance-checks.yml'
   workflow_dispatch:
 

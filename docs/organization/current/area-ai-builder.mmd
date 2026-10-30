@@ -1,0 +1,12 @@
+flowchart TB
+accTitle: Pick Your AI organization relationships
+accDescr: Solid arrows show actual team parents. Dotted labeled arrows distinguish responsibility and Project links.
+  n85cf63950a31e774bfa4["Pick Your AI — Research — AI Builder"]
+  n10267c0819d63ca11525["Pick-Your-AI/pick-your-ai-research"]
+  nd3da9bf255d92ec41bb4["AI Builder"]
+  n940a0317295456892b6e["Research Maintainers"]
+  n7642b291381963285ce3["Lead Maintainers - AI Builder"]
+  n85cf63950a31e774bfa4 -.->|project_link| n10267c0819d63ca11525
+  nd3da9bf255d92ec41bb4 -.->|repository_team| n10267c0819d63ca11525
+  n940a0317295456892b6e -.->|repository_maintainer| n10267c0819d63ca11525
+  n7642b291381963285ce3 -.->|repository_lead_maintainer| n10267c0819d63ca11525
