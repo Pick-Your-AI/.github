@@ -1,10 +1,12 @@
 name: Early Contributors
 
-# Finds people whose pull requests were merged in any Pick-Your-AI repo on or
+# Finds people whose pull requests were merged in a Pick-Your-AI repo visible to
+# the approved App installation on or
 # before the cutoff date, and proposes adding them to the "Early Contributors"
 # team. The team has write access to the project repositories, limited to
 # contrib/ branches with no merge rights (see CONTRIBUTING.md), so review the
 # proposed list before applying it.
+# Bot accounts are excluded from candidates.
 #
 # Safety: scheduled runs are DRY RUN only. They open or update one issue listing
 # who would be added. Nobody is invited until you run this workflow manually
@@ -13,6 +15,12 @@ name: Early Contributors
 # One-time setup (done by an org owner, not by this workflow):
 #   1. Create a GitHub App owned by the org with Organization permission
 #      "Members: Read and write". Install it on the org.
+#      Repository discovery is limited to that installation's selected scope.
+#      Public PR reads need no additional repository permission. Including a
+#      private repository also needs owner-approved "Pull requests: Read" and
+#      selection of that repository; Members access alone is not sufficient.
+#      Do not expand the installation or its permissions automatically. A listed
+#      but unreadable repository fails discovery instead of silently undercounting.
 #   2. In the repo that holds this file, add secret APP_PRIVATE_KEY and
 #      variable APP_ID.
 #   3. Optional: add repository variable PROJECT_START in YYYY-MM-DD format if
@@ -83,16 +91,29 @@ jobs:
           GH_TOKEN: ${{ steps.app.outputs.token }}
         run: |
           set -euo pipefail
-          # Merged on or before the cutoff date, so late merges never qualify.
-          gh search prs --owner "$ORG" --merged --merged-at "<=$CUTOFF" \
-            --limit 1000 --json author \
-            --jq '.[].author | select(.is_bot == false) | .login' \
-            | sort -u > authors.txt
-          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members" --jq '.[].login' \
+          # REST pagination avoids Search's 1,000-result ceiling. Enumerate all
+          # visible repositories and all closed PRs; closed does not imply merged.
+          gh api --paginate "orgs/$ORG/repos?per_page=100&type=all" \
+            --jq '.[].full_name' > repositories.txt
+          : > authors.txt
+          while IFS= read -r repository; do
+            gh api --paginate "repos/$repository/pulls?state=closed&per_page=100" \
+              --jq '.[] | select(.merged_at != null) | select(.user.id != 10137 and ((.user.login // "") | ascii_downcase) != "ghost") | [.merged_at, .user.type, .user.login] | @tsv' > pulls.tsv
+            while IFS=$'\t' read -r merged_at actor_type login; do
+              # Compare UTC calendar dates, including the whole cutoff day.
+              [[ "${merged_at:0:10}" > "$CUTOFF" ]] && continue
+              [[ "$actor_type" == "User" && -n "$login" ]] || continue
+              [[ "$login" == *"[bot]" || "$login" == app/* ]] && continue
+              printf '%s\n' "$login" >> authors.txt
+            done < pulls.tsv
+          done < repositories.txt
+          sort -u -o authors.txt authors.txt
+          # Lookup errors must fail the step, never authorize additions using
+          # an incomplete membership or invitation exclusion list.
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/members?per_page=100" --jq '.[].login' \
             | sort -u > members.txt
-          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/invitations" --jq '.[].login' \
-            | sort -u > invited.txt || true
-          touch invited.txt
+          gh api --paginate "orgs/$ORG/teams/$TEAM_SLUG/invitations?per_page=100" --jq '.[].login // empty' \
+            | sort -u > invited.txt
           cat members.txt invited.txt | sort -u > skip.txt
           comm -23 authors.txt skip.txt > candidates.txt
           echo "count=$(wc -l < candidates.txt | tr -d ' ')" >> "$GITHUB_OUTPUT"
@@ -122,14 +143,31 @@ jobs:
           {
             echo "These people have a merged PR on or before $CUTOFF and are not yet on the Early Contributors team:"
             echo
-            sed 's/^/- @/' candidates.txt | sed 's/@\(.*\)/`\1`/'
+            while IFS= read -r candidate; do
+              printf -- "- \`%s\`\n" "$candidate"
+            done < candidates.txt
             echo
             echo "To add them, run the **Early Contributors** workflow manually with **apply** checked."
           } > body.md
-          existing=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open \
-            --search "\"$title\" in:title" --json number --jq '.[0].number // empty')
+          existing=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '.[] | select(.pull_request == null and .title == "Early Contributors: pending additions") | .number' \
+            | awk 'NR == 1 { first = $0 } END { print first }')
           if [ -n "$existing" ]; then
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           else
             gh issue create --repo "$GITHUB_REPOSITORY" --title "$title" --body-file body.md
+          fi
+
+      - name: Clear pending additions in an existing issue (dry run)
+        if: steps.window.outputs.open == 'true' && github.event_name == 'schedule' && steps.find.outputs.count == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          existing=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '.[] | select(.pull_request == null and .title == "Early Contributors: pending additions") | .number' \
+            | awk 'NR == 1 { first = $0 } END { print first }')
+          if [ -n "$existing" ]; then
+            echo "No one is pending addition to the Early Contributors team. This issue can be closed." > body.md
+            gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           fi

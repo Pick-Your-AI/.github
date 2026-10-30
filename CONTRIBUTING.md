@@ -27,6 +27,8 @@ GitHub team/repository grants remain authoritative for access. Parent Triage, re
 
 Team membership and settings are managed by organization owners and the relevant team's designated GitHub maintainers. The [accepted delegation record](https://github.com/Pick-Your-AI/.github/issues/18) distinguishes that role from repository Admin access and operational ownership. Do not infer an assignment from a name or membership. Organization-file changes still require a pull request and the applicable review rules; naming changes do not expand anyone's access.
 
+The `.github` repository retains its owner-control exception: no team has Write or Admin access here. Only organization owners can change this repository, through a pull request.
+
 ## Workflow for early contributors
 
 You do not need a fork.
