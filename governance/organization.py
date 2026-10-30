@@ -276,7 +276,8 @@ def label(value):
 def charts(public):
     nodes = {f'{kind}:{r["id"]}': r for kind, plural in [('team', 'teams'), ('repository', 'repositories'), ('project', 'projects')] for r in public[plural]}
     def chart(keys, edge_kinds):
-        lines = ['flowchart TB']
+        lines = ['flowchart TB', 'accTitle: Pick Your AI organization relationships',
+                 'accDescr: Solid arrows show actual team parents. Dotted labeled arrows distinguish responsibility and Project links.']
         for key in sorted(keys):
             lines.append(f'  {node_id(key)}["{label(nodes[key]["name"])}"]')
         for edge in public['relationships']:
@@ -286,7 +287,8 @@ def charts(public):
         return '\n'.join(lines) + '\n'
     result = {'hierarchy': chart({k for k in nodes if k.startswith('team:')}, {'github_parent'})}
     # Overview contains areas, not every access edge in the organization.
-    lines = ['flowchart LR']
+    lines = ['flowchart LR', 'accTitle: Pick Your AI area overview',
+             'accDescr: Display grouping connects areas with approved teams, Projects and repositories. It does not describe GitHub nesting.']
     for a in public['areas']:
         aid = node_id('area:' + a['id'])
         lines.append(f'  {aid}["{label(a["name"])}"]')

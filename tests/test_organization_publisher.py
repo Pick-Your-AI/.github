@@ -17,6 +17,7 @@ class PublisherTests(unittest.TestCase):
             if args[:2] == ('git', 'ls-remote'): return 'existing'
             if args[:3] == ('git', 'diff', '--name-only'): return publisher.OUTPUT + '/organization.json'
             if args[:3] == ('gh', 'pr', 'list'): return '[]'
+            if args[:3] == ('gh', 'run', 'list'): return '[]'
             return ''
         with tempfile.TemporaryDirectory() as tmp:
             with patch.dict(os.environ, {'GITHUB_REF': 'refs/heads/main', 'PYA_READ_TOKEN': 'synthetic', 'PYA_STATE': tmp, 'GITHUB_STEP_SUMMARY': str(Path(tmp, 'summary'))}):
@@ -24,6 +25,7 @@ class PublisherTests(unittest.TestCase):
                     publisher.main()
         self.assertTrue(any(c[:3] == ('gh', 'pr', 'create') for c in calls))
         self.assertFalse(any('commit' in c for c in calls))
+        self.assertTrue(any(c[:3] == ('gh', 'workflow', 'run') for c in calls))
 
     def test_never_executes_from_pr_ref(self):
         with patch.dict(os.environ, {'GITHUB_REF': 'refs/pull/123/merge'}), patch.object(publisher, 'run') as run:

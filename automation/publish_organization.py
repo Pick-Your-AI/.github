@@ -70,8 +70,14 @@ def main():
                 '--title', 'docs: refresh current organization', '--body-file', str(body))
     # GITHUB_TOKEN pushes do not automatically trigger PR checks. Explicitly
     # dispatch the credential-free validator at this verified artifact branch.
-    if changed or not existing:
+    head = run('git', 'rev-parse', 'HEAD')
+    checks = org.router.json.loads(run('gh', 'run', 'list', '--repo', 'Pick-Your-AI/.github',
+                                      '--workflow', 'governance-checks.yml', '--commit', head,
+                                      '--json', 'databaseId,status,conclusion'))
+    if not checks:
         run('gh', 'workflow', 'run', 'governance-checks.yml', '--repo', 'Pick-Your-AI/.github', '--ref', BRANCH)
+    elif any(c['status'] == 'completed' and c['conclusion'] != 'success' for c in checks):
+        raise RuntimeError('Exact-head validation failed; maintainer investigation required')
 
 
 if __name__ == '__main__':
