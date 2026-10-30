@@ -4,10 +4,14 @@ Run on Linux: python3 -m unittest discover -s tests -v
 Requires Bash, jq and PyYAML (pip install -r tests/requirements.txt).
 """
 import json
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import os
 from pathlib import Path
+import re
+import shutil
 import subprocess
 import tempfile
+import threading
 import unittest
 
 import yaml
@@ -20,16 +24,20 @@ FAKE_GH = r'''#!/usr/bin/env python3
 import json, os, subprocess, sys
 from pathlib import Path
 a = sys.argv[1:]
+if '--slurp' in a and ('--jq' in a or '--template' in a):
+    sys.exit('unsupported gh api flag combination')
 data = json.loads(Path('fixture.json').read_text())
 with open('calls.jsonl', 'a') as f:
     f.write(json.dumps(a) + '\n')
 if a[0] == 'api':
     endpoint = next(x for x in a[1:] if not x.startswith('-'))
     if endpoint.endswith('/issues?state=open&per_page=100'):
-        assert '--paginate' in a and '--slurp' in a
-        subprocess.run(['jq', '-r', a[a.index('--jq')+1]],
-                       input=json.dumps(data.get('issue_pages', [data.get('issues', [])])),
-                       text=True, check=True)
+        assert '--paginate' in a and '--slurp' not in a
+        for index, page in enumerate(data.get('issue_pages', [data.get('issues', [])])):
+            if index == data.get('fail_issue_page'):
+                sys.exit(1)
+            subprocess.run(['jq', '-r', a[a.index('--jq')+1]],
+                           input=json.dumps(page), text=True, check=True)
         sys.exit(0)
     if endpoint == data.get('fail'):
         sys.exit(1)
@@ -46,10 +54,12 @@ else:
 '''
 
 
-def pr(login, merged='2026-11-15T23:59:59Z', kind='User'):
-    return {'merged_at': merged, 'user': {'login': login, 'type': kind} if login else None}
+def pr(login, merged='2026-11-15T23:59:59Z', kind='User', identity=123):
+    return {'merged_at': merged, 'user': {'login': login, 'type': kind, 'id': identity} if login else None}
 
 
+@unittest.skipUnless(os.name == 'posix' and shutil.which('bash') and shutil.which('jq'),
+                     'Bash/shebang workflow harness requires Linux or WSL with jq')
 class WorkflowTests(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
@@ -92,6 +102,7 @@ class WorkflowTests(unittest.TestCase):
         api['repos/example/two/pulls?state=closed&per_page=100'] = [[
             pr('human0'), pr('robotics-human'), pr('applicant'), pr('real-bot-lover'),
             pr('service', kind='Bot'), pr('robot[bot]'), pr('app/service'),
+            pr('deleted-account', identity=10137), pr('ghost'), pr('GhOsT'),
             pr(None), pr('unknown', kind=None), pr('late', '2026-11-16T00:00:00Z'),
             pr('closed-only', None), pr('member'), pr('invited')]]
         api['orgs/example/teams/early-contributors/members?per_page=100'] = [[{'login': 'member'}], [{'login': 'human1'}]]
@@ -177,6 +188,69 @@ class WorkflowTests(unittest.TestCase):
                         self.assertEqual(actual, [opened and event == 'workflow_dispatch' and apply and count != '0',
                                                   opened and event == 'schedule' and count != '0',
                                                   opened and event == 'schedule' and count == '0'])
+
+    def test_fake_rejects_unsupported_real_cli_flag_combination(self):
+        (self.path / 'fixture.json').write_text(json.dumps(self.fixture))
+        for formatting in ('--jq', '--template'):
+            result = subprocess.run([str(self.path / 'gh'), 'api', '--paginate', '--slurp',
+                                     'synthetic', formatting, '.'], cwd=self.path, env=self.env,
+                                    text=True, capture_output=True)
+            self.assertNotEqual(result.returncode, 0)
+
+    def test_report_failure_on_later_page_never_edits_or_creates(self):
+        self.fixture['issue_pages'] = [[{'number': 2, 'title': 'Early Contributors: pending additions'}], []]
+        self.fixture['fail_issue_page'] = 1
+        self.run_step(name='Clear pending additions in an existing issue (dry run)', success=False)
+        self.assertTrue(all(c[0] == 'api' for c in self.calls()))
+
+
+class RealGitHubCLITests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which('gh'), 'real gh is required for the localhost CLI compatibility smoke')
+    def test_actual_report_query_with_paginated_local_http_only(self):
+        """Run the installed gh against loopback fixtures, never GitHub."""
+        requests = []
+        class Handler(BaseHTTPRequestHandler):
+            def do_GET(self):
+                requests.append(self.path)
+                second = 'page=2' in self.path
+                data = ([{'number': 42, 'title': 'Early Contributors: pending additions'},
+                         {'number': 43, 'title': 'Early Contributors: pending additions'}] if second else
+                        [{'number': 1, 'title': 'Early Contributors: pending additions extra'},
+                         {'number': 2, 'title': 'Early Contributors: pending additions', 'pull_request': {}}])
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json')
+                if not second:
+                    self.send_header('Link', f'<http://127.0.0.1:{self.server.server_port}/issues?page=2>; rel="next"')
+                self.end_headers()
+                self.wfile.write(json.dumps(data).encode())
+
+            def log_message(self, *_):
+                pass
+
+        server = ThreadingHTTPServer(('127.0.0.1', 0), Handler)
+        thread = threading.Thread(target=server.serve_forever, daemon=True)
+        thread.start()
+        try:
+            with tempfile.TemporaryDirectory() as config:
+                env = dict(os.environ, GH_TOKEN='synthetic-loopback-only', GH_HOST='github.com',
+                           GH_CONFIG_DIR=config, GH_PROMPT_DISABLED='1')
+                for step in STEPS:
+                    if step['name'] not in ('Report candidates in an issue (dry run)',
+                                            'Clear pending additions in an existing issue (dry run)'):
+                        continue
+                    script = step['run']
+                    self.assertNotIn('--slurp', script)
+                    query = re.search(r"--jq '([^']+)'", script).group(1)
+                    result = subprocess.run(['gh', 'api', '--paginate',
+                                             f'http://127.0.0.1:{server.server_port}/issues', '--jq', query],
+                                            env=env, text=True, capture_output=True, timeout=15)
+                    self.assertEqual(result.returncode, 0, result.stderr)
+                    self.assertEqual(result.stdout.splitlines(), ['42', '43'])
+                self.assertEqual(len(requests), 4)
+        finally:
+            server.shutdown()
+            server.server_close()
+            thread.join(timeout=5)
 
 
 if __name__ == '__main__':

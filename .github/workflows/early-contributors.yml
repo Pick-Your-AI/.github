@@ -91,7 +91,7 @@ jobs:
           : > authors.txt
           while IFS= read -r repository; do
             gh api --paginate "repos/$repository/pulls?state=closed&per_page=100" \
-              --jq '.[] | select(.merged_at != null) | [.merged_at, .user.type, .user.login] | @tsv' > pulls.tsv
+              --jq '.[] | select(.merged_at != null) | select(.user.id != 10137 and ((.user.login // "") | ascii_downcase) != "ghost") | [.merged_at, .user.type, .user.login] | @tsv' > pulls.tsv
             while IFS=$'\t' read -r merged_at actor_type login; do
               # Compare UTC calendar dates, including the whole cutoff day.
               [[ "${merged_at:0:10}" > "$CUTOFF" ]] && continue
@@ -140,8 +140,9 @@ jobs:
             echo
             echo "To add them, run the **Early Contributors** workflow manually with **apply** checked."
           } > body.md
-          existing=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
-            --jq '[.[][] | select(.pull_request == null and .title == "Early Contributors: pending additions")][0].number // empty')
+          existing=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '.[] | select(.pull_request == null and .title == "Early Contributors: pending additions") | .number' \
+            | awk 'NR == 1 { first = $0 } END { print first }')
           if [ -n "$existing" ]; then
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
           else
@@ -155,8 +156,9 @@ jobs:
         run: |
           set -euo pipefail
           title="Early Contributors: pending additions"
-          existing=$(gh api --paginate --slurp "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
-            --jq '[.[][] | select(.pull_request == null and .title == "Early Contributors: pending additions")][0].number // empty')
+          existing=$(gh api --paginate "repos/$GITHUB_REPOSITORY/issues?state=open&per_page=100" \
+            --jq '.[] | select(.pull_request == null and .title == "Early Contributors: pending additions") | .number' \
+            | awk 'NR == 1 { first = $0 } END { print first }')
           if [ -n "$existing" ]; then
             echo "No one is pending addition to the Early Contributors team. This issue can be closed." > body.md
             gh issue edit "$existing" --repo "$GITHUB_REPOSITORY" --body-file body.md
