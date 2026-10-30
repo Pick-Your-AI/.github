@@ -23,7 +23,33 @@ An empty manager/lead stage remains explicitly vacant; owner placeholders are ex
 
 [PR #20](https://github.com/Pick-Your-AI/.github/pull/20) is reused for the bot issue. [PR #21](https://github.com/Pick-Your-AI/.github/pull/21) owns frozen organization charts and is not rewritten; its roster/invitee disclosure requires the owner's review before that separate proposal is accepted. [PR #22](https://github.com/Pick-Your-AI/.github/pull/22) owns the naming register; this change is stacked above it. Repository entrypoint changes are stacked above Research #516, Website #331, Leaderboard #526, Android #761 and Apple #455, preserving their ownership and content. Static naming/charts do not implement live routing.
 
-The dated #13 baseline is historical. Current inventory includes 13 public project repositories plus `.github`; Education is empty, Market has no ruleset, and Cloud Agents has different boundary coverage. These are configuration observations, not proof of push/merge behavior. The accepted private Internal Discussion exception remains outside the public audit details.
+The dated #13 baseline is historical. The routing collection recorded at 2026-10-30T03:21:19Z included 13 public project repositories plus `.github`; Education was empty, Market had no ruleset, and Cloud Agents had different boundary coverage. These are dated configuration observations, not a perpetual inventory or proof of push/merge behavior. The accepted private Internal Discussion exception remains outside the public audit details.
+
+## Default community-file inheritance
+
+The root `SUPPORT.md`, `.github/ISSUE_TEMPLATE/governance-decision.yml` and `.github/pull_request_template.md` are organization defaults. Merging this PR makes them available to repositories without the corresponding local files; this contributor-facing effect is immediate and is distinct from the inactive resolver refresh automation. The defaults preserve local evidence and security requirements and establish no new private intake route. The PR template asks for the repository's required environment/evidence, rather than imposing a new organization-wide VM requirement.
+
+The following public default-branch file audit was read from GitHub on 2026-10-30. `Local` means the repository has an override; `Default` means the relevant local file/directory was absent and the organization default is expected to apply after this PR merges. This is a file-layout audit, not a claim that GitHub's rendered contributor flow was tested. A local issue-template directory, including a configuration file, overrides the default issue forms.
+
+| Public repository | Support | Issue forms | PR template |
+| --- | --- | --- | --- |
+| Applications | Default | Default | Default |
+| Apple | Local | Local | Local |
+| Android | Local | Local | Local |
+| Leaderboard | Default | Local | Local |
+| Research | Default | Local | Local |
+| Cloud Agents | Default | Default | Default |
+| Market | Default | Default | Default |
+| Papers | Default | Local | Local |
+| Sustainability | Default | Default | Default |
+| Website | Local | Local | Local |
+| Education | Default | Default | Default |
+| Knowledge-Base | Default | Default | Default |
+| Datasets | Default | Local | Local |
+| Catalog Pipeline | Default | Local | Local |
+| Volunteers | Default | Default | Default |
+
+The tracked entrypoint PRs add local overrides, so the affected defaults change as those PRs merge. Education now has a default branch; the earlier empty-repository observation is historical and grants no further bootstrap authority. Knowledge-Base and Volunteers were not in the earlier routing collection and have no selected mapping in this policy: keep their routing unresolved until separately recorded. Private repository details remain outside this public audit; default inheritance is not an override of their local security or owner exceptions. Recheck the layout after merges and before claiming rendered contributor-flow acceptance.
 
 ## Permission and review proposal boundary
 
