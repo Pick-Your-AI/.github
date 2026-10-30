@@ -309,6 +309,16 @@ def charts(public):
     return result
 
 
+def private_hierarchy(model):
+    """Full observed hierarchy, never a public artifact or roster."""
+    lines = ['flowchart TB', 'accTitle: Complete observed GitHub team hierarchy']
+    for team in model['teams']:
+        lines.append(f'  {node_id(team["id"])}["{label(team["name"])}"]')
+        if team['parent_id'] is not None:
+            lines.append(f'  {node_id(team["parent_id"])} --> {node_id(team["id"])}')
+    return '\n'.join(lines) + '\n'
+
+
 def render(public, output):
     output = Path(output)
     output.mkdir(parents=True, exist_ok=True)
@@ -325,10 +335,11 @@ def render(public, output):
             if kind == 'repositories':
                 route = next((r for r in public['routing']['repositories'] if r['url'] == row['url']), None)
                 if route:
-                    state += ' · ' + '; '.join(l['level'] + ': ' + l['disposition'] for l in route['levels'])
+                    state += ' · ' + '; '.join(l['level'].replace('_', ' ') + ': ' + l['disposition'].replace('_', ' ') for l in route['levels'])
             if row.get('archived') or row.get('closed'):
                 state += ' · Archived / closed'
-            rows.append(f'<tr data-kind="{kind}"><td>{kind[:-1]}</td><th scope="row"><a href="{html.escape(row["url"], quote=True)}">{html.escape(row["name"])}</a></th><td>{html.escape(state)}</td></tr>')
+            singular = {'teams': 'team', 'repositories': 'repository', 'projects': 'project'}[kind]
+            rows.append(f'<tr data-kind="{kind}"><td>{singular}</td><th scope="row"><a href="{html.escape(row["url"], quote=True)}">{html.escape(row["name"])}</a></th><td>{html.escape(state)}</td></tr>')
     links = ''.join(f'<li><a href="{name}.mmd">{html.escape(name)} Mermaid</a> · <a href="{name}.svg">SVG</a> · <a href="{name}.png">PNG</a></li>' for name in sorted(sources))
     page = template.replace('<!--ROWS-->', '\n'.join(rows)).replace('<!--CHARTS-->', links)
     notices = ['Approved identities missing or withheld: ' + ', '.join(f'{k}: {len(v)}' for k, v in public['unavailable_approved'].items())]
@@ -396,6 +407,7 @@ def refresh(policy, mapping, state, output, source_revision, api=None, exporter=
                         raise
             model['integrity_sha256'] = router.digest(model)
             router.atomic_write(snapshot, router.dump(model), private=True)
+            router.atomic_write(state / 'hierarchy.mmd', private_hierarchy(model), private=True)
             router.atomic_write(state / 'routing-snapshot.json', router.dump(model['routing']), private=True)
             router.atomic_write(state / 'routing-status.json', router.dump({
                 'schema_version': 1, 'status': 'complete', 'attempted_at': model['observation']['completed_at'],

@@ -31,3 +31,7 @@ A future activation must specify durable retention for the last-good private sna
 - Fresh agent and contributor flows against merged entrypoints, with local-template overrides verified.
 
 The current PR provides source, fixture validation and manual readback; installation, scheduling, merged-template rendering and ongoing operation remain separate acceptance items under #17.
+
+## Current chart activation extension
+
+The [organization operation guide](../docs/ORGANIZATION.md) now prepares one shared chart/directory collector and protected artifact publisher. Its proposed hourly reconciliation supersedes the earlier daily fallback suggestion above for organization charts. The earlier workflow example and event adapter remain inactive reference material. The new workflow still requires the dedicated read-only credential, independent merge review and verified real operation; no activation is claimed by this documentation.

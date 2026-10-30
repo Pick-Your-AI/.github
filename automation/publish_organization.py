@@ -76,7 +76,7 @@ def main():
                                       '--json', 'databaseId,status,conclusion'))
     if not checks:
         run('gh', 'workflow', 'run', 'governance-checks.yml', '--repo', 'Pick-Your-AI/.github', '--ref', BRANCH)
-    elif any(c['status'] == 'completed' and c['conclusion'] != 'success' for c in checks):
+    elif checks[0]['status'] == 'completed' and checks[0]['conclusion'] != 'success':
         raise RuntimeError('Exact-head validation failed; maintainer investigation required')
 
 

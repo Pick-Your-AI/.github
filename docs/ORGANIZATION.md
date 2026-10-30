@@ -6,6 +6,8 @@ Canonical implementation: `governance/organization.py`. Inputs are deliberately 
 - `governance/organization-mapping.json`: versioned public-entity allowlist and display areas, with owner and decision provenance. Area membership is display grouping, not a new operational assignment. The initial 13 Project/area/repository associations come from #22; all responsibility edges come from the existing resolver policy.
 - Private `model.json`: observed GitHub entities, direct and inherited membership, managers, grants, Projects and explicit Project/repository links, coverage and source identity. Never commit or upload it. `routing-snapshot.json` is the #17 resolver projection from the same collection transaction.
 
+Private `hierarchy.mmd` contains every observed team and its exact parent edge. Public hierarchy exports contain only approved teams; keep that distinction when sharing diagrams.
+
 The current proposed publication path is [docs/organization/current](organization/current/README.md) on the default branch. Its HTML directory is an artifact until an approved host serves it. There is no existing GitHub Pages site; this implementation does not silently create one. GitHub's Markdown view supports the JSON/Mermaid sources and downloadable exports; GitHub does not render the HTML directory as a website. A public URL for the interactive directory remains a hosting decision.
 
 ## Manual refresh
