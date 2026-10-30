@@ -24,9 +24,6 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     environment: organization-collector
-    env:
-      PYA_STATE: ${{ runner.temp }}/organization-private
-      PYA_RUN_STATUS: ${{ runner.temp }}/organization-run-status.json
     permissions:
       contents: write
       pull-requests: write
@@ -42,6 +39,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
+      - name: Set isolated run paths
+        run: |
+          printf '%s\n' "PYA_STATE=$RUNNER_TEMP/organization-private" "PYA_RUN_STATUS=$RUNNER_TEMP/organization-run-status.json" >> "$GITHUB_ENV"
       - name: Start public-safe run receipt from last merged artifacts
         run: python automation/organization_status.py start
       - name: Require dedicated read-only collection credential
