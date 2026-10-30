@@ -8,6 +8,7 @@ on:
     paths:
       - 'governance/**'
       - 'automation/publish_organization.py'
+      - 'automation/collector_token.mjs'
       - '.github/workflows/organization-refresh.yml'
 
 permissions:
@@ -21,6 +22,7 @@ jobs:
   reconcile:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    environment: organization-collector
     permissions:
       contents: write
       pull-requests: write
@@ -47,11 +49,10 @@ jobs:
           }
       - name: Short-lived organization read token
         id: read-token
-        uses: actions/create-github-app-token@v1
-        with:
-          app-id: ${{ vars.ORG_DIRECTORY_APP_ID }}
-          private-key: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
-          owner: Pick-Your-AI
+        env:
+          APP_ID: ${{ vars.ORG_DIRECTORY_APP_ID }}
+          APP_KEY: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
+        run: node automation/collector_token.mjs
       - name: Install renderer
         env:
           PUPPETEER_SKIP_DOWNLOAD: 'true'
@@ -71,3 +72,8 @@ jobs:
           echo '## Organization refresh failed' >> "$GITHUB_STEP_SUMMARY"
           echo 'The last merged publication remains available. Check its observation timestamp and this run before relying on it.' >> "$GITHUB_STEP_SUMMARY"
           echo 'No private API responses or snapshots are uploaded.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Revoke short-lived collector token
+        if: always() && steps.read-token.outputs.token != ''
+        env:
+          GH_TOKEN: ${{ steps.read-token.outputs.token }}
+        run: gh api --method DELETE installation/token

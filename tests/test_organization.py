@@ -158,6 +158,56 @@ class OrganizationTests(unittest.TestCase):
                     org.refresh(p, m, state, output, 'abc', exporter=lambda *_: (_ for _ in ()).throw(RuntimeError()))
             self.assertEqual((output / 'sentinel').read_text(), 'last good')
 
+    def test_unchanged_model_repairs_tampered_or_incomplete_bundle(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                expected = {x.name: x.read_bytes() for x in output.iterdir()}
+                (output / 'directory.js').write_text('arbitrary browser code')
+                (output / 'overview.png').unlink()
+                (output / 'unexpected.html').write_text('not generated')
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                self.assertEqual(expected, {x.name: x.read_bytes() for x in output.iterdir()})
+                self.assertFalse(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+
+    def test_historical_observation_never_republishes_extra_fields_or_future_time(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                path = output / 'organization.json'
+                old = org.router.read_json(path)
+                old['observation']['injected'] = ['SYNTHETIC_PERSON']
+                path.write_text(org.router.dump(old), encoding='utf-8')
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                self.assertNotIn('injected', org.router.read_json(path)['observation'])
+                old = org.router.read_json(path)
+                old['observation']['completed_at'] = '2099-01-01T00:00:00Z'
+                path.write_text(org.router.dump(old), encoding='utf-8')
+                with self.assertRaises(org.router.RoutingError):
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+
+    @unittest.skipUnless(hasattr(__import__('os'), 'symlink'), 'symlink unavailable')
+    def test_artifact_symlink_is_rejected(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                (output / 'directory.js').unlink()
+                target = Path(tmp, 'untrusted.js')
+                target.write_text('untrusted')
+                try:
+                    (output / 'directory.js').symlink_to(target)
+                except OSError:
+                    self.skipTest('OS does not permit symlinks for this account')
+                with self.assertRaises(org.router.RoutingError):
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                self.assertEqual(target.read_text(), 'untrusted')
+
     def test_project_pagination_and_duplicate_detection(self):
         class API:
             coverage = []

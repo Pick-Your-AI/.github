@@ -26,6 +26,10 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node --test tests/collector_token.test.mjs
       - run: python -m pip install -r tests/requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python governance/router.py validate-policy --policy governance/escalation-policy.json

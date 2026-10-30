@@ -1,5 +1,7 @@
 {
   "theme": "base",
+  "deterministicIds": true,
+  "deterministicIDSeed": "pickyour-ai-organization-v1",
   "securityLevel": "strict",
   "htmlLabels": false,
   "fontFamily": "Segoe UI, Arial, sans-serif",
