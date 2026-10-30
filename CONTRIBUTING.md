@@ -15,9 +15,11 @@ Repository access is granted to teams, not individuals. Ask an organization admi
 
 ## Teams and access
 
-Access follows a team hierarchy under the `Maintainers` team. `Maintainers` has Triage on every repository except this one, and its parent-level teams `Mobile Devices`, `Research` and `Websites` also have Triage, so their members can label and triage issues and pull requests but cannot push. Write comes from the child team for each repository: `Android`, `Apple/iOS`, `Builder`, `Funding, Grants & Sustainability`, `Market & Competitive Intelligence`, `pickyour.ai` and `leaderboard.pickyour.ai`. Admin comes from the Lead Maintainers teams: `Lead Maintainers` under `Websites` for `pick-your-ai-website` and `pick-your-ai-leaderboard`, `Research Lead Maintainers` for `pick-your-ai-research` and `pick-your-ai-sustainability`, and `Mobile Lead Maintainers` for `pick-your-ai-android` and `pick-your-ai-apple`. Only @CompleteDotTech and @BunsDev change team membership. The `early-contributors` team sits outside this hierarchy.
+Current area, specialist and lead-team names are listed in the [organization naming register](docs/NAMING.md). The top-level team is `Organization Maintainers`; its area teams include `Research`, `Mobile Apps`, `Websites` and `Education`. Repository teams include `AI Builder`, `Main Website`, `Contributor Leaderboard`, `AI Applications`, `Android` and `Apple/iOS`. Lead-team names use `Lead Maintainers - <Area>`.
 
-No team has Write or Admin access to this repository. Only organization owners can change it, through a pull request.
+GitHub team/repository grants remain authoritative for access. Parent Triage, repository Write and lead-team Admin are distinct grants; a team name does not itself grant permissions. The naming alignment preserves memberships, team-manager roles, parent relationships and repository/Project grants, including existing exceptions and interim coverage. `Early Contributors`, `Review Leads` and `Research Maintainers` retain their separate roles.
+
+Team membership and settings are managed by organization owners and the relevant team's designated GitHub maintainers. The [accepted delegation record](https://github.com/Pick-Your-AI/.github/issues/18) distinguishes that role from repository Admin access and operational ownership. Do not infer an assignment from a name or membership. Organization-file changes still require a pull request and the applicable review rules; naming changes do not expand anyone's access.
 
 ## Workflow for early contributors
 
