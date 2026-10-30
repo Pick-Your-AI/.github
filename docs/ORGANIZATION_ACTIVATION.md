@@ -48,6 +48,9 @@ investigation rather than an unbounded retry loop.
 The organization owner (CompleteDotTech) must explicitly approve and install a
 dedicated App with exactly these permissions:
 
+[Exact registration settings](organization-collector-request.json) are prepared
+for review. They contain no credentials and grant nothing by themselves.
+
 | Scope | Permission | Used for |
 | --- | --- | --- |
 | Repository | Metadata: read | Repository identity and collaborator effective-permission reads |
