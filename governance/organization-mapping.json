@@ -1,0 +1,317 @@
+{
+  "schema_version": 1,
+  "owner": "Pick-Your-AI/.github maintainers; policy decisions retain issue ownership",
+  "decision_refs": [
+    "https://github.com/Pick-Your-AI/.github/issues/17",
+    "https://github.com/Pick-Your-AI/.github/pull/22"
+  ],
+  "approved_public": {
+    "teams": [
+      20136531,
+      20166812,
+      20166920,
+      20166984,
+      20167030,
+      20169020,
+      20182720,
+      20182744,
+      20184157,
+      20184167,
+      20184179,
+      20198473,
+      20284775,
+      20398066,
+      20398330,
+      20398335,
+      20398339,
+      20398347,
+      20421513,
+      20421514,
+      20421768,
+      20421770,
+      20421771,
+      20421773,
+      20421774,
+      20422096,
+      20422276,
+      20422282,
+      20423968,
+      20423992,
+      20424010,
+      20424197
+    ],
+    "repositories": [
+      1422014674,
+      1422897313,
+      1422897390,
+      1430403712,
+      1430404474,
+      1439072266,
+      1431120964,
+      1439194215,
+      1422874501,
+      1437739257,
+      1430404173,
+      1421934086,
+      1424960984,
+      1422238606
+    ],
+    "projects": [
+      "PVT_kwDOFHg4Xc4BpYpe",
+      "PVT_kwDOFHg4Xc4BpXxK",
+      "PVT_kwDOFHg4Xc4BoZsU",
+      "PVT_kwDOFHg4Xc4BoUH6",
+      "PVT_kwDOFHg4Xc4BoUHz",
+      "PVT_kwDOFHg4Xc4BoUHM",
+      "PVT_kwDOFHg4Xc4Bnqgs",
+      "PVT_kwDOFHg4Xc4BnbgH",
+      "PVT_kwDOFHg4Xc4BnbQs",
+      "PVT_kwDOFHg4Xc4BnbMJ",
+      "PVT_kwDOFHg4Xc4BnX2e",
+      "PVT_kwDOFHg4Xc4BnViW",
+      "PVT_kwDOFHg4Xc4BnUon"
+    ]
+  },
+  "areas": [
+    {
+      "id": "ai-builder",
+      "name": "AI Builder",
+      "teams": [
+        20184179,
+        20198473,
+        20421768
+      ],
+      "repositories": [
+        1421934086
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnUon"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "market-competitive-intelligence",
+      "name": "Market & Competitive Intelligence",
+      "teams": [
+        20184157,
+        20398066
+      ],
+      "repositories": [
+        1437739257
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnViW"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "main-website",
+      "name": "Main Website",
+      "teams": [
+        20166984,
+        20423968
+      ],
+      "repositories": [
+        1422238606
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnX2e"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "android",
+      "name": "Android",
+      "teams": [
+        20166812,
+        20423992
+      ],
+      "repositories": [
+        1422897313
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbMJ"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "apple-ios",
+      "name": "Apple/iOS",
+      "teams": [
+        20166920,
+        20424010
+      ],
+      "repositories": [
+        1422897390
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbQs"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "contributor-leaderboard",
+      "name": "Contributor Leaderboard",
+      "teams": [
+        20167030,
+        20422096
+      ],
+      "repositories": [
+        1422874501
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbgH"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "funding-grants-sustainability",
+      "name": "Funding, Grants & Sustainability",
+      "teams": [
+        20184167,
+        20198473,
+        20284775
+      ],
+      "repositories": [
+        1424960984
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4Bnqgs"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "catalog-pipeline",
+      "name": "Catalog Pipeline",
+      "teams": [
+        20198473,
+        20398347,
+        20421773
+      ],
+      "repositories": [
+        1430404474
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUHM"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "ai-papers-index",
+      "name": "AI Papers & Index",
+      "teams": [
+        20198473,
+        20398339,
+        20421770
+      ],
+      "repositories": [
+        1430404173
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUHz"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "ai-applications",
+      "name": "AI Applications",
+      "teams": [
+        20198473,
+        20398335,
+        20421771
+      ],
+      "repositories": [
+        1430403712
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUH6"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "datasets-benchmarks",
+      "name": "Datasets & Benchmarks",
+      "teams": [
+        20198473,
+        20398330,
+        20421774
+      ],
+      "repositories": [
+        1431120964
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoZsU"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "cloud-agents",
+      "name": "Cloud Agents",
+      "teams": [
+        20421513,
+        20421514
+      ],
+      "repositories": [
+        1439072266
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BpXxK"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "teams": [
+        20422276,
+        20422282
+      ],
+      "repositories": [
+        1439194215
+      ],
+      "projects": [
+        "PVT_kwDOFHg4Xc4BpYpe"
+      ],
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+name: Organization refresh
+on:
+  schedule:
+    - cron: '23 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'governance/**'
+      - 'automation/publish_organization.py'
+      - '.github/workflows/organization-refresh.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: organization-refresh
+  cancel-in-progress: false
+
+jobs:
+  reconcile:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Require dedicated read-only collection credential
+        env:
+          APP_ID: ${{ vars.ORG_DIRECTORY_APP_ID }}
+          APP_KEY: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
+        run: |
+          test -n "$APP_ID" && test -n "$APP_KEY" || {
+            echo 'Missing dedicated read-only organization App configuration.'
+            exit 1
+          }
+      - name: Short-lived organization read token
+        id: read-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ vars.ORG_DIRECTORY_APP_ID }}
+          private-key: ${{ secrets.ORG_DIRECTORY_APP_KEY }}
+          owner: Pick-Your-AI
+      - name: Install renderer
+        run: npm install --global @mermaid-js/mermaid-cli@12.0.0
+      - name: Collect, validate, render and propose approved artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PYA_READ_TOKEN: ${{ steps.read-token.outputs.token }}
+          PYA_STATE: ${{ runner.temp }}/organization-private
+        run: python automation/publish_organization.py
+      - name: Record failure separately from last good publication
+        if: failure()
+        run: |
+          echo '## Organization refresh failed' >> "$GITHUB_STEP_SUMMARY"
+          echo 'The last merged publication remains available. Check its observation timestamp and this run before relying on it.' >> "$GITHUB_STEP_SUMMARY"
+          echo 'No private API responses or snapshots are uploaded.' >> "$GITHUB_STEP_SUMMARY"

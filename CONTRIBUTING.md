@@ -79,3 +79,5 @@ The following rulesets describe the established control pattern; they are not a 
 | Review required: default branch | One approval, and approval of the most recent push, before merging into `main`. Only organization admins can bypass it. |
 
 `pick-your-ai-website` and `pick-your-ai-research` also keep their earlier `main` rulesets, which require a pull request and block deletion and force pushes. `pick-your-ai-website` also requires the `ci-required` check.
+
+See [current organization operation and mapping](docs/ORGANIZATION.md) for the shared directory, refresh status, unresolved responsibility and proposed mapping changes. Published artifact observations and latest refresh checks are separate timestamps.

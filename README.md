@@ -36,3 +36,5 @@ Maintainer-only follow-ups, outside the files in this repository:
 - Review the organization website (`https://pickyour.ai`) and description in organization settings. Keep the preview and synthetic-data qualifications in any description.
 
 No avatar, social preview, repository metadata or organization setting is changed by committing these files.
+
+See [current organization operation and mapping](docs/ORGANIZATION.md) for the shared directory, refresh status, unresolved responsibility and proposed mapping changes. Published artifact observations and latest refresh checks are separate timestamps.
