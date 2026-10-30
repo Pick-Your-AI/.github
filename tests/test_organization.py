@@ -1,6 +1,8 @@
 """Synthetic organization fixtures; none represents actual people or policy."""
 import copy
 import json
+import subprocess
+import sys
 from pathlib import Path
 import tempfile
 import unittest
@@ -34,6 +36,13 @@ def fake_exporter(path, sources):
 
 
 class OrganizationTests(unittest.TestCase):
+    def test_transport_decodes_real_utf8_pipe_on_windows(self):
+        raw = json.dumps({'name': 'Project — café'}, ensure_ascii=False).encode('utf-8')
+        def runner(args, **kwargs):
+            self.assertEqual(kwargs['encoding'], 'utf-8')
+            return subprocess.run([sys.executable, '-c', f'import sys; sys.stdout.buffer.write(bytes.fromhex("{raw.hex()}"))'], **kwargs)
+        self.assertEqual(org.router.GitHub(runner=runner).get('orgs/Example')['name'], 'Project — café')
+
     def test_many_to_many_and_relationship_types(self):
         p, m, model = fixture()
         public = org.public_model(model, p, m)
