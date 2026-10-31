@@ -1,0 +1,813 @@
+{
+  "owner_fallback": {
+    "decision_refs": [
+      "https://github.com/Pick-Your-AI/.github/issues/17"
+    ],
+    "login": "CompleteDotTech",
+    "id": 5861166
+  },
+  "repositories": [
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17"
+          ],
+          "state": "exception",
+          "team_ids": []
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17"
+          ],
+          "state": "exception",
+          "team_ids": []
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17"
+          ],
+          "state": "exception",
+          "team_ids": []
+        }
+      ],
+      "anchor_team_id": null,
+      "full_name": "Pick-Your-AI/.github",
+      "exceptions": [
+        {
+          "reason": "Organization governance remains owner-controlled. The separately provisioned Write grant does not delegate policy authority.",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/issues/16"
+          ],
+          "code": "owner_controlled"
+        }
+      ],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [],
+        "mode": "none",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1422014674
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166812
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166812
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20423992
+          ]
+        }
+      ],
+      "anchor_team_id": 20166812,
+      "full_name": "Pick-Your-AI/pick-your-ai-android",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20182744,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1422897313
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166920
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166920
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20424010
+          ]
+        }
+      ],
+      "anchor_team_id": 20166920,
+      "full_name": "Pick-Your-AI/pick-your-ai-apple",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20182744,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1422897390
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20398335
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421771
+          ]
+        }
+      ],
+      "anchor_team_id": 20398335,
+      "full_name": "Pick-Your-AI/pick-your-ai-applications",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1430403712
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20398347
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421773
+          ]
+        }
+      ],
+      "anchor_team_id": 20398347,
+      "full_name": "Pick-Your-AI/pick-your-ai-catalog-pipeline",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1430404474
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421513
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421513
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421514
+          ]
+        }
+      ],
+      "anchor_team_id": 20421513,
+      "full_name": "Pick-Your-AI/pick-your-ai-cloud-agents",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1439072266
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20398330
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421774
+          ]
+        }
+      ],
+      "anchor_team_id": 20398330,
+      "full_name": "Pick-Your-AI/pick-your-ai-datasets",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1431120964
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20422276
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20422276
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20422282
+          ]
+        }
+      ],
+      "anchor_team_id": 20422276,
+      "full_name": "Pick-Your-AI/pick-your-ai-education",
+      "exceptions": [
+        {
+          "reason": "Empty repository; owner bootstrap is required before entrypoint publication.",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/16"
+          ],
+          "code": "unbootstrapped"
+        }
+      ],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1439194215
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20167030
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20167030
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20422096
+          ]
+        }
+      ],
+      "anchor_team_id": 20167030,
+      "full_name": "Pick-Your-AI/pick-your-ai-leaderboard",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20169020,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1422874501
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20184157
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20184157
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20398066
+          ]
+        }
+      ],
+      "anchor_team_id": 20184157,
+      "full_name": "Pick-Your-AI/pick-your-ai-market",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1437739257
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20398339
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421770
+          ]
+        }
+      ],
+      "anchor_team_id": 20398339,
+      "full_name": "Pick-Your-AI/pick-your-ai-papers",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1430404173
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20184179
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20421768
+          ]
+        }
+      ],
+      "anchor_team_id": 20184179,
+      "full_name": "Pick-Your-AI/pick-your-ai-research",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1421934086
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20184167
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20198473
+          ]
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20284775
+          ]
+        }
+      ],
+      "anchor_team_id": 20184167,
+      "full_name": "Pick-Your-AI/pick-your-ai-sustainability",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20136531,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1424960984
+    },
+    {
+      "management_state": "unresolved",
+      "management_decision_refs": [],
+      "roles": [
+        {
+          "level": "repository_team",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/issues/17",
+            "https://github.com/Pick-Your-AI/.github/pull/22"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166984
+          ]
+        },
+        {
+          "level": "repository_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20166984
+          ],
+          "member_selector": "team_managers"
+        },
+        {
+          "level": "repository_lead_maintainer",
+          "decision_refs": [
+            "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+          ],
+          "state": "accepted",
+          "team_ids": [
+            20423968
+          ]
+        }
+      ],
+      "anchor_team_id": 20166984,
+      "full_name": "Pick-Your-AI/pick-your-ai-website",
+      "exceptions": [],
+      "public": true,
+      "managed_by_team_ids": [],
+      "expected_grants": null,
+      "path_overrides": [],
+      "parent_chain": {
+        "expected_team_ids": [
+          20169020,
+          20182720
+        ],
+        "mode": "live_ancestors",
+        "decision_refs": [
+          "https://github.com/Pick-Your-AI/.github/issues/17"
+        ]
+      },
+      "id": 1422238606
+    }
+  ],
+  "organization": {
+    "id": 343423069,
+    "login": "Pick-Your-AI"
+  },
+  "freshness": {
+    "max_age_seconds": null,
+    "proposed_max_age_seconds": 86400
+  },
+  "schema_version": 1,
+  "coordination_roles": [
+    {
+      "team_id": 20424197,
+      "state": "pending_acceptance",
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/16"
+      ],
+      "name": "Review Leads"
+    }
+  ]
+}

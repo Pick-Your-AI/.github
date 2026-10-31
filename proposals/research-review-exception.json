@@ -1,0 +1,99 @@
+{
+  "status": "proposal_only",
+  "owner_scope": "All changes in the six research-family repositories",
+  "source": "https://github.com/Pick-Your-AI/.github/issues/14",
+  "dependency": "Approve issue #16 per-repository merge, branch and tag capabilities first",
+  "enforcement_changed": false,
+  "operations": [
+    {
+      "repository": "pick-your-ai-research",
+      "ruleset_id": 25362696,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    },
+    {
+      "repository": "pick-your-ai-sustainability",
+      "ruleset_id": 25731107,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    },
+    {
+      "repository": "pick-your-ai-applications",
+      "ruleset_id": 25725543,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    },
+    {
+      "repository": "pick-your-ai-papers",
+      "ruleset_id": 25725691,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    },
+    {
+      "repository": "pick-your-ai-catalog-pipeline",
+      "ruleset_id": 25725657,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    },
+    {
+      "repository": "pick-your-ai-datasets",
+      "ruleset_id": 25727199,
+      "ruleset_name": "Review required: default branch",
+      "expected_before": {
+        "required_approving_review_count": 1,
+        "require_last_push_approval": true
+      },
+      "proposed_after": {
+        "required_approving_review_count": 0,
+        "require_last_push_approval": false
+      },
+      "preserve": "All other rules, conditions, bypass actors, required checks and protections",
+      "authorization": "NOT AUTHORIZED FOR APPLICATION"
+    }
+  ]
+}
