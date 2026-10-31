@@ -1,6 +1,6 @@
 from pathlib import Path
 import xml.etree.ElementTree as E
-import json,subprocess,concurrent.futures,os,shutil,tempfile
+import json,subprocess,concurrent.futures,os,shutil,tempfile,zipfile
 from datetime import datetime
 OUT=Path(__file__).parent
 NS='http://www.w3.org/2000/svg';E.register_namespace('',NS);E.register_namespace('xhtml','http://www.w3.org/1999/xhtml')
@@ -46,6 +46,8 @@ def frame(name):
 def render(name):
  env=dict(os.environ,PUPPETEER_SKIP_DOWNLOAD='true')
  args=[shutil.which('npm.cmd') or shutil.which('npm') or 'npm','exec','--yes','--package=@mermaid-js/mermaid-cli@12.0.0','--','mmdc','-i',name+'.mmd','-o',name+'.raw.svg','-c','mermaid-config.json','-p',os.environ['CHART_PUPPETEER_CONFIG'],'-b','transparent']
+ if os.environ.get('MERMAID_CLI_PATH'):
+  args=[shutil.which('node') or 'node',os.environ['MERMAID_CLI_PATH']]+args[6:]
  p=subprocess.run(args,cwd=OUT,env=env,capture_output=True,text=True,encoding='utf-8')
  if p.returncode:raise RuntimeError(p.stdout+p.stderr)
  raw=E.parse(OUT/(name+'.raw.svg')).getroot()
@@ -64,4 +66,8 @@ if __name__=='__main__':
   (OUT/'render-metadata.json').write_text(json.dumps(items,indent=2)+'\n',newline='\n')
   p=subprocess.run(['node',str(OUT/'export_png.cjs')],cwd=OUT)
  if p.returncode:raise SystemExit(p.returncode)
- print('Rendered all current Mermaid charts to SVG and high-definition PNG.')
+ archive_files={'README.md','.gitignore','team-snapshot.json','chart-catalog.json','manifest.json','mermaid-config.json','render-metadata.json','build_sources.py','render_charts.py','export_png.cjs','validate.py'}
+ archive_files.update(name+suffix for name in META for suffix in ('.mmd','.svg','.png'))
+ with zipfile.ZipFile(OUT/'organization-charts.zip','w',compression=zipfile.ZIP_DEFLATED) as archive:
+  for filename in sorted(archive_files):archive.write(OUT/filename,arcname=filename)
+ print('Rendered public team charts and rebuilt the public archive.')

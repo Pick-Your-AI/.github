@@ -2,127 +2,127 @@
   {
     "name": "organization-complete",
     "svg_width": 14197.0830078125,
-    "svg_height": 2638,
+    "svg_height": 1388,
     "teams": 91,
     "png_width": 16000,
-    "png_height": 2974,
+    "png_height": 1565,
     "png_file": "organization-complete.png"
   },
   {
     "name": "github-team-hierarchy",
     "svg_width": 17801,
-    "svg_height": 1967,
+    "svg_height": 1092,
     "teams": 91,
     "png_width": 16000,
-    "png_height": 1768,
+    "png_height": 982,
     "png_file": "github-team-hierarchy.png"
   },
   {
     "name": "area-ai-builder",
     "svg_width": 1538,
-    "svg_height": 795,
+    "svg_height": 600,
     "teams": 7,
     "png_width": 5000,
-    "png_height": 2585,
+    "png_height": 1951,
     "png_file": "area-ai-builder.png"
   },
   {
     "name": "area-ai-papers-index",
     "svg_width": 1248,
-    "svg_height": 765,
+    "svg_height": 624,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3065,
+    "png_height": 2500,
     "png_file": "area-ai-papers-index.png"
   },
   {
     "name": "area-ai-tools-platforms",
     "svg_width": 1248,
-    "svg_height": 852,
+    "svg_height": 624,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3414,
+    "png_height": 2500,
     "png_file": "area-ai-tools-platforms.png"
   },
   {
     "name": "area-catalog-pipeline",
     "svg_width": 1248,
-    "svg_height": 765,
+    "svg_height": 624,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3065,
+    "png_height": 2500,
     "png_file": "area-catalog-pipeline.png"
   },
   {
     "name": "area-cloud-agents",
     "svg_width": 1538,
-    "svg_height": 741,
+    "svg_height": 600,
     "teams": 7,
     "png_width": 5000,
-    "png_height": 2409,
+    "png_height": 1951,
     "png_file": "area-cloud-agents.png"
   },
   {
     "name": "area-datasets-benchmarks",
     "svg_width": 1248,
-    "svg_height": 765,
+    "svg_height": 624,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3065,
+    "png_height": 2500,
     "png_file": "area-datasets-benchmarks.png"
   },
   {
     "name": "area-funding-grants-sustainability",
     "svg_width": 1248,
-    "svg_height": 813,
+    "svg_height": 672,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3258,
+    "png_height": 2693,
     "png_file": "area-funding-grants-sustainability.png"
   },
   {
     "name": "area-market-competitive-intelligence",
     "svg_width": 1248,
-    "svg_height": 849,
+    "svg_height": 672,
     "teams": 6,
     "png_width": 5000,
-    "png_height": 3402,
+    "png_height": 2693,
     "png_file": "area-market-competitive-intelligence.png"
   },
   {
     "name": "area-hardware-infrastructure",
     "svg_width": 1180,
-    "svg_height": 937,
+    "svg_height": 556,
     "teams": 5,
     "png_width": 5000,
-    "png_height": 3971,
+    "png_height": 2356,
     "png_file": "area-hardware-infrastructure.png"
   },
   {
     "name": "area-websites",
     "svg_width": 1828,
-    "svg_height": 1207,
+    "svg_height": 828,
     "teams": 12,
     "png_width": 5000,
-    "png_height": 3302,
+    "png_height": 2265,
     "png_file": "area-websites.png"
   },
   {
     "name": "area-mobile-apps",
     "svg_width": 1828,
-    "svg_height": 1099,
+    "svg_height": 780,
     "teams": 12,
     "png_width": 5000,
-    "png_height": 3007,
+    "png_height": 2134,
     "png_file": "area-mobile-apps.png"
   },
   {
     "name": "area-education",
     "svg_width": 1538,
-    "svg_height": 849,
+    "svg_height": 600,
     "teams": 7,
     "png_width": 5000,
-    "png_height": 2761,
+    "png_height": 1951,
     "png_file": "area-education.png"
   }
 ]

@@ -2,85 +2,85 @@
   {
     "name": "organization-complete",
     "title": "The complete organization.",
-    "subtitle": "91 teams \u00b7 26 active people \u00b7 3 pending invitees",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "91 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "github-team-hierarchy",
     "title": "The exact GitHub team hierarchy.",
-    "subtitle": "91 teams \u00b7 26 active people \u00b7 3 pending invitees",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "91 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-ai-builder",
     "title": "AI Builder.",
-    "subtitle": "7 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "7 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-ai-papers-index",
     "title": "AI Papers & Index.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-ai-tools-platforms",
     "title": "AI Tools & Platforms.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-catalog-pipeline",
     "title": "Catalog Pipeline.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-cloud-agents",
     "title": "Cloud Agents.",
-    "subtitle": "7 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "7 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-datasets-benchmarks",
     "title": "Datasets & Benchmarks.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-funding-grants-sustainability",
     "title": "Funding, Grants & Sustainability.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-market-competitive-intelligence",
     "title": "Market & Competitive Intelligence.",
-    "subtitle": "6 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "6 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-hardware-infrastructure",
     "title": "Hardware & Infrastructure.",
-    "subtitle": "5 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "5 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-websites",
     "title": "Websites.",
-    "subtitle": "12 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "12 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-mobile-apps",
     "title": "Mobile Apps.",
-    "subtitle": "12 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "12 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   },
   {
     "name": "area-education",
     "title": "Education.",
-    "subtitle": "7 teams \u00b7 every drilldown included \u00b7 active and pending memberships shown",
-    "footer": "\u2605 ACTIVE TEAM MANAGER \u00b7 \u2606 INVITED TEAM MANAGER \u00b7 pending is not active"
+    "subtitle": "7 teams \u00b7 historical team structure",
+    "footer": "TEAM STRUCTURE ONLY \u00b7 no personal data \u00b7 not an access policy"
   }
 ]

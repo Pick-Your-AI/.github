@@ -1,7 +1,8 @@
 from pathlib import Path
 import json,html,re
+from validate import validate_snapshot
 out=Path(__file__).parent
-s=json.loads((out/'team-snapshot.json').read_text());teams={t['slug']:t for t in s['teams']};names={t['name']:t['slug'] for t in s['teams']}
+s=json.loads((out/'team-snapshot.json').read_text(encoding='utf-8'));validate_snapshot(s);teams={t['slug']:t for t in s['teams']};names={t['name']:t['slug'] for t in s['teams']}
 ids={slug:'team_'+str(t['id']) for slug,t in teams.items()}
 actual={slug:t['parent'] for slug,t in teams.items()};parents=dict(actual)
 for slug,t in teams.items():
@@ -45,21 +46,13 @@ def style(slug):
  return a+'Lead' if teams[slug]['name'].startswith('Lead Maintainers - ') else a
 
 def node(slug):
- t=teams[slug];direct=sorted([m for m in t['members'] if not m['inherited']],key=lambda m:(m['role']!='maintainer',m['login'].lower()))
- n=t['name'];width=340 if len(direct)>8 else 218
+ t=teams[slug];n=t['name']
  if n.startswith('Lead Maintainers - '):heading="<span style='font-size:10px;letter-spacing:1px'>LEAD MAINTAINERS</span><br/><b>"+html.escape(n.split(' - ',1)[1])+'</b>'
  elif ' - ' in n:heading="<span style='font-size:10px'>"+html.escape(n.split(' - ',1)[0])+"</span><br/><b>"+html.escape(n.split(' - ',1)[1])+'</b>'
  else:heading='<b>'+html.escape(n)+'</b>'
- def roster(ms):return '<br/>'.join(('★ ' if m['role']=='maintainer' else '')+html.escape(m['login']) for m in ms)
- if len(direct)>8:
-  half=(len(direct)+1)//2;body="<div style='display:flex;gap:10px'><div style='width:50%'>"+roster(direct[:half])+"</div><div style='width:50%'>"+roster(direct[half:])+"</div></div>"
- else:body=roster(direct) or "<span style='font-style:italic'>No direct members</span>"
- inherited=sum(m['inherited'] for m in t['members']);tail=("<br/><span style='font-size:10px'>+ "+str(inherited)+' through child teams</span>') if inherited else ''
- if t['pending']:
-  pending='<br/>'.join(('☆ ' if m['role']=='maintainer' else '○ ')+html.escape(m['login']) for m in t['pending'])
-  tail+="<div style='border-top:1px dashed currentColor;margin-top:8px;padding-top:6px;font-size:12px;text-align:left'><span style='font-size:10px'>PENDING INVITATION</span><br/>"+pending+'</div>'
- label=f"<div style='width:{width}px;text-align:center;line-height:1.5'>{heading}<br/><span style='font-size:10px;letter-spacing:0.6px'>DIRECT MEMBERS</span><div style='font-size:12px;text-align:left;margin-top:5px'>{body}</div>{tail}</div>"
+ label=f"<div style='width:218px;text-align:center;line-height:1.5'>{heading}</div>"
  return ' '+ids[slug]+'["'+label+'"]:::'+style(slug)
+
 
 def descendants(root):
  found={root}
@@ -70,17 +63,16 @@ def descendants(root):
 catalog=[];manifest=[]
 def write(filename,label,slugs,parentmap,owner=False,full=False):
  slugs=sorted(slugs);edges=[(parentmap[x],x) for x in slugs if parentmap[x] in slugs]
- lines=['%% Live GitHub snapshot '+s['captured_at_utc'],'%% Includes all direct members and pending invitees.','flowchart TB']
- if owner:lines+=[' owner["<b>Pick Your AI</b><br/>Organization owner<br/>'+html.escape(' · '.join(s['owners']))+'"]:::owner']
+ lines=['%% Historical team hierarchy captured '+s['captured_at_utc'],'%% Public team structure only; personal data excluded.','flowchart TB']
+ if owner:lines+=[' owner["<b>Pick Your AI</b><br/>Organization"]:::owner']
  lines += [node(slug) for slug in slugs]
  if owner:
   lines+=[' owner --> '+ids[slug] for slug in slugs if parentmap[slug] is None]
  lines += [' '+ids[a]+' --> '+ids[b] for a,b in edges];lines += [classes]
  lines += [' click '+ids[slug]+' "'+teams[slug]['html_url']+'" "'+html.escape(teams[slug]['name'])+'" _blank' for slug in slugs]
  (out/(filename+'.mmd')).write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
- subtitle=f"{len(slugs)} teams · every drilldown included · active and pending memberships shown"
- if full:subtitle=f"{len(slugs)} teams · {len({m['login'] for t in teams.values() for m in t['members']})} active people · {len(s['pending_invitations'])} pending invitees"
- catalog.append({'name':filename,'title':label,'subtitle':subtitle,'footer':'★ ACTIVE TEAM MANAGER · ☆ INVITED TEAM MANAGER · pending is not active'})
+ subtitle=f"{len(slugs)} teams · historical team structure"
+ catalog.append({'name':filename,'title':label,'subtitle':subtitle,'footer':'TEAM STRUCTURE ONLY · no personal data · not an access policy'})
  manifest.append({'name':filename,'teams':slugs,'edges':edges})
 write('organization-complete','The complete organization.',list(teams),parents,True,True)
 write('github-team-hierarchy','The exact GitHub team hierarchy.',list(teams),actual,True,True)
