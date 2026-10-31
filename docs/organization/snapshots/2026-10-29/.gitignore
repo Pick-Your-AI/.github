@@ -1,0 +1,4 @@
+*.raw.svg
+*.preview.png
+__pycache__/
+organization-charts.zip

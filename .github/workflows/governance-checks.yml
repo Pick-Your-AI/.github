@@ -8,6 +8,7 @@ on:
       - 'automation/**'
       - 'proposals/**'
       - 'docs/directory/**'
+      - 'docs/organization/**'
       - '.github/workflows/governance-checks.yml'
   workflow_dispatch:
 
@@ -27,6 +28,11 @@ jobs:
       - run: python -m pip install -r tests/requirements.txt
       - run: python -m unittest discover -s tests -v
       - run: python governance/router.py validate-policy --policy governance/escalation-policy.json
+      - name: Regenerate and validate historical public charts
+        run: |
+          python -X utf8 docs/organization/snapshots/2026-10-29/build_sources.py
+          python -X utf8 docs/organization/snapshots/2026-10-29/validate.py
+          git diff --exit-code -- docs/organization/snapshots/2026-10-29
       - name: Check committed patch whitespace
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha }}

@@ -1,0 +1,25 @@
+{
+  "maxTextSize": 300000,
+  "maxEdges": 1000,
+  "theme": "base",
+  "securityLevel": "loose",
+  "fontFamily": "Segoe UI, Arial, sans-serif",
+  "themeVariables": {
+    "fontFamily": "Segoe UI, Arial, sans-serif",
+    "fontSize": "16px",
+    "lineColor": "#8fa5b6",
+    "primaryColor": "#f8fafc",
+    "primaryTextColor": "#163042",
+    "primaryBorderColor": "#cbd5e1",
+    "edgeLabelBackground": "#f8fafc"
+  },
+  "flowchart": {
+    "htmlLabels": true,
+    "curve": "basis",
+    "nodeSpacing": 22,
+    "rankSpacing": 46,
+    "padding": 16,
+    "useMaxWidth": false
+  },
+  "themeCSS": ".node rect {rx:13px;ry:13px;} .nodeLabel p {margin:0;line-height:1.5;} .label foreignObject {overflow:visible;}"
+}
