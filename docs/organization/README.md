@@ -6,7 +6,6 @@ The [2026-10-29 snapshot](snapshots/2026-10-29/) contains **91 teams**, captured
 
 - [Complete leadership chart — PNG](snapshots/2026-10-29/organization-complete.png) · [SVG](snapshots/2026-10-29/organization-complete.svg) · [Mermaid](snapshots/2026-10-29/organization-complete.mmd)
 - [Actual GitHub team hierarchy — PNG](snapshots/2026-10-29/github-team-hierarchy.png) · [SVG](snapshots/2026-10-29/github-team-hierarchy.svg) · [Mermaid](snapshots/2026-10-29/github-team-hierarchy.mmd)
-- [Download all charts and sources](snapshots/2026-10-29/organization-charts.zip)
 
 The complete charts are 16,000 pixels wide. Use a vector export or an area chart to inspect team structure.
 
@@ -43,9 +42,9 @@ python -X utf8 render_charts.py
 python -X utf8 validate.py
 ```
 
-Rendering requires Python 3.10+, Node.js/npm and Chrome or Chromium. Set `CHROME_PATH` if browser discovery does not find your installation. The renderer uses Mermaid CLI **12.0.0**, writes a temporary browser configuration, and does not change GitHub. The frozen JSON input contains only team IDs, names, slugs, links, parent relationships and the capture timestamp. It excludes personal and invitation data. Set `MERMAID_CLI_PATH` to an existing Mermaid CLI 12.0.0 `src/cli.js` when npm executable resolution is unavailable. Rendering also rebuilds the ZIP from an explicit list of public artifacts; previews and temporary files are excluded. Rendering may vary with installed fonts.
+Rendering requires Python 3.10+, Node.js/npm and Chrome or Chromium. Set `CHROME_PATH` if browser discovery does not find your installation. The renderer uses Mermaid CLI **12.0.0**, writes a temporary browser configuration, and does not change GitHub. The frozen JSON input contains only team IDs, names, slugs, links, parent relationships and the capture timestamp. It excludes personal and invitation data. Set `MERMAID_CLI_PATH` to an existing Mermaid CLI 12.0.0 `src/cli.js` when npm executable resolution is unavailable. Rendering creates a local, Git-ignored ZIP from an explicit list of public artifacts; the archive is not committed. Previews and temporary files are excluded. Rendering may vary with installed fonts.
 
-The validator checks complete team coverage, stable IDs, actual hierarchy edges, the public field allowlist, team labels, team links, and PNG dimensions. Local validation does not establish any person's acceptance of an operational assignment. Fresh-VM validation was not run; the published artifacts were rendered and inspected locally on Windows.
+CI regenerates the Mermaid sources and metadata, checks for drift, and runs the validator on every chart change. The validator checks complete team coverage, stable IDs, actual hierarchy edges, the public field allowlist, team labels, team links, and PNG dimensions. Local validation does not establish any person's acceptance of an operational assignment. Fresh-VM validation was not run; the published artifacts were rendered and inspected locally on Windows.
 
 ## Refresh and prior work
 

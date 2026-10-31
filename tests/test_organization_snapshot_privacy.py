@@ -4,7 +4,10 @@ import importlib.util
 import json
 from pathlib import Path
 import unittest
-import zipfile
+import shutil
+import subprocess
+import sys
+import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / "docs/organization/snapshots/2026-10-29"
@@ -41,20 +44,19 @@ class PublicSnapshotTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validator.validate_snapshot(candidate)
 
-    def test_archive_is_complete_and_matches_public_files(self):
-        manifest = json.loads((SNAPSHOT / "manifest.json").read_text(encoding="utf-8"))
-        expected = {"README.md", ".gitignore", "team-snapshot.json", "chart-catalog.json",
-                    "manifest.json", "mermaid-config.json", "render-metadata.json",
-                    "build_sources.py", "render_charts.py", "export_png.cjs", "validate.py"}
-        expected.update(chart["name"] + suffix for chart in manifest["charts"]
-                        for suffix in (".mmd", ".svg", ".png"))
-        with zipfile.ZipFile(SNAPSHOT / "organization-charts.zip") as archive:
-            self.assertEqual(set(archive.namelist()), expected)
-            self.assertEqual(len(archive.namelist()), len(expected))
+    def test_generated_public_sources_are_reproducible(self):
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory)
+            for name in ("build_sources.py", "validate.py", "team-snapshot.json"):
+                shutil.copyfile(SNAPSHOT / name, target / name)
+            subprocess.run([sys.executable, "-X", "utf8", str(target / "build_sources.py")],
+                           check=True, capture_output=True)
+            expected = {"manifest.json", "chart-catalog.json", "mermaid-config.json"}
+            expected.update(path.name for path in SNAPSHOT.glob("*.mmd"))
             for name in expected:
                 with self.subTest(file=name):
-                    self.assertEqual(archive.read(name), (SNAPSHOT / name).read_bytes())
-            validator.validate_snapshot(json.loads(archive.read("team-snapshot.json")))
+                    self.assertEqual((target / name).read_bytes(), (SNAPSHOT / name).read_bytes())
+
 
 if __name__ == "__main__":
     unittest.main()
