@@ -1,0 +1,642 @@
+{
+  "captured_at_utc": "2026-10-30T02:33:56.069534+00:00",
+  "teams": [
+    {
+      "id": 20184179,
+      "name": "AI Builder",
+      "slug": "ai-builder",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder",
+      "parent": "research"
+    },
+    {
+      "id": 20423826,
+      "name": "AI Builder - Compatibility & Cost",
+      "slug": "ai-builder-compatibility-cost",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-compatibility-cost",
+      "parent": "ai-builder"
+    },
+    {
+      "id": 20423823,
+      "name": "AI Builder - Knowledge & Retrieval",
+      "slug": "ai-builder-knowledge-retrieval",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-knowledge-retrieval",
+      "parent": "ai-builder"
+    },
+    {
+      "id": 20423822,
+      "name": "AI Builder - Models & Providers",
+      "slug": "ai-builder-models-providers",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-models-providers",
+      "parent": "ai-builder"
+    },
+    {
+      "id": 20423825,
+      "name": "AI Builder - Training & Fine-Tuning",
+      "slug": "ai-builder-training-fine-tuning",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-training-fine-tuning",
+      "parent": "ai-builder"
+    },
+    {
+      "id": 20423819,
+      "name": "AI Builder - Workloads & Architecture",
+      "slug": "ai-builder-workloads-architecture",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder-workloads-architecture",
+      "parent": "ai-builder"
+    },
+    {
+      "id": 20398339,
+      "name": "AI Papers & Index",
+      "slug": "ai-papers-index",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index",
+      "parent": "research"
+    },
+    {
+      "id": 20423773,
+      "name": "AI Papers & Index - Evidence & Reproducibility",
+      "slug": "ai-papers-index-evidence-reproducibility",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-evidence-reproducibility",
+      "parent": "ai-papers-index"
+    },
+    {
+      "id": 20423774,
+      "name": "AI Papers & Index - Publication Rights & Editorial Review",
+      "slug": "ai-papers-index-publication-rights-editorial-review",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-publication-rights-editorial-review",
+      "parent": "ai-papers-index"
+    },
+    {
+      "id": 20423768,
+      "name": "AI Papers & Index - Scholarly Discovery & Indexing",
+      "slug": "ai-papers-index-scholarly-discovery-indexing",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-scholarly-discovery-indexing",
+      "parent": "ai-papers-index"
+    },
+    {
+      "id": 20423770,
+      "name": "AI Papers & Index - Taxonomy & Knowledge Graph",
+      "slug": "ai-papers-index-taxonomy-knowledge-graph",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index-taxonomy-knowledge-graph",
+      "parent": "ai-papers-index"
+    },
+    {
+      "id": 20398335,
+      "name": "AI Tools & Platforms",
+      "slug": "ai-tools-platforms",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-tools-platforms",
+      "parent": "research"
+    },
+    {
+      "id": 20423761,
+      "name": "AI Tools & Platforms - Developer & Data Tools",
+      "slug": "ai-tools-platforms-developer-data-tools",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-tools-platforms-developer-data-tools",
+      "parent": "ai-tools-platforms"
+    },
+    {
+      "id": 20423765,
+      "name": "AI Tools & Platforms - Enterprise & Industry Applications",
+      "slug": "ai-tools-platforms-enterprise-industry-applications",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-tools-platforms-enterprise-industry-applications",
+      "parent": "ai-tools-platforms"
+    },
+    {
+      "id": 20423759,
+      "name": "AI Tools & Platforms - Personal Productivity & Creative Tools",
+      "slug": "ai-tools-platforms-personal-productivity-creative-tools",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-tools-platforms-personal-productivity-creative-tools",
+      "parent": "ai-tools-platforms"
+    },
+    {
+      "id": 20423767,
+      "name": "AI Tools & Platforms - Product Verification & Comparisons",
+      "slug": "ai-tools-platforms-product-verification-comparisons",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/ai-tools-platforms-product-verification-comparisons",
+      "parent": "ai-tools-platforms"
+    },
+    {
+      "id": 20166812,
+      "name": "Android",
+      "slug": "android",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/android",
+      "parent": "mobile-apps"
+    },
+    {
+      "id": 20423806,
+      "name": "Android - Backend & Integrations",
+      "slug": "android-backend-integrations",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/android-backend-integrations",
+      "parent": "android"
+    },
+    {
+      "id": 20423808,
+      "name": "Android - Platform & Quality",
+      "slug": "android-platform-quality",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/android-platform-quality",
+      "parent": "android"
+    },
+    {
+      "id": 20423804,
+      "name": "Android - UI/UX",
+      "slug": "android-ui-ux",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/android-ui-ux",
+      "parent": "android"
+    },
+    {
+      "id": 20166920,
+      "name": "Apple/iOS",
+      "slug": "apple-ios",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios",
+      "parent": "mobile-apps"
+    },
+    {
+      "id": 20423801,
+      "name": "Apple/iOS - Backend & Integrations",
+      "slug": "apple-ios-backend-integrations",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-backend-integrations",
+      "parent": "apple-ios"
+    },
+    {
+      "id": 20423803,
+      "name": "Apple/iOS - Platform & Quality",
+      "slug": "apple-ios-platform-quality",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-platform-quality",
+      "parent": "apple-ios"
+    },
+    {
+      "id": 20423800,
+      "name": "Apple/iOS - UI/UX",
+      "slug": "apple-ios-ui-ux",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios-ui-ux",
+      "parent": "apple-ios"
+    },
+    {
+      "id": 20398347,
+      "name": "Catalog Pipeline",
+      "slug": "catalog-pipeline",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline",
+      "parent": "research"
+    },
+    {
+      "id": 20423781,
+      "name": "Catalog Pipeline - Identity & Normalization",
+      "slug": "catalog-pipeline-identity-normalization",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-identity-normalization",
+      "parent": "catalog-pipeline"
+    },
+    {
+      "id": 20423784,
+      "name": "Catalog Pipeline - Publishing & Consumer Integration",
+      "slug": "catalog-pipeline-publishing-consumer-integration",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-publishing-consumer-integration",
+      "parent": "catalog-pipeline"
+    },
+    {
+      "id": 20423777,
+      "name": "Catalog Pipeline - Sources & Connectors",
+      "slug": "catalog-pipeline-sources-connectors",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-sources-connectors",
+      "parent": "catalog-pipeline"
+    },
+    {
+      "id": 20423782,
+      "name": "Catalog Pipeline - Validation & Freshness",
+      "slug": "catalog-pipeline-validation-freshness",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline-validation-freshness",
+      "parent": "catalog-pipeline"
+    },
+    {
+      "id": 20421513,
+      "name": "Cloud Agents",
+      "slug": "cloud-agents",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents",
+      "parent": "research"
+    },
+    {
+      "id": 20423751,
+      "name": "Cloud Agents - Deployment & Observability",
+      "slug": "cloud-agents-deployment-observability",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-deployment-observability",
+      "parent": "cloud-agents"
+    },
+    {
+      "id": 20423744,
+      "name": "Cloud Agents - Provider Integrations",
+      "slug": "cloud-agents-provider-integrations",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-provider-integrations",
+      "parent": "cloud-agents"
+    },
+    {
+      "id": 20423746,
+      "name": "Cloud Agents - Runtime & Orchestration",
+      "slug": "cloud-agents-runtime-orchestration",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-runtime-orchestration",
+      "parent": "cloud-agents"
+    },
+    {
+      "id": 20423749,
+      "name": "Cloud Agents - Security & Evaluation",
+      "slug": "cloud-agents-security-evaluation",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-security-evaluation",
+      "parent": "cloud-agents"
+    },
+    {
+      "id": 20423747,
+      "name": "Cloud Agents - Tools, MCP & Memory",
+      "slug": "cloud-agents-tools-mcp-memory",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents-tools-mcp-memory",
+      "parent": "cloud-agents"
+    },
+    {
+      "id": 20423593,
+      "name": "Contributor Leaderboard - Backend & Metrics",
+      "slug": "contributor-leaderboard-backend-metrics",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-backend-metrics",
+      "parent": "contributor-leaderboard-website"
+    },
+    {
+      "id": 20423595,
+      "name": "Contributor Leaderboard - Platform & Integrity",
+      "slug": "contributor-leaderboard-platform-integrity",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-platform-integrity",
+      "parent": "contributor-leaderboard-website"
+    },
+    {
+      "id": 20423589,
+      "name": "Contributor Leaderboard - UI/UX",
+      "slug": "contributor-leaderboard-ui-ux",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-ui-ux",
+      "parent": "contributor-leaderboard-website"
+    },
+    {
+      "id": 20167030,
+      "name": "Contributor Leaderboard Website",
+      "slug": "contributor-leaderboard-website",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard-website",
+      "parent": "websites"
+    },
+    {
+      "id": 20398330,
+      "name": "Datasets & Benchmarks",
+      "slug": "datasets-benchmarks",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks",
+      "parent": "research"
+    },
+    {
+      "id": 20423758,
+      "name": "Datasets & Benchmarks - Benchmarks & Evaluation Integrity",
+      "slug": "datasets-benchmarks-benchmarks-evaluation-integrity",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-benchmarks-evaluation-integrity",
+      "parent": "datasets-benchmarks"
+    },
+    {
+      "id": 20423757,
+      "name": "Datasets & Benchmarks - Dataset Quality & Documentation",
+      "slug": "datasets-benchmarks-dataset-quality-documentation",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-dataset-quality-documentation",
+      "parent": "datasets-benchmarks"
+    },
+    {
+      "id": 20423752,
+      "name": "Datasets & Benchmarks - Discovery & Cataloging",
+      "slug": "datasets-benchmarks-discovery-cataloging",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-discovery-cataloging",
+      "parent": "datasets-benchmarks"
+    },
+    {
+      "id": 20423754,
+      "name": "Datasets & Benchmarks - Licensing & Provenance",
+      "slug": "datasets-benchmarks-licensing-provenance",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks-licensing-provenance",
+      "parent": "datasets-benchmarks"
+    },
+    {
+      "id": 20140728,
+      "name": "Early Contributors",
+      "slug": "early-contributors",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/early-contributors",
+      "parent": null
+    },
+    {
+      "id": 20422276,
+      "name": "Education",
+      "slug": "education",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education",
+      "parent": "organization-maintainers"
+    },
+    {
+      "id": 20423933,
+      "name": "Education - Curriculum & Learning Paths",
+      "slug": "education-curriculum-learning-paths",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education-curriculum-learning-paths",
+      "parent": "education"
+    },
+    {
+      "id": 20423950,
+      "name": "Education - Learner Support & Feedback",
+      "slug": "education-learner-support-feedback",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education-learner-support-feedback",
+      "parent": "education"
+    },
+    {
+      "id": 20423945,
+      "name": "Education - Learning Resources",
+      "slug": "education-learning-resources",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education-learning-resources",
+      "parent": "education"
+    },
+    {
+      "id": 20423936,
+      "name": "Education - Tutorials & Guides",
+      "slug": "education-tutorials-guides",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education-tutorials-guides",
+      "parent": "education"
+    },
+    {
+      "id": 20423941,
+      "name": "Education - Workshops & Training",
+      "slug": "education-workshops-training",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/education-workshops-training",
+      "parent": "education"
+    },
+    {
+      "id": 20184167,
+      "name": "Funding, Grants & Sustainability",
+      "slug": "funding-grants-sustainability",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability",
+      "parent": "research"
+    },
+    {
+      "id": 20423795,
+      "name": "Funding, Grants & Sustainability - Donated Compute & Services",
+      "slug": "funding-grants-sustainability-donated-compute-services",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-donated-compute-services",
+      "parent": "funding-grants-sustainability"
+    },
+    {
+      "id": 20423786,
+      "name": "Funding, Grants & Sustainability - Grants & Applications",
+      "slug": "funding-grants-sustainability-grants-applications",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-grants-applications",
+      "parent": "funding-grants-sustainability"
+    },
+    {
+      "id": 20423798,
+      "name": "Funding, Grants & Sustainability - Nonprofit & Financial Sustainability",
+      "slug": "funding-grants-sustainability-nonprofit-financial-sustainability",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-nonprofit-financial-sustainability",
+      "parent": "funding-grants-sustainability"
+    },
+    {
+      "id": 20423793,
+      "name": "Funding, Grants & Sustainability - Sponsorships & Partnerships",
+      "slug": "funding-grants-sustainability-sponsorships-partnerships",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability-sponsorships-partnerships",
+      "parent": "funding-grants-sustainability"
+    },
+    {
+      "id": 20422308,
+      "name": "GPU & Compute",
+      "slug": "gpu-compute",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/gpu-compute",
+      "parent": "hardware-infrastructure"
+    },
+    {
+      "id": 20422305,
+      "name": "Hardware & Infrastructure",
+      "slug": "hardware-infrastructure",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/hardware-infrastructure",
+      "parent": "research"
+    },
+    {
+      "id": 20422309,
+      "name": "Hosting & Storage",
+      "slug": "hosting-storage",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/hosting-storage",
+      "parent": "hardware-infrastructure"
+    },
+    {
+      "id": 20422310,
+      "name": "Inference Engines",
+      "slug": "inference-engines",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/inference-engines",
+      "parent": "hardware-infrastructure"
+    },
+    {
+      "id": 20421768,
+      "name": "Lead Maintainers - AI Builder",
+      "slug": "lead-maintainers-ai-builder",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder",
+      "parent": "research"
+    },
+    {
+      "id": 20421770,
+      "name": "Lead Maintainers - AI Papers & Index",
+      "slug": "lead-maintainers-ai-papers-index",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index",
+      "parent": "research"
+    },
+    {
+      "id": 20421771,
+      "name": "Lead Maintainers - AI Tools & Platforms",
+      "slug": "lead-maintainers-ai-tools-platforms",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-tools-platforms",
+      "parent": "research"
+    },
+    {
+      "id": 20423992,
+      "name": "Lead Maintainers - Android",
+      "slug": "lead-maintainers-android",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android",
+      "parent": "mobile-apps"
+    },
+    {
+      "id": 20424010,
+      "name": "Lead Maintainers - Apple/iOS",
+      "slug": "lead-maintainers-apple-ios",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios",
+      "parent": "mobile-apps"
+    },
+    {
+      "id": 20421773,
+      "name": "Lead Maintainers - Catalog Pipeline",
+      "slug": "lead-maintainers-catalog-pipeline",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline",
+      "parent": "research"
+    },
+    {
+      "id": 20421514,
+      "name": "Lead Maintainers - Cloud Agents",
+      "slug": "lead-maintainers-cloud-agents",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents",
+      "parent": "research"
+    },
+    {
+      "id": 20422096,
+      "name": "Lead Maintainers - Contributor Leaderboard Website",
+      "slug": "lead-maintainers-contributor-leaderboard-website",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard-website",
+      "parent": "websites"
+    },
+    {
+      "id": 20421774,
+      "name": "Lead Maintainers - Datasets & Benchmarks",
+      "slug": "lead-maintainers-datasets-benchmarks",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks",
+      "parent": "research"
+    },
+    {
+      "id": 20422282,
+      "name": "Lead Maintainers - Education",
+      "slug": "lead-maintainers-education",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education",
+      "parent": "organization-maintainers"
+    },
+    {
+      "id": 20284775,
+      "name": "Lead Maintainers - Funding, Grants & Sustainability",
+      "slug": "lead-maintainers-funding-grants-sustainability",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability",
+      "parent": "research"
+    },
+    {
+      "id": 20422306,
+      "name": "Lead Maintainers - Hardware & Infrastructure",
+      "slug": "lead-maintainers-hardware-infrastructure",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-hardware-infrastructure",
+      "parent": "research"
+    },
+    {
+      "id": 20423968,
+      "name": "Lead Maintainers - Main Website",
+      "slug": "lead-maintainers-main-website",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website",
+      "parent": "websites"
+    },
+    {
+      "id": 20398066,
+      "name": "Lead Maintainers - Market & Competitive Intelligence",
+      "slug": "lead-maintainers-market-competitive-intelligence",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence",
+      "parent": "research"
+    },
+    {
+      "id": 20191293,
+      "name": "Lead Maintainers - Mobile Apps",
+      "slug": "lead-maintainers-mobile-apps",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-mobile-apps",
+      "parent": "mobile-apps"
+    },
+    {
+      "id": 20191279,
+      "name": "Lead Maintainers - Research",
+      "slug": "lead-maintainers-research",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-research",
+      "parent": "research"
+    },
+    {
+      "id": 20172997,
+      "name": "Lead Maintainers - Websites",
+      "slug": "lead-maintainers-websites",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-websites",
+      "parent": "websites"
+    },
+    {
+      "id": 20166984,
+      "name": "Main Website",
+      "slug": "main-website",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/main-website",
+      "parent": "websites"
+    },
+    {
+      "id": 20423580,
+      "name": "Main Website - Backend & Integrations",
+      "slug": "main-website-backend-integrations",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-backend-integrations",
+      "parent": "main-website"
+    },
+    {
+      "id": 20423583,
+      "name": "Main Website - Platform & Quality",
+      "slug": "main-website-platform-quality",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-platform-quality",
+      "parent": "main-website"
+    },
+    {
+      "id": 20423578,
+      "name": "Main Website - UI/UX",
+      "slug": "main-website-ui-ux",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/main-website-ui-ux",
+      "parent": "main-website"
+    },
+    {
+      "id": 20184157,
+      "name": "Market & Competitive Intelligence",
+      "slug": "market-competitive-intelligence",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence",
+      "parent": "research"
+    },
+    {
+      "id": 20423809,
+      "name": "Market & Competitive Intelligence - Competitors & Positioning",
+      "slug": "market-competitive-intelligence-competitors-positioning",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-competitors-positioning",
+      "parent": "market-competitive-intelligence"
+    },
+    {
+      "id": 20423812,
+      "name": "Market & Competitive Intelligence - Customers & Demand",
+      "slug": "market-competitive-intelligence-customers-demand",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-customers-demand",
+      "parent": "market-competitive-intelligence"
+    },
+    {
+      "id": 20423813,
+      "name": "Market & Competitive Intelligence - Pricing & Business Models",
+      "slug": "market-competitive-intelligence-pricing-business-models",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-pricing-business-models",
+      "parent": "market-competitive-intelligence"
+    },
+    {
+      "id": 20423815,
+      "name": "Market & Competitive Intelligence - Product Strategy & Validation",
+      "slug": "market-competitive-intelligence-product-strategy-validation",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence-product-strategy-validation",
+      "parent": "market-competitive-intelligence"
+    },
+    {
+      "id": 20182744,
+      "name": "Mobile Apps",
+      "slug": "mobile-apps",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps",
+      "parent": "organization-maintainers"
+    },
+    {
+      "id": 20182720,
+      "name": "Organization Maintainers",
+      "slug": "organization-maintainers",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers",
+      "parent": null
+    },
+    {
+      "id": 20136531,
+      "name": "Research",
+      "slug": "research",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/research",
+      "parent": "organization-maintainers"
+    },
+    {
+      "id": 20198473,
+      "name": "Research Maintainers",
+      "slug": "research-maintainers",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers",
+      "parent": "research"
+    },
+    {
+      "id": 20169020,
+      "name": "Websites",
+      "slug": "websites",
+      "html_url": "https://github.com/orgs/Pick-Your-AI/teams/websites",
+      "parent": "organization-maintainers"
+    }
+  ]
+}

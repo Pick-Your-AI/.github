@@ -34,6 +34,7 @@ This repository maintains the public [Pick Your AI organization profile](https:/
 | [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) | Community standards, reporting, and enforcement |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Organization-wide access, branch, review and merge rules |
 | [docs/NAMING.md](docs/NAMING.md) | Canonical team, repository and Project names |
+| [Organization charts](docs/organization/README.md) | Historical public team hierarchy from October 29, 2026 |
 | [Escalation guidance](docs/governance/ESCALATION.md) | Governed routing, live lookup and public directory generation |
 | [Generated routing directory](docs/directory/README.md) | Dated team destinations; rerun the resolver before relying on them |
 | [Governance disposition](docs/governance/DECISIONS.md) | Selected policy scope, pending decisions and activation boundaries |
