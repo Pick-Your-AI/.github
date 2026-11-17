@@ -1,5 +1,7 @@
 """Synthetic organization fixtures; none represents actual people or policy."""
+import contextlib
 import copy
+import io
 import json
 import os
 import subprocess
@@ -296,6 +298,43 @@ class OrganizationTests(unittest.TestCase):
             if os.name == 'posix':
                 self.assertEqual(backups[0].stat().st_mode & 0o777, 0o700)
             self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+
+    def test_cli_public_rollback_failure_gives_conservative_recovery_guidance(self):
+        p, m, model = fixture()
+        atomic_write, replace = org.router.atomic_write, org.os.replace
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            public_before = {x.name: x.read_bytes() for x in output.iterdir()}
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+            policy_path, mapping_path = Path(tmp, 'policy.json'), Path(tmp, 'mapping.json')
+            policy_path.write_text(org.router.dump(p), encoding='utf-8')
+            mapping_path.write_text(org.router.dump(m), encoding='utf-8')
+
+            def fail_write(path, content, **kwargs):
+                if Path(path) == state / 'hierarchy.mmd':
+                    raise OSError('synthetic private persistence failure')
+                return atomic_write(path, content, **kwargs)
+
+            def fail_public_restore(source, target):
+                if Path(source).name == 'last-good' and Path(target) == output:
+                    raise OSError('synthetic public restoration failure')
+                return replace(source, target)
+
+            argv = ['organization.py', '--policy', str(policy_path), '--mapping', str(mapping_path),
+                    '--state', str(state), '--output', str(output), '--source-revision', 'abc']
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with patch.object(sys, 'argv', argv), patch.object(org, 'collect', return_value=updated), patch.object(org, 'mermaid_exporter', fake_exporter), patch.object(org.router, 'atomic_write', side_effect=fail_write), patch.object(org.os, 'replace', side_effect=fail_public_restore), contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                self.assertEqual(org.main(), 1)
+            self.assertFalse(output.exists())
+            backups = list(Path(tmp).glob('*/last-good'))
+            self.assertEqual(len(backups), 1)
+            self.assertEqual(public_before, {x.name: x.read_bytes() for x in backups[0].iterdir()})
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+            self.assertEqual(stdout.getvalue(), '')
+            self.assertEqual(stderr.getvalue(), 'Refresh failed. Inspect private status and logs; verify public output and reconcile any retained backups before retrying.\n')
 
     def test_unwritable_failure_status_still_marks_routing_failed(self):
         p, m, model = fixture()

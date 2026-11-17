@@ -572,7 +572,7 @@ def main():
         changed = refresh(router.read_json(args.policy), router.read_json(args.mapping), args.state, args.output, args.source_revision, exporter=mermaid_exporter)
         print('changed' if changed else 'unchanged')
     except Exception:
-        print('Refresh failed; public output retained. See private status file.', file=__import__('sys').stderr)
+        print('Refresh failed. Inspect private status and logs; verify public output and reconcile any retained backups before retrying.', file=__import__('sys').stderr)
         return 1
     return 0
 
