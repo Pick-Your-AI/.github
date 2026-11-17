@@ -57,6 +57,10 @@ If you are not an early contributor, fork the repository, push your branch to th
 - Maintainers merge with **Merge without waiting for requirements to be met (bypass rules)**, or `gh pr merge --admin`. This skips only the branch restrictions; the approval is still required, as are the required checks where a repository enforces them (`ci-required` in `pick-your-ai-website`).
 - Nobody except an organization admin can push directly to `main`.
 
+## Volunteer participation
+
+Volunteer participation planning and implementation status are tracked in [pick-your-ai-volunteers](https://github.com/Pick-Your-AI/pick-your-ai-volunteers), including the [proposed volunteer hub implementation](https://github.com/Pick-Your-AI/pick-your-ai-volunteers/pull/1). Continue contributing through the existing repository workflows. Review capacity must be confirmed before placement; volunteer acceptance does not grant GitHub access or change the review rules above. Research submissions continue through their existing repository workflow.
+
 ## Credentials
 
 - Use your own account through `gh auth login` or an SSH key. Never share keys or tokens, and never paste them into issues, pull requests or logs.
@@ -81,7 +85,3 @@ The following rulesets describe the established control pattern; they are not a 
 | Review required: default branch | One approval, and approval of the most recent push, before merging into `main`. Only organization admins can bypass it. |
 
 `pick-your-ai-website` and `pick-your-ai-research` also keep their earlier `main` rulesets, which require a pull request and block deletion and force pushes. `pick-your-ai-website` also requires the `ci-required` check.
-
-## Volunteer participation
-
-Volunteer participation planning and implementation status are tracked in [pick-your-ai-volunteers](https://github.com/Pick-Your-AI/pick-your-ai-volunteers), including the [proposed volunteer hub implementation](https://github.com/Pick-Your-AI/pick-your-ai-volunteers/pull/1). Continue contributing through the existing repository workflows. Review capacity must be confirmed before placement; volunteer acceptance does not grant GitHub access or change the review rules above. Research submissions continue through their existing repository workflow.
