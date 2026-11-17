@@ -1,5 +1,11 @@
 # Organization activation continuation
 
+## 2026-11-17 safety and review remediation
+
+The candidate #26 now includes follow-up source changes to resolve Alexi5000's reviewer findings: exact mapping/freshness attributes, safe failure receipts and redacted diagnostics, SHA-pinned privileged Actions, and renderer setup before token minting. The workflow is explicitly manual-only and job-gated on `ORG_DIRECTORY_ACTIVATION_APPROVED=true`; it contains no scheduled or push trigger. This preserves the campaign prohibition on live credentialed execution and keeps the proposed hourly cron outside this PR. Nothing has been dispatched or activated by the source edits. Host CI, a qualified Write-level independent approval, exact readback, App authorization, permitted artifact writer and website operations acceptance remain separate gates.
+
+This section supersedes **operational predictions** in the dated 2026-10-30 record below; it does not alter that record's historical results.
+
 This is an activation receipt and operator handoff for #17, not approval or a
 deployed-directory claim. Original stack heads remain unchanged:
 
@@ -168,8 +174,8 @@ Still required: genuine human approvals and ordered merges; dedicated owner-
 approved App installation and full authenticated coverage; website operations
 acceptance; exact approved source-pin/build/deploy; actual manual and scheduled
 workflow receipts; subsequent unchanged-run evidence; approved-source trigger
-and complete public browser/download verification. The cron remains proposed
-at minute 23 hourly until the workflow is merged and actually executes. Three
+and complete public browser/download verification. The hourly minute-23 cron remains a proposal and is absent from the candidate
+workflow. A separate reviewed activation PR is required before scheduling. Three
 hours remains a proposed freshness setting. No organization webhook receiver,
 new permission expansion or automatic cross-repository publishing is implied.
 

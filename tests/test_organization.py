@@ -115,6 +115,7 @@ class OrganizationTests(unittest.TestCase):
             page = Path(tmp, 'index.html').read_text(encoding='utf-8')
             script = Path(tmp, 'directory.js').read_text(encoding='utf-8')
         self.assertIn('data-threshold="10800"', page)
+        self.assertIn('Freshness threshold: 10800 seconds', page)
         self.assertIn('data-kind="teams" data-mapped="false"', page)
         self.assertIn('data-kind="teams" data-mapped="true"', page)
         self.assertNotIn('<!--THRESHOLD-->', page)

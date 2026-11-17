@@ -35,9 +35,9 @@ python governance/router.py resolve --policy governance/escalation-policy.json \
 
 10800 seconds is a proposed three-hour freshness setting, not a previously accepted policy. A snapshot may be stale while an unchanged hourly check is successful: the published timestamp describes that artifact's observation, and the workflow run describes the later check. Always compare both. An open publication PR can also contain newer observations than the merged directory. No route sends messages, mentions people, assigns issues or changes permissions.
 
-## Scheduled and change-triggered reconciliation
+## Activation-gated manual reconciliation (no active schedule)
 
-`.github/workflows/organization-refresh.yml` proposes minute 23 of every hour, manual dispatch, and pushes to `main` affecting the model/generator. The schedule becomes eligible only after review and merge; a cron declaration is not evidence of a scheduled execution. Delays are possible. Three missed hourly intervals should be treated as stale. GitHub run failure status is kept separate from last-good artifacts.
+The candidate `.github/workflows/organization-refresh.yml` has **manual dispatch only** and its job is skipped unless the repository owner explicitly sets `ORG_DIRECTORY_ACTIVATION_APPROVED=true`. There is no cron or source-push trigger in this candidate, including after merge. An hourly minute-23 schedule and approved-source change trigger remain proposals for a distinct reviewed activation change after credential, publication-identity and operations gates pass. No manual or scheduled live collector run is claimed. The proposed three-hour freshness rule is not yet accepted policy. Preserve separate workflow failure and last-good artifact timestamps.
 
 The workflow generates only from default-branch code; PR workflows run fixture tests without organization secrets. Collection uses the `organization-collector` environment, restricted to branch `main`; never put the collector key in repository or organization secrets where other branch workflows could request it. Each run verifies the App and installation identity and exact read-only permission set before issuing a short-lived collection token, revoked after the job. Publication uses a separate job-scoped `GITHUB_TOKEN`. Never reuse the membership-writing Early Contributors App.
 

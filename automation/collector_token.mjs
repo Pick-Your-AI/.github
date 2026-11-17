@@ -38,7 +38,7 @@ const SAFE_FAILURES = new Set([
 
 export function safeErrorMessage(error) {
   const message = error && typeof error.message === 'string' ? error.message : ''
-  if (SAFE_FAILURES.has(message) || /^Collector authentication endpoint failed \\(HTTP [1-5]\\d{2}\\)$/.test(message)) return message
+  if (SAFE_FAILURES.has(message) || /^Collector authentication endpoint failed \(HTTP [1-5]\d{2}\)$/.test(message)) return message
   return 'Unexpected collector failure (details withheld)'
 }
 

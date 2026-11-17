@@ -1,5 +1,11 @@
 # Organization chart acceptance ledger
 
+## 2026-11-17 reviewed-source remediation candidate
+
+PR #26 now contains fixes for the reported privileged-workflow, freshness/filter, diagnostic and missing-start-receipt defects. Its hosted CI and independent Write-level review are **not accepted as passed** by this entry; verify the exact new head and the recorded review threads before merging. `organization-refresh.yml` is intentionally manual-only and requires owner-controlled `ORG_DIRECTORY_ACTIVATION_APPROVED=true`; no hourly/push automation is activated by a merge. No real App collection, organization webhook delivery, publication writer, website deployment or real credentialed test is claimed.
+
+The earlier evidence and PR heads below are dated historical receipts, not verification of these new edits.
+
 ## Activation continuation, 2026-10-30
 
 See [the current activation receipt](ORGANIZATION_ACTIVATION.md) for refreshed
