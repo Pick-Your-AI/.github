@@ -84,4 +84,4 @@ The following rulesets describe the established control pattern; they are not a 
 
 ## Volunteer participation
 
-Use the [volunteer hub](https://github.com/Pick-Your-AI/pick-your-ai-volunteers) for public-safe expressions of interest, the Team / Repository / Project directory, staffing needs and onboarding guidance. Review capacity must be confirmed before placement. Volunteer acceptance does not grant GitHub access or change the review rules above. Research submissions continue through their existing repository workflow.
+Volunteer participation planning and implementation status are tracked in [pick-your-ai-volunteers](https://github.com/Pick-Your-AI/pick-your-ai-volunteers), including the [proposed volunteer hub implementation](https://github.com/Pick-Your-AI/pick-your-ai-volunteers/pull/1). Continue contributing through the existing repository workflows. Review capacity must be confirmed before placement; volunteer acceptance does not grant GitHub access or change the review rules above. Research submissions continue through their existing repository workflow.
