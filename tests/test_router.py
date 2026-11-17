@@ -204,6 +204,18 @@ class ResolverTests(unittest.TestCase):
         self.assertEqual(result["repository_state"], "populated")
         self.assertIn("declared_unbootstrapped_now_populated", [f["code"] for f in result["configuration_drift"]])
 
+        # Reconcile a completed bootstrap without disabling future empty-repo drift.
+        config["repositories"][0]["exceptions"] = []
+        seal(data, config)
+        result = self.resolve(config, data)
+        self.assertEqual(result["repository_state"], "populated")
+        self.assertEqual(result["exceptions"], [])
+        self.assertNotIn("declared_unbootstrapped_now_populated", [f["code"] for f in result["configuration_drift"]])
+        data["repositories"][0]["empty"] = True
+        seal(data, config)
+        result = self.resolve(config, data)
+        self.assertIn("unexpected_empty_repository", [f["code"] for f in result["configuration_drift"]])
+
     def test_manager_selector_only_direct_managers_no_fallback(self):
         config = policy()
         config["repositories"][0]["roles"][1]["member_selector"] = "team_managers"

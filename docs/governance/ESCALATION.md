@@ -35,7 +35,7 @@ Use `--path` for a repository-relative path when resolving. An accepted path ove
 
 The owner [selected the routing-role mapping](DECISIONS.md#routing-role-decision): Research Maintainers in the six research-family repositories, directly observed repository-team managers elsewhere, then specialty lead teams. New undefined roles remain unresolved; no assignment is invented from Admin grants. Sustainability's explicit [#143](https://github.com/Pick-Your-AI/pick-your-ai-sustainability/issues/143) remains a separate mandate. Shared Research Project administration is not repository responsibility. Empty specialty lead teams remain unfilled. Review Leads is a coordination sidecar whose role acceptance is pending; it is not an extra escalation level.
 
-`.github` remains owner-controlled for governance even though a separately authorized Write grant exists. Internal Discussion is an accepted private exception, not an unresolved protection or delegation gap. Its private inventory is excluded from the public policy. Education is unbootstrapped: the resolver reports that state; this work does not create its first branch.
+`.github` remains owner-controlled for governance even though a separately authorized Write grant exists. Internal Discussion is an accepted private exception, not an unresolved protection or delegation gap. Its private inventory is excluded from the public policy. Education's [completed bootstrap](DECISIONS.md#education-bootstrap-reconciliation) supersedes the earlier empty-repository observation. The resolver continues to derive repository state from its snapshot and report unexpected empty repositories; historical directories retain their original observation time.
 
 ## Policy changes and refresh activation
 
