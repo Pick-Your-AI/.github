@@ -107,6 +107,21 @@ class OrganizationTests(unittest.TestCase):
         with self.assertRaises(org.router.RoutingError):
             org.validate_mapping(m, p)
 
+    def test_directory_markup_uses_exact_mapping_and_model_threshold(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        with tempfile.TemporaryDirectory() as tmp:
+            org.render(public, tmp)
+            page = Path(tmp, 'index.html').read_text(encoding='utf-8')
+            script = Path(tmp, 'directory.js').read_text(encoding='utf-8')
+        self.assertIn('data-threshold="10800"', page)
+        self.assertIn('data-kind="teams" data-mapped="false"', page)
+        self.assertIn('data-kind="teams" data-mapped="true"', page)
+        self.assertNotIn('<!--THRESHOLD-->', page)
+        self.assertIn("row.dataset.mapped === 'false'", script)
+        self.assertIn("status.dataset.threshold", script)
+        self.assertNotIn("text.includes('unmapped')", script)
+
     def test_unsafe_names_escaped(self):
         p, m, model = fixture()
         model['teams'][0]['name'] = '<script>alert("x")</script>\n%%{init:evil}'

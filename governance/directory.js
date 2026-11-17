@@ -9,7 +9,7 @@ function filter() {
     const text = row.textContent.toLocaleLowerCase();
     row.hidden = !(text.includes(search.value.toLocaleLowerCase()) &&
       (!kind.value || kind.value === row.dataset.kind) &&
-      (!mapping.value || text.includes('unmapped')));
+      (!mapping.value || (mapping.value === 'unmapped' && row.dataset.mapped === 'false')));
     if (!row.hidden) shown++;
   }
   document.querySelector('#count').textContent = `${shown} of ${rows.length} entities shown`;
@@ -18,7 +18,9 @@ for (const control of [search, kind, mapping]) control.addEventListener('input',
 function age() {
   const status = document.querySelector('#freshness');
   const observed = Date.parse(status.dataset.observed);
-  const stale = !Number.isFinite(observed) || observed > Date.now() + 60000 || Date.now() - observed > 10800000;
-  status.textContent = `${stale ? 'STALE — verify before relying on this directory.' : 'Within proposed three-hour freshness threshold.'} Last observed: ${status.dataset.observed}. See refresh run status and pending publication reviews below. Publication time requires deployment readback.`;
+  const threshold = Number(status.dataset.threshold);
+  const stale = !Number.isFinite(observed) || observed > Date.now() + 60000 ||
+    !Number.isFinite(threshold) || threshold <= 0 || Date.now() - observed > threshold * 1000;
+  status.textContent = `${stale ? 'STALE — verify before relying on this directory.' : 'Within proposed model freshness threshold.'} Last observed: ${status.dataset.observed}. See refresh run status and pending publication reviews below. Publication time requires deployment readback.`;
 }
 filter(); age(); setInterval(age, 60000);
