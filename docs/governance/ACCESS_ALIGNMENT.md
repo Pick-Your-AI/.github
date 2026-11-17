@@ -30,3 +30,18 @@ The owner selected **all changes in the six research-family repositories** for #
 Approve the merge/branch/tag capability definition first. With approval count zero, authorized mergers can merge PRs from all contributor classes, including forks; the scope decision alone does not decide who gains that merge capability. Preserve PR requirements, required checks, history, deletion/force-push safeguards, tag boundaries and every unaffected condition/actor. GitHub configuration cannot substitute for local contract, evidence, security or legal acceptance.
 
 After separately authorized settings changes, verify included and excluded repositories, representative ordinary maintainers/leads/contributors, before/after effective permissions, exact rule IDs, and real behavior. Host configuration readback and fixture tests do not establish that behavioral result. No such change or behavioral enforcement claim is made here.
+
+## Offline proposal diff verification
+
+Compare a locally retained baseline ruleset JSON document with a candidate copy of the same document. Keep both inputs outside the repository; they may contain private actor details. A partial API update payload is not a candidate document for this comparison.
+
+```sh
+python governance/review_exception.py \
+  --repository Pick-Your-AI/pick-your-ai-research \
+  --before /private/path/before.json \
+  --candidate /private/path/candidate.json
+```
+
+Use the applicable repository from the bundled six-operation proposal; there is no policy override. The verifier requires the proposal's repository/ruleset identity and expected-before values. It accepts only approval count `1 → 0` and latest-push approval `true → false`, preserving every other field and its scalar type, including required checks, PR/history safeguards, conditions, bypass actors and unknown future fields. Missing or duplicate rules, duplicate JSON keys, malformed or oversized inputs, and additional changes are rejected. Inputs are not modified.
+
+The command emits a public-safe JSON verdict with `evidence: "offline_diff_only"`, exits `0` for a match and `2` for rejection or invalid input, and makes no settings changes. A match checks only the supplied files: it cannot authenticate the baseline, grant authorization, prove current configuration, or establish effective permissions or live enforcement. Enforcement state must remain unchanged; an unchanged `evaluate` or `disabled` state is not evidence of activation. The separate owner approval and live acceptance gates above still apply.
