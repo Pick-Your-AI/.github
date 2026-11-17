@@ -8,7 +8,7 @@
 
 ## Validation and evidence
 
-<!-- Exact revision, commands, fresh-VM evidence, and checks not run. Distinguish configuration from observed behavior. -->
+<!-- Exact revision, commands, environment and evidence required by this repository, and checks not run. Distinguish configuration from observed behavior. -->
 
 ## Optional decision/escalation
 

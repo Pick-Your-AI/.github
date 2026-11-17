@@ -121,3 +121,40 @@ Use case: stylized-concept. Text-free repository social card background, wide 12
 ```text
 Use case: stylized-concept. Text-free repository social card background, wide 1280x640. Precise engineered friendly isometric illustration of two generic unbranded rounded handheld slabs of different sizes, completely blank dark glass faces, beside a single model chip in a layered planning tray. No device logo or distinctive manufacturer details, no fruit emblems, no robot mascots, all on the right half, leaving left half and top-left calm empty for real text composed later. Matte teal #0f766e #115e59 #14b8a6 #5eead4, highlights #f0fdfa, one tiny amber #fbbf24 indicator. Background deep #042f2e to #0b1f1e with subtle blueprint grid. Soft upper-left light, clean bevels, no text, letters, numbers, logos, trademarks, UI, screenshots, robots, brains, purple or neon. Strict revision: all chip contacts, edges, and device buttons must be teal or pale mint, NEVER gold. Exactly one small circular amber dot on the tray. Use simplified illustrative block geometry, no photorealistic consumer device.
 ```
+
+## assets/icon.png
+
+- Date: 2026-10-30
+- Tool and model: Codex built-in `image_gen` via codex-cli 0.164.0 / model: not reported (do not infer an API model)
+- Seed: not supported
+- Reference images: none
+- Prompt: (verbatim, fenced)
+
+```text
+Use your image generation capability to create ONE image. Do not modify any other files.
+
+NEON NIGHT REPO ICON · Pick-Your-AI/.github
+
+Create one square 1024 × 1024 px image of a single repository glyph.
+Use a simple geometric silhouette with a luminous outline and one accent spark.
+Keep the background empty and the glyph inside the central 688 × 688 px square.
+Size class WIDE: the glyph spans close to the full 688 px width and is about 430 to 560 px tall.
+
+GLYPH: Organization profile card with stacked build slots. A rounded-rectangle profile card in outline. On the left of the card a plain circular avatar ring; on the right three short horizontal rounded bars stacked vertically with even gaps, like component slots in a build list. The bars and ring are empty outlines with no marks inside.
+SPARK PLACEMENT: A small four-point spark at the top-right corner of the card, overlapping the outline slightly.
+PALETTE: outline #0F766E, glow #14B8A6; one spark in #FBBF24.
+The spark is the only filled shape and the only element in #FBBF24; keep the
+glyph outline in #0F766E so the spark remains distinct at small sizes.
+
+No text, letters, numbers, words, logos, brand marks, human figures or third-party IP.
+
+Produce exactly one image.
+The lock pass renders assets/icon.png as a flat glyph in the family's light-surface
+inks, without a tile or glow. Do not render the repository name in the image.
+NEGATIVE LIST: no tile, card background, frame or border around the glyph; no gradient background; no text of any kind (including inside the card, bars or avatar ring); no letters, numbers or symbols; no logos; no people or faces; no extra objects; no shadows beyond a soft glow; background must be a flat empty white (#FFFFFF) with nothing touching the edges.
+ASPECT RATIO: square 1:1, 1024x1024.
+STYLE: flat vector look. Perfectly flat solid fills and crisp anti-aliased edges only; no texture, grain, noise, paper effect, gradients, glow haze, shadows or JPEG artifacts anywhere, including the white background (one single flat #FFFFFF). Few colors: only #0F766E, #14B8A6 (used sparingly) and #FBBF24, on white.
+```
+
+- Candidates: 2 attempts; selected: attempt 2 (attempt 1 normalized to 540 KB, over the 300 KB budget, with `--ground auto` keeping the white ground opaque; attempt 2 used a flat-fill prompt and `--ground transparent`)
+- Post-processing: github-showcase-skill `content icon normalize --ground transparent` (keyed from #FEFEFE, trimmed, fitted to the 688 px live area); output sha256 a99019b527de2b753f220fa6e65ee4413d09acd278a2fe29fb833e07dc0a8083; size 143 KB
