@@ -1,6 +1,7 @@
 """Synthetic organization fixtures; none represents actual people or policy."""
 import copy
 import json
+import os
 import subprocess
 import sys
 from pathlib import Path
@@ -171,6 +172,153 @@ class OrganizationTests(unittest.TestCase):
             with patch.object(org, 'collect', return_value=model):
                 org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
             self.assertEqual(json.loads((state / 'status.json').read_text())['status'], 'complete')
+
+    def test_private_persistence_failures_roll_back_complete_transaction(self):
+        phases = ('model.json', 'hierarchy.mmd', 'routing-snapshot.json', 'routing-status.json', 'status.json')
+        atomic_write = org.router.atomic_write
+        for prior_success in (False, True):
+            for phase in phases:
+                for fail_after_replace in (False, True):
+                    with self.subTest(prior_success=prior_success, phase=phase, after_replace=fail_after_replace):
+                        p, m, model = fixture()
+                        with tempfile.TemporaryDirectory() as tmp:
+                            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+                            if prior_success:
+                                with patch.object(org, 'collect', return_value=model):
+                                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                                # Rollback must preserve existing permissions,
+                                # including a read-only last-good snapshot.
+                                (state / 'model.json').chmod(0o400)
+                            public_before = {x.name: x.read_bytes() for x in output.iterdir()} if prior_success else None
+                            data_names = ('model.json', 'hierarchy.mmd', 'routing-snapshot.json')
+                            private_before = {name: ((state / name).read_bytes(), (state / name).stat().st_mode & 0o777)
+                                              for name in data_names} if prior_success else {}
+                            updated = copy.deepcopy(model)
+                            updated['projects'][0]['title'] = 'Changed project'
+                            updated['observation']['completed_at'] = '2026-01-02T12:00:01Z'
+                            updated['routing']['collection'].update(completed_at='2026-01-02T12:00:01Z',
+                                                                    content_verified_at='2026-01-02T12:00:01Z')
+                            injected = False
+
+                            def fail_write(path, content, **kwargs):
+                                nonlocal injected
+                                if Path(path) == state / phase and not injected:
+                                    injected = True
+                                    if fail_after_replace:
+                                        atomic_write(path, content, **kwargs)
+                                    raise OSError('synthetic private persistence failure')
+                                return atomic_write(path, content, **kwargs)
+
+                            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_write):
+                                with self.assertRaisesRegex(OSError, 'synthetic private persistence failure'):
+                                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                            self.assertTrue(injected)
+                            if prior_success:
+                                self.assertEqual(public_before, {x.name: x.read_bytes() for x in output.iterdir()})
+                                for name, (content, mode) in private_before.items():
+                                    self.assertEqual((state / name).read_bytes(), content)
+                                    if os.name == 'posix':
+                                        self.assertEqual((state / name).stat().st_mode & 0o777, mode)
+                                route = org.router.resolve(p, org.router.attach_refresh_status(
+                                    org.router.read_json(state / 'routing-snapshot.json'), state / 'routing-status.json'),
+                                    'ExampleOrg/example', max_age_seconds=999999999)
+                                self.assertEqual(route['freshness']['status'], 'refresh_failed')
+                                self.assertTrue(all(not level['recipients'] for level in route['levels']))
+                            else:
+                                self.assertFalse(output.exists())
+                                self.assertTrue(all(not (state / name).exists() for name in data_names))
+                            for name in ('status.json', 'routing-status.json'):
+                                failure = org.router.read_json(state / name)
+                                self.assertEqual(failure['status'], 'failed')
+                                self.assertEqual(failure['last_success_at'], model['observation']['completed_at'] if prior_success else None)
+                                if os.name == 'posix':
+                                    self.assertEqual((state / name).stat().st_mode & 0o777, 0o600)
+                            self.assertFalse(list(state.glob('.refresh-*')))
+
+    def test_public_swap_failure_preserves_previous_bundle(self):
+        p, m, model = fixture()
+        replace = org.os.replace
+        for prior_success in (False, True):
+            with self.subTest(prior_success=prior_success), tempfile.TemporaryDirectory() as tmp:
+                state, output = Path(tmp, 'state'), Path(tmp, 'public')
+                if prior_success:
+                    with patch.object(org, 'collect', return_value=model):
+                        org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                before = {x.name: x.read_bytes() for x in output.iterdir()} if prior_success else None
+                updated = copy.deepcopy(model)
+                updated['projects'][0]['title'] = 'Changed project'
+
+                def fail_swap(source, target):
+                    if Path(target) == output and Path(source).name == 'public':
+                        raise OSError('synthetic public swap failure')
+                    return replace(source, target)
+
+                with patch.object(org, 'collect', return_value=updated), patch.object(org.os, 'replace', side_effect=fail_swap):
+                    with self.assertRaisesRegex(OSError, 'synthetic public swap failure'):
+                        org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                if prior_success:
+                    self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
+                else:
+                    self.assertFalse(output.exists())
+                self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+
+    def test_rollback_error_retains_private_originals_and_original_error(self):
+        p, m, model = fixture()
+        atomic_write, replace = org.router.atomic_write, org.os.replace
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            public_before = {x.name: x.read_bytes() for x in output.iterdir()}
+            model_before = (state / 'model.json').read_bytes()
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+
+            def fail_write(path, content, **kwargs):
+                if Path(path) == state / 'hierarchy.mmd':
+                    raise OSError('synthetic persistence failure')
+                return atomic_write(path, content, **kwargs)
+
+            def fail_restore(source, target):
+                if Path(source).name == 'model.json' and Path(source).parent.name.startswith('.refresh-'):
+                    raise PermissionError('synthetic rollback failure')
+                return replace(source, target)
+
+            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_write), patch.object(org.os, 'replace', side_effect=fail_restore):
+                with self.assertRaises(ExceptionGroup) as raised:
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual([str(e) for e in raised.exception.exceptions],
+                             ['synthetic persistence failure', 'synthetic rollback failure'])
+            self.assertEqual(public_before, {x.name: x.read_bytes() for x in output.iterdir()})
+            backups = list(state.glob('.refresh-*'))
+            self.assertEqual(len(backups), 1)
+            self.assertEqual((backups[0] / 'model.json').read_bytes(), model_before)
+            if os.name == 'posix':
+                self.assertEqual(backups[0].stat().st_mode & 0o777, 0o700)
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+
+    def test_unwritable_failure_status_still_marks_routing_failed(self):
+        p, m, model = fixture()
+        atomic_write = org.router.atomic_write
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            before = {x.name: x.read_bytes() for x in output.iterdir()}
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+
+            def fail_status(path, content, **kwargs):
+                if Path(path) == state / 'status.json':
+                    raise OSError('synthetic unwritable status')
+                return atomic_write(path, content, **kwargs)
+
+            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_status):
+                with self.assertRaisesRegex(OSError, 'synthetic unwritable status') as raised:
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+            self.assertIn('A refresh failure sidecar could not be persisted.', raised.exception.__notes__)
 
     def test_export_failure_preserves_output(self):
         p, m, model = fixture()

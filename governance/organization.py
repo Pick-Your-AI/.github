@@ -428,7 +428,9 @@ def refresh(policy, mapping, state, output, source_revision, api=None, exporter=
                     raise router.RoutingError('Historical routing observation is in the future')
                 public['routing']['snapshot_content_verified_at'] = prior_routing_time
             output.parent.mkdir(parents=True, exist_ok=True)
-            with tempfile.TemporaryDirectory(dir=output.parent) as tmp:
+            tmp = Path(tempfile.mkdtemp(dir=output.parent))
+            cleanup_public = True
+            try:
                 staged = Path(tmp) / 'public'
                 sources = render(public, staged)
                 if exporter is None:
@@ -453,33 +455,93 @@ def refresh(policy, mapping, state, output, source_revision, api=None, exporter=
                         result[path.name] = path.read_bytes()
                     return result
                 changed = files(staged) != files(output)
-                # The caller works in an isolated checkout; publication is a
-                # single Git tree update after this entire directory succeeds.
+                # Keep both sets of originals until every persistence phase
+                # succeeds. Private backups stay outside the public tree and
+                # retain their original bytes and permissions for rollback.
+                private_backup = Path(tempfile.mkdtemp(prefix='.refresh-', dir=state))
+                private_paths = [snapshot, state / 'hierarchy.mmd', state / 'routing-snapshot.json',
+                                 state / 'routing-status.json', status]
+                originals, touched = {}, []
                 backup = Path(tmp) / 'last-good'
-                if changed and output.exists():
-                    os.replace(output, backup)
+                public_installed = False
                 try:
+                    for path in private_paths:
+                        if path.is_symlink() or (path.exists() and not path.is_file()):
+                            raise router.RoutingError('Private state must be a regular file')
+                        originals[path] = private_backup / path.name if path.exists() else None
+                        if originals[path] is not None:
+                            shutil.copy2(path, originals[path])
+                    if changed and output.exists():
+                        os.replace(output, backup)
                     if changed:
                         os.replace(staged, output)
-                except OSError:
-                    if backup.exists():
-                        os.replace(backup, output)
+                        public_installed = True
+                    model['integrity_sha256'] = router.digest(model)
+                    writes = [
+                        (snapshot, router.dump(model)),
+                        (state / 'hierarchy.mmd', private_hierarchy(model)),
+                        (state / 'routing-snapshot.json', router.dump(model['routing'])),
+                        (state / 'routing-status.json', router.dump({
+                            'schema_version': 1, 'status': 'complete', 'attempted_at': model['observation']['completed_at'],
+                            'last_success_at': model['observation']['completed_at']})),
+                        (status, router.dump({'status': 'complete', 'observed_at': model['observation']['completed_at'],
+                                             'changed': changed, 'content_sha256': semantic(public), 'published_at': None})),
+                    ]
+                    for path, content in writes:
+                        # A write can raise after replacing its destination
+                        # (for example during fsync), so include it beforehand.
+                        touched.append(path)
+                        router.atomic_write(path, content, private=True)
+                except Exception as error:
+                    rollback_errors = []
+                    for path in reversed(touched):
+                        try:
+                            if originals[path] is None:
+                                path.unlink(missing_ok=True)
+                            else:
+                                os.replace(originals[path], path)
+                        except OSError as rollback_error:
+                            rollback_errors.append(rollback_error)
+                    try:
+                        if public_installed:
+                            shutil.rmtree(output)
+                        if backup.exists():
+                            os.replace(backup, output)
+                    except OSError as rollback_error:
+                        rollback_errors.append(rollback_error)
+                    if rollback_errors:
+                        # Retain any unrestored originals privately for manual
+                        # reconciliation rather than deleting the last copy.
+                        cleanup_public = False
+                        raise ExceptionGroup('Refresh rollback failed; reconcile retained private backups',
+                                             [error, *rollback_errors]) from None
+                    shutil.rmtree(private_backup, ignore_errors=True)
                     raise
-            model['integrity_sha256'] = router.digest(model)
-            router.atomic_write(snapshot, router.dump(model), private=True)
-            router.atomic_write(state / 'hierarchy.mmd', private_hierarchy(model), private=True)
-            router.atomic_write(state / 'routing-snapshot.json', router.dump(model['routing']), private=True)
-            router.atomic_write(state / 'routing-status.json', router.dump({
-                'schema_version': 1, 'status': 'complete', 'attempted_at': model['observation']['completed_at'],
-                'last_success_at': model['observation']['completed_at']}), private=True)
-            router.atomic_write(status, router.dump({'status': 'complete', 'observed_at': model['observation']['completed_at'], 'changed': changed, 'content_sha256': semantic(public), 'published_at': None}), private=True)
+                else:
+                    # Persistence has committed. Cleanup can leave private
+                    # backups behind, but must not report a failed refresh.
+                    shutil.rmtree(private_backup, ignore_errors=True)
+            finally:
+                if cleanup_public:
+                    shutil.rmtree(tmp, ignore_errors=True)
             return changed
-        except Exception:
-            router.atomic_write(status, router.dump({'status': 'failed', 'attempted_at': router.now(), 'last_success_at': previous['observation']['completed_at'] if previous else None, 'detail': 'Refresh failed; last published content retained. Inspect private collector logs.'}), private=True)
-            router.atomic_write(state / 'routing-status.json', router.dump({
-                'schema_version': 1, 'status': 'failed', 'attempted_at': router.now(),
-                'last_success_at': previous['observation']['completed_at'] if previous else None,
-                'errors': [{'category': 'organization_refresh_failed', 'http_status': None}]}), private=True)
+        except Exception as error:
+            failures = [
+                (status, {'status': 'failed', 'attempted_at': router.now(),
+                          'last_success_at': previous['observation']['completed_at'] if previous else None,
+                          'detail': 'Refresh failed; inspect private collector logs before using retained state.'}),
+                (state / 'routing-status.json', {
+                    'schema_version': 1, 'status': 'failed', 'attempted_at': router.now(),
+                    'last_success_at': previous['observation']['completed_at'] if previous else None,
+                    'errors': [{'category': 'organization_refresh_failed', 'http_status': None}]}),
+            ]
+            for path, failure in failures:
+                try:
+                    router.atomic_write(path, router.dump(failure), private=True)
+                except OSError:
+                    # Still attempt the routing failure marker if status.json
+                    # is unwritable, and preserve the original refresh error.
+                    error.add_note('A refresh failure sidecar could not be persisted.')
             raise
 
 
