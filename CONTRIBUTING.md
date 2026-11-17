@@ -11,13 +11,23 @@ This page sets the access, branch, review and merge rules for every Pick-Your-AI
 | Maintainer | The repository's maintainer team | Push any branch, and merge approved pull requests. |
 | Organization admin | Organization owners | Everything above. Admins can also bypass the review requirement. Reserve this for emergencies and explain the bypass in the pull request. |
 
-Repository access is granted to teams, not individuals. Ask an organization admin for changes.
+Repository access is normally granted through teams. The separately authorized `.github` Write grant recorded in [#16](https://github.com/Pick-Your-AI/.github/issues/16) is an exception, not delegated governance authority. Access changes require the applicable owner decision.
+
+## Resolve responsibility before escalation
+
+Use the [escalation guide](docs/governance/ESCALATION.md) and [governed mapping](governance/escalation-policy.json), with a fresh read of GitHub identities, rather than a copied contact list. The order is repository team → repository maintainer → repository lead maintainer → applicable parent teams → CompleteDotTech. Keep a disposition for unfilled, undefined or inaccessible roles; skip duplicate people and owner placeholders until the final level.
+
+Team management, repository access and accepted operational responsibility are separate. The [research refresh proposal](docs/governance/RESEARCH_REFRESH.md) does not activate recurring work, and the [scope selected for #14](docs/governance/DECISIONS.md) does not change current review enforcement. Preserve each repository's evidence, legal, security, validation and runtime acceptance rules.
 
 ## Teams and access
 
-Access follows a team hierarchy under the `Maintainers` team. `Maintainers` has Triage on every repository except this one, and its parent-level teams `Mobile Devices`, `Research` and `Websites` also have Triage, so their members can label and triage issues and pull requests but cannot push. Write comes from the child team for each repository: `Android`, `Apple/iOS`, `Builder`, `Funding, Grants & Sustainability`, `Market & Competitive Intelligence`, `pickyour.ai` and `leaderboard.pickyour.ai`. Admin comes from the Lead Maintainers teams: `Lead Maintainers` under `Websites` for `pick-your-ai-website` and `pick-your-ai-leaderboard`, `Research Lead Maintainers` for `pick-your-ai-research` and `pick-your-ai-sustainability`, and `Mobile Lead Maintainers` for `pick-your-ai-android` and `pick-your-ai-apple`. Only @CompleteDotTech and @BunsDev change team membership. The `early-contributors` team sits outside this hierarchy.
+Current area, specialist and lead-team names are listed in the [organization naming register](docs/NAMING.md). The top-level team is `Organization Maintainers`; its area teams include `Research`, `Mobile Apps`, `Websites` and `Education`. Repository teams include `AI Builder`, `Main Website`, `Contributor Leaderboard`, `AI Applications`, `Android` and `Apple/iOS`. Lead-team names use `Lead Maintainers - <Area>`.
 
-No team has Write or Admin access to this repository. Only organization owners can change it, through a pull request.
+GitHub team/repository grants remain authoritative for access. Parent Triage, repository Write and lead-team Admin are distinct grants; a team name does not itself grant permissions. The naming alignment preserves memberships, team-manager roles, parent relationships and repository/Project grants, including existing exceptions and interim coverage. `Early Contributors`, `Review Leads` and `Research Maintainers` retain their separate roles.
+
+Team membership and settings are managed by organization owners and the relevant team's designated GitHub maintainers. The [accepted delegation record](https://github.com/Pick-Your-AI/.github/issues/18) distinguishes that role from repository Admin access and operational ownership. Do not infer an assignment from a name or membership. Organization-file changes still require a pull request and the applicable review rules; naming changes do not expand anyone's access.
+
+The `.github` repository retains its owner-control exception: no team has Write or Admin access here. Only organization owners can change this repository, through a pull request.
 
 ## Workflow for early contributors
 
@@ -61,7 +71,7 @@ If you are not an early contributor, fork the repository, push your branch to th
 
 ## Where the rules are enforced
 
-Each repository has these rulesets. If you change them, update this page in the same change.
+The following rulesets describe the established control pattern; they are not a claim that every current repository has every rule. The [configuration disposition](docs/governance/DECISIONS.md) records the outstanding alignment work, including Market, Cloud Agents and unbootstrapped Education. If an authorized change updates enforcement, update this page in the same change.
 
 | Ruleset | Effect |
 | --- | --- |
