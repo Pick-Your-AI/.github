@@ -185,11 +185,69 @@ class CommandTests(unittest.TestCase):
         self.assertTrue(json.loads(result.stdout)["matches_proposal"])
         self.assertEqual(result.stderr, "")
 
+    def decimal_pair(self, before_number, candidate_number):
+        repository, before, candidate = fixture()
+        marker = '"items": [null, 1.0]'
+        raw_before, raw_candidate = json.dumps(before), json.dumps(candidate)
+        self.assertEqual(raw_before.count(marker), 1)
+        self.assertEqual(raw_candidate.count(marker), 1)
+        return (raw_before.replace(marker, '"items": [null, ' + before_number + ']'),
+                raw_candidate.replace(marker, '"items": [null, ' + candidate_number + ']'),
+                repository)
+
+    def test_raw_changed_decimals_cannot_collapse_to_a_match(self):
+        for before_number, candidate_number in (
+                ("1.0", "1.0000000000000001"), ("1e-999", "0.0"),
+                ("1e-400", "0.0"), ("9007199254740992.0", "9007199254740993.0"),
+                ("0.123456789012345678901234567890", "0.123456789012345678901234567891")):
+            with self.subTest(before=before_number, candidate=candidate_number):
+                result = self.run_cli(*self.decimal_pair(before_number, candidate_number), raw=True)
+                self.assert_rejection(result)
+                self.assertEqual(json.loads(result.stdout)["reason"], "unrelated_change")
+
+    def test_raw_unchanged_precise_decimals_accept(self):
+        for number in ("1.0000000000000001", "1e-999", "1e-400", "9007199254740993.0",
+                       "0.123456789012345678901234567890"):
+            with self.subTest(number=number):
+                result = self.run_cli(*self.decimal_pair(number, number), raw=True)
+                self.assertEqual(result.returncode, 0)
+                self.assertTrue(json.loads(result.stdout)["matches_proposal"])
+                self.assertEqual(result.stderr, "")
+
+    def test_raw_fractional_integer_boolean_distinctions_remain_strict(self):
+        for before_number, candidate_number in (("1.0", "1"), ("1.0", "true"),
+                                                ("0.0", "0"), ("0.0", "false")):
+            with self.subTest(before=before_number, candidate=candidate_number):
+                self.assert_rejection(self.run_cli(
+                    *self.decimal_pair(before_number, candidate_number), raw=True))
+        _, before, candidate = fixture()
+        for document, field, replacement in (
+                ("before", "required_approving_review_count", "1.0"),
+                ("candidate", "required_approving_review_count", "0.0"),
+                ("before", "require_last_push_approval", "1.0"),
+                ("candidate", "require_last_push_approval", "0.0")):
+            raw_before, raw_candidate = json.dumps(before), json.dumps(candidate)
+            source = before if document == "before" else candidate
+            value = source["rules"][0]["parameters"][field]
+            old = json.dumps(field) + ": " + json.dumps(value)
+            new = json.dumps(field) + ": " + replacement
+            if document == "before":
+                raw_before = raw_before.replace(old, new)
+            else:
+                raw_candidate = raw_candidate.replace(old, new)
+            with self.subTest(document=document, field=field):
+                self.assert_rejection(self.run_cli(raw_before, raw_candidate, raw=True))
+
+    def test_raw_unchanged_overflow_remains_invalid(self):
+        result = self.run_cli(*self.decimal_pair("1e999", "1e999"), raw=True)
+        self.assert_rejection(result)
+
     def test_invalid_json_duplicate_keys_nonfinite_and_wrong_top_level(self):
         for raw in ('{"secret": "DO-NOT-PRINT"', '{"id": 1, "id": 2}',
                     '{"nested": {"secret": 1, "secret": 2}}',
                     '{"secret": NaN}', '{"secret": Infinity}', '{"secret": -Infinity}',
-                    '{"secret": 1e999}', '[]', 'null', '"DO-NOT-PRINT"'):
+                    '{"secret": 1e999}', '{"secret": 1e9999999999999999999999}',
+                    '{"secret": 1e-9999999999999999999999}', '[]', 'null', '"DO-NOT-PRINT"'):
             with self.subTest(raw=raw):
                 self.assert_rejection(self.run_cli(raw, "{}", raw=True))
                 self.assert_rejection(self.run_cli("{}", raw, raw=True))

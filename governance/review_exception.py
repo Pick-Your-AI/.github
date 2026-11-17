@@ -5,6 +5,7 @@ GitHub enforcement, authorization, permissions, or real merge behavior.
 """
 import argparse
 import copy
+from decimal import Decimal, DecimalException
 import json
 import math
 import os
@@ -17,6 +18,7 @@ PROPOSAL = Path(__file__).resolve().parents[1] / "proposals" / "research-review-
 MAX_BYTES = 1024 * 1024
 MAX_DEPTH = 64
 MAX_NODES = 50000
+MAX_DECIMAL = Decimal.from_float(sys.float_info.max)
 FIELDS = ("required_approving_review_count", "require_last_push_approval")
 
 
@@ -42,7 +44,7 @@ def _object(pairs):
 
 
 def _bounded_json(value):
-    """Bound traversal and reject non-JSON values, including nonfinite floats."""
+    """Bound traversal and reject non-JSON values, including nonfinite numbers."""
     pending = [(value, 0)]
     count = 0
     while pending:
@@ -56,6 +58,11 @@ def _bounded_json(value):
             pending.extend((child, depth + 1) for child in item.values())
         elif type(item) is list:
             pending.extend((child, depth + 1) for child in item)
+        elif type(item) is Decimal:
+            # Retain the parsed decimal value, even below binary-float range.
+            # Preserve the existing upper magnitude limit without rounding it.
+            if not item.is_finite() or item.copy_abs() > MAX_DECIMAL:
+                raise Rejected("invalid_json")
         elif type(item) is float:
             if not math.isfinite(item):
                 raise Rejected("invalid_json")
@@ -74,13 +81,15 @@ def read_json(path):
             raw = stream.read(MAX_BYTES + 1)
         if len(raw) > MAX_BYTES:
             raise Rejected("input_limit")
+        # Binary floats could collapse unrelated values before _same sees them.
+        # Decimal preserves fractional values; JSON integer tokens remain int.
         result = json.loads(raw.decode("utf-8"), object_pairs_hook=_object,
-                            parse_constant=_reject_constant)
+                            parse_float=Decimal, parse_constant=_reject_constant)
         _bounded_json(result)
         return result
     except Rejected:
         raise
-    except (OSError, ValueError, UnicodeError, RecursionError):
+    except (OSError, ValueError, UnicodeError, RecursionError, DecimalException):
         raise Rejected("input_error") from None
 
 
