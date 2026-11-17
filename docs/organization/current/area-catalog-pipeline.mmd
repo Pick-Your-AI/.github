@@ -1,0 +1,12 @@
+flowchart TB
+accTitle: Pick Your AI organization relationships
+accDescr: Solid arrows show actual team parents. Dotted labeled arrows distinguish responsibility and Project links.
+  n5fcbf64724b556d103ec["Pick Your AI — Development — Catalog Pipeline"]
+  nf44ce11ad79d7c542b64["Pick-Your-AI/pick-your-ai-catalog-pipeline"]
+  n940a0317295456892b6e["Research Maintainers"]
+  n0a5236105f9956f1f944["Catalog Pipeline"]
+  nef454cc5092f3de12b15["Lead Maintainers - Catalog Pipeline"]
+  n5fcbf64724b556d103ec -.->|project_link| nf44ce11ad79d7c542b64
+  n940a0317295456892b6e -.->|repository_maintainer| nf44ce11ad79d7c542b64
+  n0a5236105f9956f1f944 -.->|repository_team| nf44ce11ad79d7c542b64
+  nef454cc5092f3de12b15 -.->|repository_lead_maintainer| nf44ce11ad79d7c542b64

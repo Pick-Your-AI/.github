@@ -1,0 +1,24 @@
+{
+  "schema_version": 1,
+  "status": "owner_approval_required",
+  "registration_method": "GitHub App registration form; this is a settings request, not an API credential",
+  "owner": "Pick-Your-AI",
+  "name": "PYA Org Directory Collector",
+  "homepage_url": "https://github.com/Pick-Your-AI/.github",
+  "public": false,
+  "webhook_active": false,
+  "events": [],
+  "installation_account": "Pick-Your-AI",
+  "repository_selection": "all",
+  "permissions": {
+    "metadata": "read",
+    "administration": "read",
+    "members": "read",
+    "organization_projects": "read"
+  },
+  "app_id_variable": "ORG_DIRECTORY_APP_ID",
+  "key_environment": "organization-collector",
+  "key_secret": "ORG_DIRECTORY_APP_KEY",
+  "key_allowed_branch": "main",
+  "key_in_repository_or_organization_secrets": false
+}

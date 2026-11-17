@@ -1,0 +1,481 @@
+"""Synthetic organization fixtures; none represents actual people or policy."""
+import contextlib
+import copy
+import io
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+import tempfile
+import unittest
+from unittest.mock import patch
+
+from governance import organization as org
+from test_router import policy, snapshot, REF
+import test_router as routing_fixtures
+
+
+def fixture():
+    p = policy()
+    s = snapshot(p)
+    mapping = {'schema_version': 1, 'owner': 'example', 'decision_refs': [REF],
+               'project_responsibilities': [],
+               'approved_public': {'teams': [10, 20, 30, 40, 50], 'repositories': [101], 'projects': ['P1', 'P2']},
+               'areas': [{'id': 'example', 'name': 'Example area', 'teams': [10, 20], 'repositories': [101], 'projects': ['P1', 'P2'], 'decision_refs': [REF]}]}
+    model = {'schema_version': 1, 'organization': p['organization'], 'routing': s,
+             'teams': [{**t, 'members': t['direct_members']} for t in s['teams']],
+             'repositories': [{**s['repositories'][0], 'name': 'example', 'archived': False}],
+             'projects': [{'id': 'P1', 'number': 1, 'title': 'Example project', 'public': True, 'closed': False, 'repository_ids': [101]},
+                          {'id': 'P2', 'number': 2, 'title': 'Other project', 'public': True, 'closed': True, 'repository_ids': [101]}],
+             'observation': {'completed_at': '2026-01-01T12:00:01Z', 'source_revision': 'abc',
+                             'policy_revision': org.router.digest(p), 'mapping_revision': org.router.digest(mapping), 'scope': 'synthetic', 'coverage': []}}
+    return p, mapping, model
+
+
+def fake_exporter(path, sources):
+    for name in sources:
+        (path / (name + '.svg')).write_text('<svg xmlns="http://www.w3.org/2000/svg"/>')
+        (path / (name + '.png')).write_bytes(b'\x89PNG\r\n\x1a\nsynthetic')
+
+
+class OrganizationTests(unittest.TestCase):
+    def test_renderer_never_receives_collection_or_publication_tokens(self):
+        with patch.dict(__import__('os').environ, {'GH_TOKEN': 'synthetic-publish', 'PYA_READ_TOKEN': 'synthetic-read'}):
+            with patch.object(org.shutil, 'which', return_value='mmdc'), patch.object(org.subprocess, 'run') as run:
+                org.mermaid_exporter(Path('/synthetic'), {'chart': 'flowchart TB'})
+                self.assertEqual(run.call_count, 2)
+                for call in run.call_args_list:
+                    self.assertNotIn('GH_TOKEN', call.kwargs['env'])
+                    self.assertNotIn('PYA_READ_TOKEN', call.kwargs['env'])
+    def test_transport_decodes_real_utf8_pipe_on_windows(self):
+        raw = json.dumps({'name': 'Project — café'}, ensure_ascii=False).encode('utf-8')
+        def runner(args, **kwargs):
+            self.assertEqual(kwargs['encoding'], 'utf-8')
+            return subprocess.run([sys.executable, '-c', f'import sys; sys.stdout.buffer.write(bytes.fromhex("{raw.hex()}"))'], **kwargs)
+        self.assertEqual(org.router.GitHub(runner=runner).get('orgs/Example')['name'], 'Project — café')
+
+    def test_many_to_many_and_relationship_types(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        self.assertEqual(len([e for e in public['relationships'] if e['kind'] == 'project_link']), 2)
+        self.assertEqual({e['kind'] for e in public['relationships']}, {'github_parent', 'access', 'responsibility', 'project_link'})
+        self.assertEqual(public['unmapped']['teams'], [30, 40, 50])
+        self.assertTrue(all(r['state'] == 'unresolved' for r in public['project_roles']))
+        m['project_responsibilities'] = [{'project_id': pid, 'state': 'accepted', 'team_ids': [10, 20], 'decision_refs': [REF]} for pid in ['P1', 'P2']]
+        public = org.public_model(model, p, m)
+        self.assertEqual(len([r for r in public['relationships'] if r['kind'] == 'project_responsibility']), 4)
+
+    def test_unknown_is_not_inferred(self):
+        p, m, model = fixture()
+        model['teams'].append({'id': 99, 'name': 'unreviewed', 'slug': 'unreviewed', 'privacy': 'closed', 'parent_id': None})
+        self.assertNotIn('unreviewed', json.dumps(org.public_model(model, p, m)))
+
+    def test_private_data_excluded_even_if_approved(self):
+        p, m, model = fixture()
+        model['teams'][0]['privacy'] = 'secret'
+        model['repositories'][0]['private'] = True
+        model['projects'][0]['public'] = False
+        text = json.dumps(org.public_model(model, p, m))
+        for private in ('example-owner', 'person-', 'direct_members', 'team_grants', 'effective_permissions'):
+            self.assertNotIn(private, text)
+        self.assertFalse(org.public_model(model, p, m)['repositories'])
+
+    def test_rename_preserves_identity(self):
+        p, m, model = fixture()
+        before = org.public_model(model, p, m)
+        model['teams'][0]['name'] = 'Renamed'
+        after = org.public_model(model, p, m)
+        self.assertEqual(before['relationships'], after['relationships'])
+        self.assertNotEqual(org.semantic(before), org.semantic(after))
+
+    def test_repository_rename_retains_routing_by_id(self):
+        p, m, model = fixture()
+        model['repositories'][0]['full_name'] = 'ExampleOrg/renamed'
+        model['routing']['repositories'][0]['full_name'] = 'ExampleOrg/renamed'
+        routing_fixtures.seal(model['routing'], p)
+        public = org.public_model(model, p, m)
+        self.assertEqual(public['routing']['repositories'][0]['url'], 'https://github.com/ExampleOrg/renamed')
+
+    def test_cycles_and_missing_parent_rejected(self):
+        for parent in (10, 999):
+            p, m, model = fixture()
+            model['teams'][0]['parent_id'] = parent
+            with self.assertRaises(org.router.RoutingError):
+                org.validate_model(model, p, m)
+
+    def test_invalid_mapping_rejected(self):
+        p, m, model = fixture()
+        m['areas'][0]['teams'].append(999)
+        with self.assertRaises(org.router.RoutingError):
+            org.validate_mapping(m, p)
+
+    def test_directory_markup_uses_exact_mapping_and_model_threshold(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        with tempfile.TemporaryDirectory() as tmp:
+            org.render(public, tmp)
+            page = Path(tmp, 'index.html').read_text(encoding='utf-8')
+            script = Path(tmp, 'directory.js').read_text(encoding='utf-8')
+        self.assertIn('data-threshold="10800"', page)
+        self.assertIn('Freshness threshold: 10800 seconds', page)
+        self.assertIn('data-kind="teams" data-mapped="false"', page)
+        self.assertIn('data-kind="teams" data-mapped="true"', page)
+        self.assertNotIn('<!--THRESHOLD-->', page)
+        self.assertIn("row.dataset.mapped === 'false'", script)
+        self.assertIn("status.dataset.threshold", script)
+        self.assertNotIn("text.includes('unmapped')", script)
+
+    def test_unsafe_names_escaped(self):
+        p, m, model = fixture()
+        model['teams'][0]['name'] = '<script>alert("x")</script>\n%%{init:evil}'
+        public = org.public_model(model, p, m)
+        with tempfile.TemporaryDirectory() as tmp:
+            sources = org.render(public, tmp)
+            self.assertNotIn('<script>alert', Path(tmp, 'index.html').read_text())
+            self.assertNotIn('%%{init', sources['hierarchy'])
+        self.assertEqual(org.label('Funding & Sustainability — Café'), 'Funding & Sustainability — Café')
+
+    def test_deterministic_and_observation_noop(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        changed = copy.deepcopy(public)
+        changed['observation']['completed_at'] = '2026-01-02T00:00:00Z'
+        self.assertEqual(org.semantic(public), org.semantic(changed))
+        self.assertEqual(org.charts(public), org.charts(copy.deepcopy(public)))
+
+    def test_render_is_stable_after_json_round_trip(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        with tempfile.TemporaryDirectory() as tmp:
+            left, right = Path(tmp, 'first'), Path(tmp, 'replayed')
+            org.render(public, left)
+            org.render(json.loads(org.router.dump(public)), right)
+            self.assertEqual({x.name: x.read_bytes() for x in left.iterdir()},
+                             {x.name: x.read_bytes() for x in right.iterdir()})
+
+    def test_refresh_noop_and_failure_recovery(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                self.assertFalse(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+            before = {x.name: x.read_bytes() for x in output.iterdir()}
+            with patch.object(org, 'collect', side_effect=org.router.APIError('teams', 'access_denied', 403)):
+                with self.assertRaises(org.router.RoutingError):
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
+            self.assertEqual(json.loads((state / 'status.json').read_text())['status'], 'failed')
+            snapshot_with_status = org.router.attach_refresh_status(org.router.read_json(state / 'routing-snapshot.json'), state / 'routing-status.json')
+            route = org.router.resolve(p, snapshot_with_status, 'ExampleOrg/example', max_age_seconds=999999999)
+            self.assertEqual(route['freshness']['status'], 'refresh_failed')
+            self.assertTrue(all(not level['recipients'] for level in route['levels']))
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual(json.loads((state / 'status.json').read_text())['status'], 'complete')
+
+    def test_private_persistence_failures_roll_back_complete_transaction(self):
+        phases = ('model.json', 'hierarchy.mmd', 'routing-snapshot.json', 'routing-status.json', 'status.json')
+        atomic_write = org.router.atomic_write
+        for prior_success in (False, True):
+            for phase in phases:
+                for fail_after_replace in (False, True):
+                    with self.subTest(prior_success=prior_success, phase=phase, after_replace=fail_after_replace):
+                        p, m, model = fixture()
+                        with tempfile.TemporaryDirectory() as tmp:
+                            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+                            if prior_success:
+                                with patch.object(org, 'collect', return_value=model):
+                                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                                # Rollback must preserve existing permissions,
+                                # including a read-only last-good snapshot.
+                                (state / 'model.json').chmod(0o400)
+                            public_before = {x.name: x.read_bytes() for x in output.iterdir()} if prior_success else None
+                            data_names = ('model.json', 'hierarchy.mmd', 'routing-snapshot.json')
+                            private_before = {name: ((state / name).read_bytes(), (state / name).stat().st_mode & 0o777)
+                                              for name in data_names} if prior_success else {}
+                            updated = copy.deepcopy(model)
+                            updated['projects'][0]['title'] = 'Changed project'
+                            updated['observation']['completed_at'] = '2026-01-02T12:00:01Z'
+                            updated['routing']['collection'].update(completed_at='2026-01-02T12:00:01Z',
+                                                                    content_verified_at='2026-01-02T12:00:01Z')
+                            injected = False
+
+                            def fail_write(path, content, **kwargs):
+                                nonlocal injected
+                                if Path(path) == state / phase and not injected:
+                                    injected = True
+                                    if fail_after_replace:
+                                        atomic_write(path, content, **kwargs)
+                                    raise OSError('synthetic private persistence failure')
+                                return atomic_write(path, content, **kwargs)
+
+                            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_write):
+                                with self.assertRaisesRegex(OSError, 'synthetic private persistence failure'):
+                                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                            self.assertTrue(injected)
+                            if prior_success:
+                                self.assertEqual(public_before, {x.name: x.read_bytes() for x in output.iterdir()})
+                                for name, (content, mode) in private_before.items():
+                                    self.assertEqual((state / name).read_bytes(), content)
+                                    if os.name == 'posix':
+                                        self.assertEqual((state / name).stat().st_mode & 0o777, mode)
+                                route = org.router.resolve(p, org.router.attach_refresh_status(
+                                    org.router.read_json(state / 'routing-snapshot.json'), state / 'routing-status.json'),
+                                    'ExampleOrg/example', max_age_seconds=999999999)
+                                self.assertEqual(route['freshness']['status'], 'refresh_failed')
+                                self.assertTrue(all(not level['recipients'] for level in route['levels']))
+                            else:
+                                self.assertFalse(output.exists())
+                                self.assertTrue(all(not (state / name).exists() for name in data_names))
+                            for name in ('status.json', 'routing-status.json'):
+                                failure = org.router.read_json(state / name)
+                                self.assertEqual(failure['status'], 'failed')
+                                self.assertEqual(failure['last_success_at'], model['observation']['completed_at'] if prior_success else None)
+                                if os.name == 'posix':
+                                    self.assertEqual((state / name).stat().st_mode & 0o777, 0o600)
+                            self.assertFalse(list(state.glob('.refresh-*')))
+
+    def test_public_swap_failure_preserves_previous_bundle(self):
+        p, m, model = fixture()
+        replace = org.os.replace
+        for prior_success in (False, True):
+            with self.subTest(prior_success=prior_success), tempfile.TemporaryDirectory() as tmp:
+                state, output = Path(tmp, 'state'), Path(tmp, 'public')
+                if prior_success:
+                    with patch.object(org, 'collect', return_value=model):
+                        org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                before = {x.name: x.read_bytes() for x in output.iterdir()} if prior_success else None
+                updated = copy.deepcopy(model)
+                updated['projects'][0]['title'] = 'Changed project'
+
+                def fail_swap(source, target):
+                    if Path(target) == output and Path(source).name == 'public':
+                        raise OSError('synthetic public swap failure')
+                    return replace(source, target)
+
+                with patch.object(org, 'collect', return_value=updated), patch.object(org.os, 'replace', side_effect=fail_swap):
+                    with self.assertRaisesRegex(OSError, 'synthetic public swap failure'):
+                        org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                if prior_success:
+                    self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
+                else:
+                    self.assertFalse(output.exists())
+                self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+
+    def test_rollback_error_retains_private_originals_and_original_error(self):
+        p, m, model = fixture()
+        atomic_write, replace = org.router.atomic_write, org.os.replace
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            public_before = {x.name: x.read_bytes() for x in output.iterdir()}
+            model_before = (state / 'model.json').read_bytes()
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+
+            def fail_write(path, content, **kwargs):
+                if Path(path) == state / 'hierarchy.mmd':
+                    raise OSError('synthetic persistence failure')
+                return atomic_write(path, content, **kwargs)
+
+            def fail_restore(source, target):
+                if Path(source).name == 'model.json' and Path(source).parent.name.startswith('.refresh-'):
+                    raise PermissionError('synthetic rollback failure')
+                return replace(source, target)
+
+            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_write), patch.object(org.os, 'replace', side_effect=fail_restore):
+                with self.assertRaises(ExceptionGroup) as raised:
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual([str(e) for e in raised.exception.exceptions],
+                             ['synthetic persistence failure', 'synthetic rollback failure'])
+            self.assertEqual(public_before, {x.name: x.read_bytes() for x in output.iterdir()})
+            backups = list(state.glob('.refresh-*'))
+            self.assertEqual(len(backups), 1)
+            self.assertEqual((backups[0] / 'model.json').read_bytes(), model_before)
+            if os.name == 'posix':
+                self.assertEqual(backups[0].stat().st_mode & 0o777, 0o700)
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+
+    def test_cli_public_rollback_failure_gives_conservative_recovery_guidance(self):
+        p, m, model = fixture()
+        atomic_write, replace = org.router.atomic_write, org.os.replace
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            public_before = {x.name: x.read_bytes() for x in output.iterdir()}
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+            policy_path, mapping_path = Path(tmp, 'policy.json'), Path(tmp, 'mapping.json')
+            policy_path.write_text(org.router.dump(p), encoding='utf-8')
+            mapping_path.write_text(org.router.dump(m), encoding='utf-8')
+
+            def fail_write(path, content, **kwargs):
+                if Path(path) == state / 'hierarchy.mmd':
+                    raise OSError('synthetic private persistence failure')
+                return atomic_write(path, content, **kwargs)
+
+            def fail_public_restore(source, target):
+                if Path(source).name == 'last-good' and Path(target) == output:
+                    raise OSError('synthetic public restoration failure')
+                return replace(source, target)
+
+            argv = ['organization.py', '--policy', str(policy_path), '--mapping', str(mapping_path),
+                    '--state', str(state), '--output', str(output), '--source-revision', 'abc']
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with patch.object(sys, 'argv', argv), patch.object(org, 'collect', return_value=updated), patch.object(org, 'mermaid_exporter', fake_exporter), patch.object(org.router, 'atomic_write', side_effect=fail_write), patch.object(org.os, 'replace', side_effect=fail_public_restore), contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                self.assertEqual(org.main(), 1)
+            self.assertFalse(output.exists())
+            backups = list(Path(tmp).glob('*/last-good'))
+            self.assertEqual(len(backups), 1)
+            self.assertEqual(public_before, {x.name: x.read_bytes() for x in backups[0].iterdir()})
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+            self.assertEqual(stdout.getvalue(), '')
+            self.assertEqual(stderr.getvalue(), 'Refresh failed. Inspect private status and logs; verify public output and reconcile any retained backups before retrying.\n')
+
+    def test_unwritable_failure_status_still_marks_routing_failed(self):
+        p, m, model = fixture()
+        atomic_write = org.router.atomic_write
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            before = {x.name: x.read_bytes() for x in output.iterdir()}
+            updated = copy.deepcopy(model)
+            updated['projects'][0]['title'] = 'Changed project'
+
+            def fail_status(path, content, **kwargs):
+                if Path(path) == state / 'status.json':
+                    raise OSError('synthetic unwritable status')
+                return atomic_write(path, content, **kwargs)
+
+            with patch.object(org, 'collect', return_value=updated), patch.object(org.router, 'atomic_write', side_effect=fail_status):
+                with self.assertRaisesRegex(OSError, 'synthetic unwritable status') as raised:
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+            self.assertEqual(before, {x.name: x.read_bytes() for x in output.iterdir()})
+            self.assertEqual(org.router.read_json(state / 'routing-status.json')['status'], 'failed')
+            self.assertIn('A refresh failure sidecar could not be persisted.', raised.exception.__notes__)
+
+    def test_export_failure_preserves_output(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            output.mkdir(); (output / 'sentinel').write_text('last good')
+            with patch.object(org, 'collect', return_value=model):
+                with self.assertRaises(RuntimeError):
+                    org.refresh(p, m, state, output, 'abc', exporter=lambda *_: (_ for _ in ()).throw(RuntimeError()))
+            self.assertEqual((output / 'sentinel').read_text(), 'last good')
+
+    def test_unchanged_model_repairs_tampered_or_incomplete_bundle(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                expected = {x.name: x.read_bytes() for x in output.iterdir()}
+                (output / 'directory.js').write_text('arbitrary browser code')
+                (output / 'overview.png').unlink()
+                (output / 'unexpected.html').write_text('not generated')
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                self.assertEqual(expected, {x.name: x.read_bytes() for x in output.iterdir()})
+                self.assertFalse(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+
+    def test_historical_observation_never_republishes_extra_fields_or_future_time(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                path = output / 'organization.json'
+                old = org.router.read_json(path)
+                old['observation']['injected'] = ['SYNTHETIC_PERSON']
+                path.write_text(org.router.dump(old), encoding='utf-8')
+                self.assertTrue(org.refresh(p, m, state, output, 'abc', exporter=fake_exporter))
+                self.assertNotIn('injected', org.router.read_json(path)['observation'])
+                old = org.router.read_json(path)
+                old['observation']['completed_at'] = '2099-01-01T00:00:00Z'
+                path.write_text(org.router.dump(old), encoding='utf-8')
+                with self.assertRaises(org.router.RoutingError):
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+
+    @unittest.skipUnless(hasattr(__import__('os'), 'symlink'), 'symlink unavailable')
+    def test_artifact_symlink_is_rejected(self):
+        p, m, model = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state, output = Path(tmp, 'state'), Path(tmp, 'public')
+            with patch.object(org, 'collect', return_value=model):
+                org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                (output / 'directory.js').unlink()
+                target = Path(tmp, 'untrusted.js')
+                target.write_text('untrusted')
+                try:
+                    (output / 'directory.js').symlink_to(target)
+                except OSError:
+                    self.skipTest('OS does not permit symlinks for this account')
+                with self.assertRaises(org.router.RoutingError):
+                    org.refresh(p, m, state, output, 'abc', exporter=fake_exporter)
+                self.assertEqual(target.read_text(), 'untrusted')
+
+    def test_project_pagination_and_duplicate_detection(self):
+        class API:
+            coverage = []
+            def __init__(self, repeat=False): self.n = 0; self.repeat = repeat
+            def _call(self, args, resource):
+                self.n += 1
+                return {'nodes': [{'id': 'first' if self.n == 1 or self.repeat else 'second'}],
+                        'pageInfo': {'hasNextPage': self.n == 1, 'endCursor': 'next'}}
+        self.assertEqual(len(org.connection(API(), org.PROJECTS, {}, lambda x: x, 'id')), 2)
+        with self.assertRaises(org.router.RoutingError):
+            org.connection(API(True), org.PROJECTS, {}, lambda x: x, 'id')
+
+    def test_missing_access_is_not_empty(self):
+        class API:
+            def _call(self, *_): raise org.router.APIError('projects', 'access_denied', 403)
+        with self.assertRaises(org.router.APIError):
+            org.connection(API(), org.PROJECTS, {}, lambda x: x, 'id')
+
+    def test_hierarchy_edges_match_model(self):
+        p, m, model = fixture()
+        public = org.public_model(model, p, m)
+        actual = {(e['from'], e['to']) for e in public['relationships'] if e['kind'] == 'github_parent'}
+        expected = {(f"team:{t['parent_id']}", f"team:{t['id']}") for t in model['teams'] if t['parent_id'] is not None}
+        self.assertEqual(actual, expected)
+
+    def test_complete_collection_shares_routing_observation(self):
+        class Source(routing_fixtures.CollectionTests.Source):
+            def get(self, endpoint):
+                result = super().get(endpoint)
+                if endpoint == 'orgs/ExampleOrg': result['node_id'] = 'ORG'
+                return result
+            def pages(self, endpoint):
+                if endpoint == 'orgs/ExampleOrg/teams':
+                    return [{**t, 'node_id': 'T' + str(t['id']), 'parent': {'id': t['parent_id']} if t['parent_id'] else None} for t in self.data['teams']]
+                if endpoint == 'orgs/ExampleOrg/repos':
+                    return [{'id': 101, 'node_id': 'REPO101', 'name': 'example', 'full_name': 'ExampleOrg/example', 'private': False, 'visibility': 'public', 'archived': False}]
+                return super().pages(endpoint)
+            def _call(self, args, resource):
+                if 'query=' + org.PROJECTS in args:
+                    return {'data': {'organization': {'id': 'ORG', 'projectsV2': {'nodes': [], 'pageInfo': {'hasNextPage': False}}}}}
+                raise AssertionError(args)
+        p, m, _ = fixture()
+        model = org.collect(p, m, 'synthetic', Source())
+        self.assertEqual(len(model['teams']), 5)
+        self.assertEqual(model['routing']['teams'][0]['direct_members'], model['teams'][0]['members'])
+        public = org.public_model(model, p, m)
+        self.assertEqual(public['unavailable_approved']['projects'], ['P1', 'P2'])
+
+    def test_corrupt_cache_and_overlap_fail_closed(self):
+        p, m, _ = fixture()
+        with tempfile.TemporaryDirectory() as tmp:
+            state = Path(tmp, 'state'); state.mkdir()
+            (state / 'model.json').write_text('{broken')
+            with self.assertRaises(org.router.RoutingError):
+                org.refresh(p, m, state, Path(tmp, 'output'), 'test')
+            with self.assertRaises(org.router.RoutingError):
+                org.refresh(p, m, state, state / 'public', 'test')
+
+
+if __name__ == '__main__': unittest.main()

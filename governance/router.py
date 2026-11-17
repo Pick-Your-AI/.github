@@ -289,7 +289,7 @@ class GitHub:
         for attempt in range(self.retries + 1):
             delay = min(2 ** attempt, 4)
             try:
-                result = self.runner(["gh", "api", *args, "--include"], capture_output=True, text=True, timeout=60, check=False)
+                result = self.runner(["gh", "api", *args, "--include"], capture_output=True, text=True, encoding="utf-8", timeout=60, check=False)
             except (OSError, subprocess.TimeoutExpired):
                 error = APIError(resource, "transport_unavailable")
             else:

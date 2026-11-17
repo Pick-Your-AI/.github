@@ -1,0 +1,3019 @@
+{
+  "areas": [
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "ai-builder",
+      "name": "AI Builder",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnUon"
+      ],
+      "repositories": [
+        1421934086
+      ],
+      "teams": [
+        20184179,
+        20198473,
+        20421768
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "market-competitive-intelligence",
+      "name": "Market & Competitive Intelligence",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnViW"
+      ],
+      "repositories": [
+        1437739257
+      ],
+      "teams": [
+        20184157,
+        20398066
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "main-website",
+      "name": "Main Website",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnX2e"
+      ],
+      "repositories": [
+        1422238606
+      ],
+      "teams": [
+        20166984,
+        20423968
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "android",
+      "name": "Android",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbMJ"
+      ],
+      "repositories": [
+        1422897313
+      ],
+      "teams": [
+        20166812,
+        20423992
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "apple-ios",
+      "name": "Apple/iOS",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbQs"
+      ],
+      "repositories": [
+        1422897390
+      ],
+      "teams": [
+        20166920,
+        20424010
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "contributor-leaderboard",
+      "name": "Contributor Leaderboard",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BnbgH"
+      ],
+      "repositories": [
+        1422874501
+      ],
+      "teams": [
+        20167030,
+        20422096
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "funding-grants-sustainability",
+      "name": "Funding, Grants & Sustainability",
+      "projects": [
+        "PVT_kwDOFHg4Xc4Bnqgs"
+      ],
+      "repositories": [
+        1424960984
+      ],
+      "teams": [
+        20184167,
+        20198473,
+        20284775
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "catalog-pipeline",
+      "name": "Catalog Pipeline",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUHM"
+      ],
+      "repositories": [
+        1430404474
+      ],
+      "teams": [
+        20198473,
+        20398347,
+        20421773
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "ai-papers-index",
+      "name": "AI Papers & Index",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUHz"
+      ],
+      "repositories": [
+        1430404173
+      ],
+      "teams": [
+        20198473,
+        20398339,
+        20421770
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "ai-applications",
+      "name": "AI Applications",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoUH6"
+      ],
+      "repositories": [
+        1430403712
+      ],
+      "teams": [
+        20198473,
+        20398335,
+        20421771
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "datasets-benchmarks",
+      "name": "Datasets & Benchmarks",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BoZsU"
+      ],
+      "repositories": [
+        1431120964
+      ],
+      "teams": [
+        20198473,
+        20398330,
+        20421774
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "cloud-agents",
+      "name": "Cloud Agents",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BpXxK"
+      ],
+      "repositories": [
+        1439072266
+      ],
+      "teams": [
+        20421513,
+        20421514
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "id": "education",
+      "name": "Education",
+      "projects": [
+        "PVT_kwDOFHg4Xc4BpYpe"
+      ],
+      "repositories": [
+        1439194215
+      ],
+      "teams": [
+        20422276,
+        20422282
+      ]
+    }
+  ],
+  "coverage": {
+    "hierarchy": "induced hierarchy of approved teams; omitted parents are not roots of the internal hierarchy",
+    "inventory": "complete for collector-visible data",
+    "public": "approved entities only; excluded and inaccessible identities undisclosed"
+  },
+  "freshness_basis": "proposed operational setting: three hourly intervals",
+  "freshness_threshold_seconds": 10800,
+  "observation": {
+    "completed_at": "2026-10-30T04:33:35Z",
+    "mapping_revision": "235e6601f1e21cd4df5bdb84fdcb1bf957960111571768d34f32eb6cd3fde5b5",
+    "policy_revision": "8a15e2d33423d680761d0a1ec120e28e2ce606db7765525258d21ab5455b4816",
+    "scope": "entities visible to authenticated collector; hidden entities are unknown",
+    "source_revision": "aa4682b0404237d2c6365c85c7c755ec85c9333b"
+  },
+  "organization": {
+    "id": 343423069,
+    "login": "Pick-Your-AI",
+    "node_id": "O_kgDOFHg4XQ"
+  },
+  "project_roles": [
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnUon",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnViW",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnX2e",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbMJ",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbQs",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BnbgH",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4Bnqgs",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUH6",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUHM",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoUHz",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BoZsU",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BpXxK",
+      "state": "unresolved",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [],
+      "project_id": "PVT_kwDOFHg4Xc4BpYpe",
+      "state": "unresolved",
+      "team_ids": []
+    }
+  ],
+  "projects": [
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnUon",
+      "name": "Pick Your AI — Research — AI Builder",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/1"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnViW",
+      "name": "Pick Your AI — Research — Market & Competitive Intelligence",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/2"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnX2e",
+      "name": "Pick Your AI — Development — Main Website",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/3"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnbMJ",
+      "name": "Pick Your AI — Development — Android",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/4"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnbQs",
+      "name": "Pick Your AI — Development — Apple/iOS",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/5"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BnbgH",
+      "name": "Pick Your AI — Development — Contributor Leaderboard",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/6"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4Bnqgs",
+      "name": "Pick Your AI — Operations — Funding, Grants & Sustainability",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/7"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BoUH6",
+      "name": "Pick Your AI — Research — AI Applications",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/10"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BoUHM",
+      "name": "Pick Your AI — Development — Catalog Pipeline",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/8"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BoUHz",
+      "name": "Pick Your AI — Research — AI Papers & Index",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/9"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BoZsU",
+      "name": "Pick Your AI — Research — Datasets & Benchmarks",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/11"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BpXxK",
+      "name": "Pick Your AI — Research — Cloud Agents",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/12"
+    },
+    {
+      "closed": false,
+      "id": "PVT_kwDOFHg4Xc4BpYpe",
+      "name": "Pick Your AI — Community — Education",
+      "url": "https://github.com/orgs/Pick-Your-AI/projects/13"
+    }
+  ],
+  "relationships": [
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnUon",
+      "kind": "project_link",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnViW",
+      "kind": "project_link",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnViW",
+      "kind": "project_link",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnX2e",
+      "kind": "project_link",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnbMJ",
+      "kind": "project_link",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnbMJ",
+      "kind": "project_link",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnbQs",
+      "kind": "project_link",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BnbgH",
+      "kind": "project_link",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4Bnqgs",
+      "kind": "project_link",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BoUH6",
+      "kind": "project_link",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BoUHM",
+      "kind": "project_link",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BoUHz",
+      "kind": "project_link",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BoZsU",
+      "kind": "project_link",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BpXxK",
+      "kind": "project_link",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "project:PVT_kwDOFHg4Xc4BpYpe",
+      "kind": "project_link",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20184157"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20184167"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20184179"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20198473"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20284775"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20398066"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20398330"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20398335"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20398339"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20398347"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421513"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421514"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421768"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421770"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421771"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421773"
+    },
+    {
+      "from": "team:20136531",
+      "kind": "github_parent",
+      "to": "team:20421774"
+    },
+    {
+      "from": "team:20166812",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20166812",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20166812",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20166920",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20166920",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20166920",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20166984",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20166984",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20166984",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20167030",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20167030",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20167030",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "github_parent",
+      "to": "team:20166984"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "github_parent",
+      "to": "team:20167030"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "github_parent",
+      "to": "team:20422096"
+    },
+    {
+      "from": "team:20169020",
+      "kind": "github_parent",
+      "to": "team:20423968"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "github_parent",
+      "to": "team:20136531"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "github_parent",
+      "to": "team:20169020"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "github_parent",
+      "to": "team:20182744"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "github_parent",
+      "to": "team:20422276"
+    },
+    {
+      "from": "team:20182720",
+      "kind": "github_parent",
+      "to": "team:20422282"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "access",
+      "label": "triage",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "github_parent",
+      "to": "team:20166812"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "github_parent",
+      "to": "team:20166920"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "github_parent",
+      "to": "team:20423992"
+    },
+    {
+      "from": "team:20182744",
+      "kind": "github_parent",
+      "to": "team:20424010"
+    },
+    {
+      "from": "team:20184157",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20184157",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20184157",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20184157",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20184167",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20184167",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20184167",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20184179",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20184179",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20198473",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20284775",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20284775",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20398066",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20398066",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20398330",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20398330",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20398330",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20398335",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20398335",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20398335",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20398339",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20398339",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20398339",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20398347",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20398347",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20398347",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20421513",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20421513",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20421513",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20421514",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20421514",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20421768",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20421768",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20421770",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20421770",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20421771",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20421771",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20421773",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20421773",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20421774",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20421774",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20422096",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20422096",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20422276",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20422276",
+      "kind": "responsibility",
+      "label": "repository_maintainer",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20422276",
+      "kind": "responsibility",
+      "label": "repository_team",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20422282",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20422282",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1439194215"
+    },
+    {
+      "from": "team:20423968",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20423968",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20423992",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20423992",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20424010",
+      "kind": "access",
+      "label": "admin",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20424010",
+      "kind": "responsibility",
+      "label": "repository_lead_maintainer",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1421934086"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422238606"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422874501"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422897313"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1422897390"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1424960984"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430403712"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404173"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1430404474"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1431120964"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1437739257"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1439072266"
+    },
+    {
+      "from": "team:20424197",
+      "kind": "access",
+      "label": "push",
+      "to": "repository:1439194215"
+    }
+  ],
+  "repositories": [
+    {
+      "archived": false,
+      "id": 1421934086,
+      "name": "Pick-Your-AI/pick-your-ai-research",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-research"
+    },
+    {
+      "archived": false,
+      "id": 1422014674,
+      "name": "Pick-Your-AI/.github",
+      "url": "https://github.com/Pick-Your-AI/.github"
+    },
+    {
+      "archived": false,
+      "id": 1422238606,
+      "name": "Pick-Your-AI/pick-your-ai-website",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-website"
+    },
+    {
+      "archived": false,
+      "id": 1422874501,
+      "name": "Pick-Your-AI/pick-your-ai-leaderboard",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"
+    },
+    {
+      "archived": false,
+      "id": 1422897313,
+      "name": "Pick-Your-AI/pick-your-ai-android",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-android"
+    },
+    {
+      "archived": false,
+      "id": 1422897390,
+      "name": "Pick-Your-AI/pick-your-ai-apple",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple"
+    },
+    {
+      "archived": false,
+      "id": 1424960984,
+      "name": "Pick-Your-AI/pick-your-ai-sustainability",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-sustainability"
+    },
+    {
+      "archived": false,
+      "id": 1430403712,
+      "name": "Pick-Your-AI/pick-your-ai-applications",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-applications"
+    },
+    {
+      "archived": false,
+      "id": 1430404173,
+      "name": "Pick-Your-AI/pick-your-ai-papers",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-papers"
+    },
+    {
+      "archived": false,
+      "id": 1430404474,
+      "name": "Pick-Your-AI/pick-your-ai-catalog-pipeline",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline"
+    },
+    {
+      "archived": false,
+      "id": 1431120964,
+      "name": "Pick-Your-AI/pick-your-ai-datasets",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-datasets"
+    },
+    {
+      "archived": false,
+      "id": 1437739257,
+      "name": "Pick-Your-AI/pick-your-ai-market",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-market"
+    },
+    {
+      "archived": false,
+      "id": 1439072266,
+      "name": "Pick-Your-AI/pick-your-ai-cloud-agents",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents"
+    },
+    {
+      "archived": false,
+      "id": 1439194215,
+      "name": "Pick-Your-AI/pick-your-ai-education",
+      "url": "https://github.com/Pick-Your-AI/pick-your-ai-education"
+    }
+  ],
+  "roles": [
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17"
+      ],
+      "level": "repository_team",
+      "repository_id": 1422014674,
+      "state": "exception",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1422014674,
+      "state": "exception",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1422014674,
+      "state": "exception",
+      "team_ids": []
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1422897313,
+      "state": "accepted",
+      "team_ids": [
+        20166812
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1422897313,
+      "state": "accepted",
+      "team_ids": [
+        20166812
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1422897313,
+      "state": "accepted",
+      "team_ids": [
+        20423992
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1422897390,
+      "state": "accepted",
+      "team_ids": [
+        20166920
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1422897390,
+      "state": "accepted",
+      "team_ids": [
+        20166920
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1422897390,
+      "state": "accepted",
+      "team_ids": [
+        20424010
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1430403712,
+      "state": "accepted",
+      "team_ids": [
+        20398335
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1430403712,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1430403712,
+      "state": "accepted",
+      "team_ids": [
+        20421771
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1430404474,
+      "state": "accepted",
+      "team_ids": [
+        20398347
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1430404474,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1430404474,
+      "state": "accepted",
+      "team_ids": [
+        20421773
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1439072266,
+      "state": "accepted",
+      "team_ids": [
+        20421513
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1439072266,
+      "state": "accepted",
+      "team_ids": [
+        20421513
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1439072266,
+      "state": "accepted",
+      "team_ids": [
+        20421514
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1431120964,
+      "state": "accepted",
+      "team_ids": [
+        20398330
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1431120964,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1431120964,
+      "state": "accepted",
+      "team_ids": [
+        20421774
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1439194215,
+      "state": "accepted",
+      "team_ids": [
+        20422276
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1439194215,
+      "state": "accepted",
+      "team_ids": [
+        20422276
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1439194215,
+      "state": "accepted",
+      "team_ids": [
+        20422282
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1422874501,
+      "state": "accepted",
+      "team_ids": [
+        20167030
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1422874501,
+      "state": "accepted",
+      "team_ids": [
+        20167030
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1422874501,
+      "state": "accepted",
+      "team_ids": [
+        20422096
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1437739257,
+      "state": "accepted",
+      "team_ids": [
+        20184157
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1437739257,
+      "state": "accepted",
+      "team_ids": [
+        20184157
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1437739257,
+      "state": "accepted",
+      "team_ids": [
+        20398066
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1430404173,
+      "state": "accepted",
+      "team_ids": [
+        20398339
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1430404173,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1430404173,
+      "state": "accepted",
+      "team_ids": [
+        20421770
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1421934086,
+      "state": "accepted",
+      "team_ids": [
+        20184179
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1421934086,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1421934086,
+      "state": "accepted",
+      "team_ids": [
+        20421768
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1424960984,
+      "state": "accepted",
+      "team_ids": [
+        20184167
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1424960984,
+      "state": "accepted",
+      "team_ids": [
+        20198473
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1424960984,
+      "state": "accepted",
+      "team_ids": [
+        20284775
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/issues/17",
+        "https://github.com/Pick-Your-AI/.github/pull/22"
+      ],
+      "level": "repository_team",
+      "repository_id": 1422238606,
+      "state": "accepted",
+      "team_ids": [
+        20166984
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_maintainer",
+      "repository_id": 1422238606,
+      "state": "accepted",
+      "team_ids": [
+        20166984
+      ]
+    },
+    {
+      "decision_refs": [
+        "https://github.com/Pick-Your-AI/.github/blob/main/docs/governance/DECISIONS.md#routing-role-decision"
+      ],
+      "level": "repository_lead_maintainer",
+      "repository_id": 1422238606,
+      "state": "accepted",
+      "team_ids": [
+        20423968
+      ]
+    }
+  ],
+  "routing": {
+    "coordination_roles": [
+      {
+        "chain_level": false,
+        "name": "Review Leads",
+        "state": "pending_acceptance",
+        "team_url": "https://github.com/orgs/Pick-Your-AI/teams/review-leads"
+      }
+    ],
+    "export_kind": "static_snapshot",
+    "freshness_threshold_seconds": null,
+    "notice": "Static export: status was evaluated at generation under the displayed threshold and is not a continuing freshness claim. Automatic refresh is not activated by this tool. Rerun the resolver before relying on this directory. Team destinations only; membership does not establish accepted issue ownership. See the private collection status for the latest successful refresh time.",
+    "repositories": [
+      {
+        "exceptions": [
+          "owner_controlled"
+        ],
+        "levels": [
+          {
+            "disposition": "exception",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "exception",
+            "teams": []
+          },
+          {
+            "disposition": "exception",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "exception",
+            "teams": []
+          },
+          {
+            "disposition": "exception",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "exception",
+            "teams": []
+          },
+          {
+            "disposition": "not_applicable_no_anchor",
+            "level": "parent_teams",
+            "member_selector": "members",
+            "policy_state": "exception",
+            "teams": []
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/.github",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/.github"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Android",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/android"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Android",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/android"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Android",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Mobile Apps",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-android",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-android"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Apple/iOS",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Apple/iOS",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Apple/iOS",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Mobile Apps",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-apple",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-apple"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "AI Applications",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - AI Applications",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-applications"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-applications",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-applications"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "placeholder_only",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Catalog Pipeline",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "vacant",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Catalog Pipeline",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-catalog-pipeline",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-catalog-pipeline"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Cloud Agents",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Cloud Agents",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Cloud Agents",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-cloud-agents",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-cloud-agents"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "placeholder_only",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Datasets & Benchmarks",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "vacant",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Datasets & Benchmarks",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-datasets",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-datasets"
+      },
+      {
+        "exceptions": [
+          "unbootstrapped"
+        ],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Education",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/education"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Education",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/education"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Education",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education"
+              }
+            ]
+          },
+          {
+            "disposition": "placeholder_only",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-education",
+        "repository_state": "unbootstrapped",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-education"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Contributor Leaderboard",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Contributor Leaderboard",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Contributor Leaderboard",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Websites",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/websites"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-leaderboard",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-leaderboard"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Market & Competitive Intelligence",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Market & Competitive Intelligence",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Market & Competitive Intelligence",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-market",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-market"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "placeholder_only",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "AI Papers & Index",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "vacant",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - AI Papers & Index",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-papers",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-papers"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "AI Builder",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "vacant",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - AI Builder",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-research",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-research"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Funding, Grants & Sustainability",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "repository_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Funding, Grants & Sustainability",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Research",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-sustainability",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-sustainability"
+      },
+      {
+        "exceptions": [],
+        "levels": [
+          {
+            "disposition": "resolved",
+            "level": "repository_team",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Main Website",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_maintainer",
+            "member_selector": "team_managers",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Main Website",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "repository_lead_maintainer",
+            "member_selector": "members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Lead Maintainers - Main Website",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website"
+              }
+            ]
+          },
+          {
+            "disposition": "already_included",
+            "level": "parent_teams",
+            "member_selector": "direct_members",
+            "policy_state": "accepted",
+            "teams": [
+              {
+                "name": "Websites",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/websites"
+              },
+              {
+                "name": "Organization Maintainers",
+                "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+              }
+            ]
+          },
+          {
+            "disposition": "resolved",
+            "level": "owner",
+            "member_selector": null,
+            "policy_state": "accepted",
+            "teams": []
+          }
+        ],
+        "repository": "Pick-Your-AI/pick-your-ai-website",
+        "repository_state": "populated",
+        "url": "https://github.com/Pick-Your-AI/pick-your-ai-website"
+      }
+    ],
+    "schema_version": 1,
+    "snapshot_content_verified_at": "2026-10-30T04:33:35Z",
+    "status": "current",
+    "status_scope": "at_generation_only"
+  },
+  "schema_version": 1,
+  "teams": [
+    {
+      "id": 20136531,
+      "name": "Research",
+      "parent_id": 20182720,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/research"
+    },
+    {
+      "id": 20166812,
+      "name": "Android",
+      "parent_id": 20182744,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/android"
+    },
+    {
+      "id": 20166920,
+      "name": "Apple/iOS",
+      "parent_id": 20182744,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/apple-ios"
+    },
+    {
+      "id": 20166984,
+      "name": "Main Website",
+      "parent_id": 20169020,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/main-website"
+    },
+    {
+      "id": 20167030,
+      "name": "Contributor Leaderboard",
+      "parent_id": 20169020,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/contributor-leaderboard"
+    },
+    {
+      "id": 20169020,
+      "name": "Websites",
+      "parent_id": 20182720,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/websites"
+    },
+    {
+      "id": 20182720,
+      "name": "Organization Maintainers",
+      "parent_id": null,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/organization-maintainers"
+    },
+    {
+      "id": 20182744,
+      "name": "Mobile Apps",
+      "parent_id": 20182720,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/mobile-apps"
+    },
+    {
+      "id": 20184157,
+      "name": "Market & Competitive Intelligence",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/market-competitive-intelligence"
+    },
+    {
+      "id": 20184167,
+      "name": "Funding, Grants & Sustainability",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/funding-grants-sustainability"
+    },
+    {
+      "id": 20184179,
+      "name": "AI Builder",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-builder"
+    },
+    {
+      "id": 20198473,
+      "name": "Research Maintainers",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/research-maintainers"
+    },
+    {
+      "id": 20284775,
+      "name": "Lead Maintainers - Funding, Grants & Sustainability",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-funding-grants-sustainability"
+    },
+    {
+      "id": 20398066,
+      "name": "Lead Maintainers - Market & Competitive Intelligence",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-market-competitive-intelligence"
+    },
+    {
+      "id": 20398330,
+      "name": "Datasets & Benchmarks",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/datasets-benchmarks"
+    },
+    {
+      "id": 20398335,
+      "name": "AI Applications",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-applications"
+    },
+    {
+      "id": 20398339,
+      "name": "AI Papers & Index",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/ai-papers-index"
+    },
+    {
+      "id": 20398347,
+      "name": "Catalog Pipeline",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/catalog-pipeline"
+    },
+    {
+      "id": 20421513,
+      "name": "Cloud Agents",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/cloud-agents"
+    },
+    {
+      "id": 20421514,
+      "name": "Lead Maintainers - Cloud Agents",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-cloud-agents"
+    },
+    {
+      "id": 20421768,
+      "name": "Lead Maintainers - AI Builder",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-builder"
+    },
+    {
+      "id": 20421770,
+      "name": "Lead Maintainers - AI Papers & Index",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-papers-index"
+    },
+    {
+      "id": 20421771,
+      "name": "Lead Maintainers - AI Applications",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-ai-applications"
+    },
+    {
+      "id": 20421773,
+      "name": "Lead Maintainers - Catalog Pipeline",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-catalog-pipeline"
+    },
+    {
+      "id": 20421774,
+      "name": "Lead Maintainers - Datasets & Benchmarks",
+      "parent_id": 20136531,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-datasets-benchmarks"
+    },
+    {
+      "id": 20422096,
+      "name": "Lead Maintainers - Contributor Leaderboard",
+      "parent_id": 20169020,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-contributor-leaderboard"
+    },
+    {
+      "id": 20422276,
+      "name": "Education",
+      "parent_id": 20182720,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/education"
+    },
+    {
+      "id": 20422282,
+      "name": "Lead Maintainers - Education",
+      "parent_id": 20182720,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-education"
+    },
+    {
+      "id": 20423968,
+      "name": "Lead Maintainers - Main Website",
+      "parent_id": 20169020,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-main-website"
+    },
+    {
+      "id": 20423992,
+      "name": "Lead Maintainers - Android",
+      "parent_id": 20182744,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-android"
+    },
+    {
+      "id": 20424010,
+      "name": "Lead Maintainers - Apple/iOS",
+      "parent_id": 20182744,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/lead-maintainers-apple-ios"
+    },
+    {
+      "id": 20424197,
+      "name": "Review Leads",
+      "parent_id": null,
+      "url": "https://github.com/orgs/Pick-Your-AI/teams/review-leads"
+    }
+  ],
+  "unavailable_approved": {
+    "projects": [],
+    "repositories": [],
+    "teams": []
+  },
+  "unmapped": {
+    "projects": [],
+    "repositories": [
+      1422014674
+    ],
+    "teams": [
+      20136531,
+      20169020,
+      20182720,
+      20182744,
+      20424197
+    ]
+  }
+}

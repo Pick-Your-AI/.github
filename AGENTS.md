@@ -9,3 +9,5 @@ Preserve issue assignees, accepted decisions, explicit deferrals, contributor ow
 Policy/role changes require the applicable owner decision. Do not change memberships, permissions, protections or recurring activation because a resolver observes drift. Keep Internal Discussion's accepted exception private; do not publish membership snapshots or invitees. Education requires owner bootstrap before any branch is pushed.
 
 Run `python -m unittest discover -s tests -v`, `python governance/router.py validate-policy --policy governance/escalation-policy.json`, and `git diff --check`. When reviewing committed work, also run `git diff --check <base>...HEAD`; a clean checkout alone checks no patch. A passing fixture test does not prove source truth, human acceptance, active automation or live GitHub enforcement. Record fresh-VM evidence and checks not run. Do not merge under an implementation-only request.
+
+See [current organization operation and mapping](docs/ORGANIZATION.md) for the shared directory, refresh status, unresolved responsibility and proposed mapping changes. Published artifact observations and latest refresh checks are separate timestamps.
