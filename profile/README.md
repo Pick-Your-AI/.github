@@ -26,6 +26,9 @@
 
 ## Get involved
 
+Follow [volunteer participation planning and implementation status](https://github.com/Pick-Your-AI/pick-your-ai-volunteers) and the [proposed hub implementation](https://github.com/Pick-Your-AI/pick-your-ai-volunteers/pull/1). Continue using the contribution paths below. Pick Your AI intends to pursue US 501(c)(3) status; this volunteer program does not establish incorporation, tax exemption or tax-deductible donation eligibility.
+
+
 <table>
 <tr>
 <td width="33%" valign="top">
