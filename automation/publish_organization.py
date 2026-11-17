@@ -20,6 +20,15 @@ def run(*args, **kwargs):
     return subprocess.run(args, check=True, text=True, capture_output=True, **kwargs).stdout.strip()
 
 
+def failure_detail(exc):
+    """Minimal actionable diagnostics; never log stderr, argv credentials or payloads."""
+    if isinstance(exc, subprocess.CalledProcessError):
+        command = exc.cmd if isinstance(exc.cmd, (list, tuple)) else []
+        program = command[0] if command and command[0] in ('gh', 'git') else 'subprocess'
+        return f'{program} exited with status {exc.returncode}'
+    return type(exc).__name__
+
+
 def main():
     if os.environ.get('GITHUB_REF') != 'refs/heads/main':
         raise RuntimeError('Only trusted default-branch code may collect or publish')
@@ -94,6 +103,6 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-    except Exception:
-        print('Organization refresh/publication failed; inspect workflow status. Last merged output is unchanged.', file=sys.stderr)
+    except Exception as exc:
+        print(f'Organization refresh/publication failed ({failure_detail(exc)}); inspect workflow status. Last merged output is unchanged.', file=sys.stderr)
         sys.exit(1)

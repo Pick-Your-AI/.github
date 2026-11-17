@@ -1,5 +1,11 @@
 import unittest
-from automation.organization_status import finish
+from automation.organization_status import finish, main
+import json
+import os
+import sys
+from pathlib import Path
+import tempfile
+from unittest.mock import patch
 
 
 class StatusTests(unittest.TestCase):
@@ -19,3 +25,20 @@ class StatusTests(unittest.TestCase):
         result = finish({}, {'status': 'failed', 'observed_at': 'not-a-date', 'detail': 'private'}, 'failure')
         self.assertIsNone(result['collection_observed_at'])
         self.assertNotIn('detail', result)
+
+    def test_finish_recovers_after_start_never_created_receipt(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp, 'receipt.json')
+            env = {'PYA_RUN_STATUS': str(output), 'PYA_STATE': str(Path(tmp, 'private')),
+                   'GITHUB_STEP_SUMMARY': str(Path(tmp, 'summary'))}
+            with patch.dict(os.environ, env), patch.object(sys, 'argv', ['status', 'finish', '--outcome', 'failure']):
+                main()
+            result = json.loads(output.read_text(encoding='utf-8'))
+            self.assertEqual(result['collection_status'], 'not_recorded')
+            self.assertEqual(result['publication_step'], 'failure')
+            self.assertIsNone(result['started_at'])
+            self.assertIn('Public-safe refresh receipt', Path(tmp, 'summary').read_text(encoding='utf-8'))
+            output.write_text('{broken', encoding='utf-8')
+            with patch.dict(os.environ, env), patch.object(sys, 'argv', ['status', 'finish', '--outcome', 'failure']):
+                main()
+            self.assertEqual(json.loads(output.read_text(encoding='utf-8'))['collection_status'], 'not_recorded')

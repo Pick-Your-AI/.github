@@ -34,6 +34,21 @@ def finish(receipt, private_status, outcome):
     return result
 
 
+def fallback_receipt():
+    """Public-safe receipt when a failed start step never created an output file."""
+    return {
+        'schema_version': 1, 'started_at': None, 'finished_at': None,
+        'run_id': os.environ.get('GITHUB_RUN_ID'),
+        'run_attempt': os.environ.get('GITHUB_RUN_ATTEMPT'),
+        'event': os.environ.get('GITHUB_EVENT_NAME'),
+        'workflow_revision': os.environ.get('GITHUB_SHA'),
+        'last_merged_observation_at': None,
+        'collection_status': 'not_recorded', 'collection_observed_at': None,
+        'publication_step': 'not_started', 'public_content_sha256': None,
+        'changed': None,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('operation', choices=('start', 'finish'))
@@ -51,9 +66,19 @@ def main():
             'publication_step': 'not_started', 'public_content_sha256': None, 'changed': None,
         }
     else:
-        receipt = json.loads(output.read_text(encoding='utf-8'))
+        try:
+            receipt = json.loads(output.read_text(encoding='utf-8'))
+            if not isinstance(receipt, dict):
+                receipt = fallback_receipt()
+        except (OSError, ValueError):
+            receipt = fallback_receipt()
         private_path = Path(os.environ['PYA_STATE']) / 'status.json'
-        private_status = json.loads(private_path.read_text(encoding='utf-8')) if private_path.exists() else {}
+        try:
+            private_status = json.loads(private_path.read_text(encoding='utf-8')) if private_path.exists() else {}
+            if not isinstance(private_status, dict):
+                private_status = {}
+        except (OSError, ValueError):
+            private_status = {}
         receipt = finish(receipt, private_status, args.outcome)
         with Path(os.environ['GITHUB_STEP_SUMMARY']).open('a', encoding='utf-8') as summary:
             summary.write('## Public-safe refresh receipt\n\n```json\n' + json.dumps(receipt, indent=2) + '\n```\n')

@@ -24,6 +24,24 @@ export function validateIdentity(app, installation, appId, orgId) {
   if (!Array.isArray(app.events) || app.events.length) throw new Error('Collector must not subscribe to write/event automation')
 }
 
+const SAFE_FAILURES = new Set([
+  'Collector permissions must exactly match the approved read-only permission set',
+  'Collector App identity, organization, scope or installation status does not match',
+  'Collector must not subscribe to write/event automation',
+  'Collector repository pagination did not terminate',
+  'Collector repository response is incomplete',
+  'Collector repository pagination repeated an identity',
+  'Collector repository pagination is incomplete',
+  'Collector installation is missing a policy repository',
+  'Invalid collector token response',
+])
+
+export function safeErrorMessage(error) {
+  const message = error && typeof error.message === 'string' ? error.message : ''
+  if (SAFE_FAILURES.has(message) || /^Collector authentication endpoint failed \\(HTTP [1-5]\\d{2}\\)$/.test(message)) return message
+  return 'Unexpected collector failure (details withheld)'
+}
+
 async function main() {
   const appId = Number(process.env.APP_ID)
   const policy = JSON.parse(readFileSync('governance/escalation-policy.json', 'utf8'))
@@ -73,5 +91,5 @@ async function main() {
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main().catch(() => { console.error('Collector credential verification failed; no restricted payload is logged.'); process.exitCode = 1 })
+  main().catch(error => { console.error('Collector credential verification failed: ' + safeErrorMessage(error)); process.exitCode = 1 })
 }

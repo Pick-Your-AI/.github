@@ -1,5 +1,6 @@
 """Synthetic publication transport; specifically exercises retry after push."""
 import os
+import subprocess
 from pathlib import Path
 import tempfile
 import unittest
@@ -60,3 +61,10 @@ class PublisherTests(unittest.TestCase):
         with patch.dict(os.environ, {'GITHUB_REF': 'refs/heads/main'}), patch.object(publisher, 'run', side_effect=run), patch.object(publisher.org.router, 'read_json', return_value={}), patch.object(publisher.org, 'refresh') as refresh:
             with self.assertRaises(RuntimeError): publisher.main()
             refresh.assert_not_called()
+
+    def test_failure_diagnostics_are_actionable_and_redact_payloads(self):
+        failure = subprocess.CalledProcessError(3, ['gh', 'api', 'SYNTHETIC_SECRET'], stderr='SYNTHETIC_SECRET')
+        detail = publisher.failure_detail(failure)
+        self.assertEqual(detail, 'gh exited with status 3')
+        self.assertNotIn('SYNTHETIC_SECRET', detail)
+        self.assertEqual(publisher.failure_detail(RuntimeError('SYNTHETIC_SECRET')), 'RuntimeError')

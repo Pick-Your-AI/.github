@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict'
 import test from 'node:test'
-import { REQUIRED, validateIdentity, validatePermissions } from '../automation/collector_token.mjs'
+import { REQUIRED, validateIdentity, validatePermissions, safeErrorMessage } from '../automation/collector_token.mjs'
 
 test('requires exact read-only permissions; rejects old writing App and extra reads', () => {
   validatePermissions({ ...REQUIRED })
@@ -16,4 +16,10 @@ test('binds App, installation, organization and complete scope', () => {
     assert.throws(() => validateIdentity(app, { ...installation, ...change }, 7, 8))
   }
   assert.throws(() => validateIdentity({ ...app, events: ['membership'] }, installation, 7, 8))
+})
+
+test('reported collector errors retain only allowlisted diagnostics', () => {
+  assert.match(safeErrorMessage(new Error('Collector installation is missing a policy repository')), /missing a policy repository/)
+  assert.match(safeErrorMessage(new Error('Collector authentication endpoint failed (HTTP 403)')), /HTTP 403/)
+  assert.doesNotMatch(safeErrorMessage(new Error('SYNTHETIC_SECRET from untrusted exception')), /SYNTHETIC_SECRET/)
 })
