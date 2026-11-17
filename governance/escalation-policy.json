@@ -433,15 +433,7 @@
       ],
       "anchor_team_id": 20422276,
       "full_name": "Pick-Your-AI/pick-your-ai-education",
-      "exceptions": [
-        {
-          "reason": "Empty repository; owner bootstrap is required before entrypoint publication.",
-          "decision_refs": [
-            "https://github.com/Pick-Your-AI/.github/issues/16"
-          ],
-          "code": "unbootstrapped"
-        }
-      ],
+      "exceptions": [],
       "public": true,
       "managed_by_team_ids": [],
       "expected_grants": null,

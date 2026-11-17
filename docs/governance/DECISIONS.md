@@ -51,6 +51,12 @@ The following public default-branch file audit was read from GitHub on 2026-10-3
 
 The tracked entrypoint PRs add local overrides, so the affected defaults change as those PRs merge. Education now has a default branch; the earlier empty-repository observation is historical and grants no further bootstrap authority. Knowledge-Base and Volunteers were not in the earlier routing collection and have no selected mapping in this policy: keep their routing unresolved until separately recorded. Private repository details remain outside this public audit; default inheritance is not an override of their local security or owner exceptions. Recheck the layout after merges and before claiming rendered contributor-flow acceptance.
 
+## Education bootstrap reconciliation
+
+On 2026-11-17, an authenticated read of the public Education repository's `main` branch returned commit [`2efe6c72bbe24a6b5892715c0c694b6d0e648f2d`](https://github.com/Pick-Your-AI/pick-your-ai-education/commit/2efe6c72bbe24a6b5892715c0c694b6d0e648f2d). This confirms the completed bootstrap already recorded above. Current guidance and the governed mapping retire the obsolete `unbootstrapped` exception; the repository identity, anchor, accepted routing roles, unresolved management and access expectations remain unchanged.
+
+The earlier generated directory remains a dated observation. It is not regenerated from this single branch read: a complete fresh collection is still required for a new routing snapshot. A policy digest change invalidates old private snapshots until refreshed, and an unexpectedly empty repository still produces drift. This correction changes no Education branch, role, grant, protection or activation setting, and does not authorize future bootstrap operations.
+
 ## Permission and review proposal boundary
 
 Before any #14 enforcement change, approve #16's per-repository merge/branch/tag capability definition. Review removal on an entire branch affects PRs from contributors as well as maintainers; do not infer that the scope decision approves new merge rights. Existing required validation and local legal/evidence policy survive an optional peer-review rule. CODEOWNERS changes remain proposals; none is made here.

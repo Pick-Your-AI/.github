@@ -27,7 +27,7 @@ GitHub team/repository grants remain authoritative for access. Parent Triage, re
 
 Team membership and settings are managed by organization owners and the relevant team's designated GitHub maintainers. The [accepted delegation record](https://github.com/Pick-Your-AI/.github/issues/18) distinguishes that role from repository Admin access and operational ownership. Do not infer an assignment from a name or membership. Organization-file changes still require a pull request and the applicable review rules; naming changes do not expand anyone's access.
 
-The `.github` repository retains its owner-control exception: no team has Write or Admin access here. Only organization owners can change this repository, through a pull request.
+The `.github` repository retains its owner-control exception: no team has Write or Admin access here. Organization owners control governance decisions; the separately authorized individual Write grant recorded in [#16](https://github.com/Pick-Your-AI/.github/issues/16) permits contributions within its granted scope. All changes still go through a pull request and the applicable review rules. Write access does not delegate governance authority.
 
 ## Workflow for early contributors
 
@@ -71,7 +71,7 @@ If you are not an early contributor, fork the repository, push your branch to th
 
 ## Where the rules are enforced
 
-The following rulesets describe the established control pattern; they are not a claim that every current repository has every rule. The [configuration disposition](docs/governance/DECISIONS.md) records the outstanding alignment work, including Market, Cloud Agents and unbootstrapped Education. If an authorized change updates enforcement, update this page in the same change.
+The following rulesets describe the established control pattern; they are not a claim that every current repository has every rule. The [configuration disposition](docs/governance/DECISIONS.md) records the outstanding alignment work, including Market and Cloud Agents, and Education's completed bootstrap. If an authorized change updates enforcement, update this page in the same change.
 
 | Ruleset | Effect |
 | --- | --- |
